@@ -1,0 +1,122 @@
+/* General */
+
+:root {
+  --color-white: #F7F7F7;
+  --color-black: #383838;
+  --color-electric-blue: #0169FE;
+  --color-mid-blue: #0395FF;
+  --color-light-blue: #69B9FC;
+  --gradient-blue: linear-gradient(90deg, var(--color-light-blue), var(--color-mid-blue), var(--color-electric-blue));
+  --color-red: #DE5E5E;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Figtree", serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+header,
+main,
+footer {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* Flex */
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.rowCenter {
+  display: flex;
+  align-items: center;
+}
+
+.rowSpaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rowSpaceBetweenCenter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.columnAlignCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.allCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Iconic */
+
+section {
+  padding: 2rem 1.25rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 0.875rem;
+}
+
+.primaryButton {
+  background-color: var(--color-mid-blue);
+  border: none;
+  border-radius: 999px;
+  color: var(--color-white);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+}
+
+/* Typography & Backgrounds */
+
+.bg-gradient {
+  background-image: var(--gradient-blue);
+}
+
+.text-white {
+  color: var(--color-white);
+}
+
+.text-electric-blue {
+  color: var(--color-electric-blue);
+}
+
+.text-mid-blue {
+  color: var(--color-mid-blue);
+}
