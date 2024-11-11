@@ -1,0 +1,31 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "start": "git pull origin main && npm i && nuxt dev --open",
+    "host": "nuxt dev --open --host",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/icon": "^1.7.2",
+    "@nuxt/image": "^1.8.1",
+    "@nuxt/scripts": "^0.9.5",
+    "@nuxtjs/fontaine": "^0.4.4",
+    "@nuxtjs/seo": "^2.0.0-rc.23",
+    "@primevue/nuxt-module": "^4.2.1",
+    "nuxt": "^3.14.159",
+    "nuxt-booster": "^3.1.6",
+    "nuxt-swiper": "^1.2.2",
+    "nuxt-vitalizer": "^0.10.0",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "devDependencies": {
+    "nuxt-anchorscroll": "^1.0.3"
+  }
+}
