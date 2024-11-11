@@ -3,6 +3,7 @@
 :root {
   --color-white: #F7F7F7;
   --color-black: #383838;
+  --color-dark-gray: #8F8F8F;
   --color-electric-blue: #0169FE;
   --color-mid-blue: #0395FF;
   --color-light-blue: #69B9FC;
@@ -81,6 +82,7 @@ footer {
 /* Iconic */
 
 section {
+  gap: 1.5rem;
   padding: 2rem 1.25rem;
 }
 
@@ -88,19 +90,46 @@ h1 {
   font-size: 1.5rem;
 }
 
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
 p {
   font-size: 0.875rem;
 }
 
+.primaryButton,
+.secondaryButton {
+  border: none;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
 .primaryButton {
   background-color: var(--color-mid-blue);
-  border: none;
   border-radius: 999px;
-  color: var(--color-white);
-  font-size: 0.875rem;
   font-weight: 700;
-  text-decoration: none;
+  color: var(--color-white);
   padding: 1rem 1.5rem;
+}
+
+.secondaryButton {
+  background: var(--gradient-blue);
+  padding-bottom: 4px;
+}
+
+.secondaryButton div {
+  background-color: var(--color-white);
+  padding-bottom: 2px;
+}
+
+.secondaryButton div p {
+  font-weight: 500;
+  color: var(--color-black);
 }
 
 /* Typography & Backgrounds */
@@ -109,8 +138,16 @@ p {
   background-image: var(--gradient-blue);
 }
 
+.bg-white {
+  background-color: var(--color-white);
+}
+
 .text-white {
   color: var(--color-white);
+}
+
+.text-dark-gray {
+  color: var(--color-dark-gray);
 }
 
 .text-electric-blue {
