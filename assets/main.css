@@ -82,6 +82,7 @@ footer {
 /* Iconic */
 
 section {
+  width: 100%;
   gap: 1.5rem;
   padding: 2rem 1.25rem;
 }

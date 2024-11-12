@@ -7,13 +7,13 @@ export default defineNuxtConfig({
     "@primevue/nuxt-module",
     "@nuxt/image",
     "@nuxt/icon",
-    "nuxt-swiper",
     '@nuxtjs/seo',
     'nuxt-vitalizer',
     'nuxt-booster',
     '@nuxtjs/fontaine',
     'nuxt-anchorscroll',
     '@nuxt/scripts',
+    'nuxt-keen-slider'
   ],
   icon: {
     size: '1rem',

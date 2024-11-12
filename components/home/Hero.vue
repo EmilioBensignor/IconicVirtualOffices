@@ -28,7 +28,7 @@
       </div>
       <div>ANIMATION // Padding Right</div>
     </div>
-    <HomeHeroBusinesses />
+    <HomeSwiperBusinesses />
   </section>
 </template>
 
