@@ -124,26 +124,11 @@ export default {
           img: "Service-Image",
           text: "Telephone answering service",
         },
-        {
-          img: "Service-Image",
-          text: "Receptionist & secretarial support",
-        },
-        {
-          img: "Service-Image",
-          text: "Mail scanning & forwarding",
-        },
-        {
-          img: "Service-Image",
-          text: "Package handling & courier services",
-        },
-        {
-          img: "Service-Image",
-          text: "Telephone answering service",
-        },
       ],
     };
   },
   setup() {
+    let intervalId;
     const [container, slider] = useKeenSlider(
       {
         loop: true,
@@ -152,52 +137,33 @@ export default {
           perView: 2,
           spacing: 8,
         },
+        renderMode: "performance",
+        defaultAnimation: {
+          duration: 500,
+        },
       },
       [
         (slider) => {
-          let timeout;
-          let mouseOver = false;
-          function clearNextTimeout() {
-            clearTimeout(timeout);
-          }
-          function nextTimeout() {
-            clearTimeout(timeout);
-            if (mouseOver) return;
-            timeout = setTimeout(() => {
+          slider.on("created", () => {
+            intervalId = setInterval(() => {
               slider.next();
             }, 2000);
-          }
-          slider.on("created", () => {
-            slider.container.addEventListener("mouseover", () => {
-              mouseOver = true;
-              clearNextTimeout();
-            });
-            slider.container.addEventListener("mouseout", () => {
-              mouseOver = false;
-              nextTimeout();
-            });
-            nextTimeout();
           });
-          slider.on("dragStarted", clearNextTimeout);
-          slider.on("animationEnded", nextTimeout);
-          slider.on("updated", nextTimeout);
+
+          slider.on("destroyed", () => {
+            if (intervalId) {
+              clearInterval(intervalId);
+            }
+          });
         },
       ]
     );
 
-    const prevSlide = () => {
-      if (slider.value) {
-        slider.value.prev();
-      }
+    return {
+      container,
+      prevSlide: () => slider.value?.prev(),
+      nextSlide: () => slider.value?.next(),
     };
-
-    const nextSlide = () => {
-      if (slider.value) {
-        slider.value.next();
-      }
-    };
-
-    return { container, prevSlide, nextSlide };
   },
 };
 </script>
