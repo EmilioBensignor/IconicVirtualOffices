@@ -49,8 +49,7 @@ export default {
   setup() {
     const [container] = useKeenSlider({
       loop: true,
-      mode: "free",
-      drag: true,
+      drag: false,
       created(s) {
         s.moveToIdx(5, true, animation);
       },
