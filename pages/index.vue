@@ -1,8 +1,8 @@
 <template>
   <main>
-    <!-- <HomeHero /> -->
+    <HomeHero />
     <HomeBusinessBenefits />
     <!-- <HomeServices /> -->
-    <HomePlans />
+    <!-- <HomePlans /> -->
   </main>
 </template>
