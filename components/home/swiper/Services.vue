@@ -15,10 +15,10 @@
       </div>
     </div>
     <button class="btnSlider prev" @click="prevSlide" aria-label="Prev Arrow">
-      <NuxtImg src="/images/Prev-Arrow-Icon.svg" alt="Prev-Arrow-Icon" />
+      <Icon class="text-electric-blue" name="mingcute:left-line" />
     </button>
     <button class="btnSlider next" @click="nextSlide" aria-label="Next Arrow">
-      <NuxtImg src="/images/Next-Arrow-Icon.svg" alt="Next-Arrow-Icon" />
+      <Icon class="text-electric-blue" name="mingcute:right-line" />
     </button>
   </div>
 </template>
@@ -200,11 +200,21 @@ p {
   border: none;
   box-shadow: 0px 0px 10px 0px #00000033;
   border-radius: 999px;
+  transition: all 0.3s;
   cursor: pointer;
 }
 
-.btnSlider img {
-  width: 0.5rem;
+.btnSlider:hover {
+  background: var(--color-light-blue);
+}
+
+.btnSlider span {
+  width: 2rem;
+  font-size: 1.5rem !important;
+}
+
+.btnSlider:hover span {
+  color: white;
 }
 
 .prev {

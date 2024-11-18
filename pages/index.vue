@@ -6,6 +6,7 @@
     <HomePlans />
     <HomeWorkspaces />
     <HomeClientSuccess />
+    <HomeGettingStarted />
     <HomeGoogleReviews />
     <HomeFAQ />
   </main>

@@ -110,6 +110,7 @@ p {
   border: none;
   font-size: 0.875rem;
   text-decoration: none;
+  transition: all 0.3s;
   cursor: pointer;
 }
 
@@ -119,6 +120,11 @@ p {
   font-weight: 700;
   color: var(--color-white);
   padding: 1rem 1.5rem;
+}
+
+.primaryButton:hover {
+  background-color: var(--color-electric-blue);
+  box-shadow: 0px 0px 10px 0px #00000080;
 }
 
 .secondaryButton {

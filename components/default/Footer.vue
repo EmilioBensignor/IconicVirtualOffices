@@ -139,7 +139,13 @@ footer {
 .footerLink {
   max-width: max-content;
   background-color: var(--color-white);
+  border: 3px solid var(--color-white);
   color: var(--color-electric-blue);
+}
+
+.footerLink:hover {
+  background-color: var(--color-mid-blue);
+  color: var(--color-white);
 }
 
 .location {

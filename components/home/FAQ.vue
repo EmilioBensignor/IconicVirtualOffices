@@ -9,12 +9,9 @@
         :key="index"
       >
         <AccordionPanel value="1">
-          <div class="w-full headerWrapper">
-            <AccordionHeader>
-              <p>{{ faq.question }}</p>
-            </AccordionHeader>
-          </div>
-
+          <AccordionHeader>
+            <p>{{ faq.question }}</p>
+          </AccordionHeader>
           <AccordionContent>
             <p>{{ faq.answer }}</p>
           </AccordionContent>
@@ -75,7 +72,7 @@ export default {
   border: none;
 }
 
-.faqWrapper .headerWrapper {
+.faqWrapper .p-accordion {
   background: linear-gradient(
     90deg,
     var(--color-light-blue),
@@ -96,6 +93,23 @@ export default {
   padding: 0.75rem 0;
 }
 
+.faqWrapper
+  .p-accordionpanel:not(.p-disabled).p-accordionpanel-active
+  > .p-accordionheader,
+.faqWrapper
+  .p-accordionpanel:not(.p-disabled).p-accordionpanel-active
+  > .p-accordionheader:hover,
+.faqWrapper
+  .p-accordionpanel:not(.p-accordionpanel-active):not(.p-disabled)
+  > .p-accordionheader:hover {
+  background: var(--color-white);
+}
+
+.faqWrapper .p-accordionpanel:not(.p-disabled).p-accordionpanel-active
+> .p-accordionheader:hover {
+  color: var(--color-electric-blue);
+}
+
 .faqWrapper .p-accordionheader p {
   width: 90%;
 }
@@ -113,7 +127,16 @@ export default {
   .p-accordionpanel:not(.p-accordionpanel-active):not(.p-disabled)
   .p-accordionheader:hover
   .p-accordionheader-toggle-icon {
-    color: var(--color-mid-blue);
+  color: var(--color-mid-blue);
+}
+
+.faqWrapper .p-accordionpanel:not(.p-disabled).p-accordionpanel-active > .p-accordionheader:hover .p-accordionheader-toggle-icon {
+  color: var(--color-mid-blue);
+}
+
+.faqWrapper .p-accordioncontent-content {
+  background: var(--color-white);
+  padding: 0.75rem 0;
 }
 </style>
 

@@ -253,6 +253,10 @@ article {
   color: var(--color-mid-blue);
 }
 
+.article1 a:hover {
+  color: var(--color-black);
+}
+
 .planHead,
 .planList {
   gap: 0.375rem;
