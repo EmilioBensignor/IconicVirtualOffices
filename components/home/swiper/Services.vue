@@ -203,6 +203,10 @@ p {
   cursor: pointer;
 }
 
+.btnSlider img {
+  width: 0.5rem;
+}
+
 .prev {
   left: -2rem;
 }

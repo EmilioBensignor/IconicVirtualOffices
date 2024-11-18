@@ -4,8 +4,9 @@
     <HomeBusinessBenefits />
     <HomeServices />
     <HomePlans />
-    <!-- <HomeWorkspaces /> -->
-    <!-- <HomeClientSuccess /> -->
-    <!-- <HomeFAQ /> -->
+    <HomeWorkspaces />
+    <HomeClientSuccess />
+    <HomeGoogleReviews />
+    <HomeFAQ />
   </main>
 </template>

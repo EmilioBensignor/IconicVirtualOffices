@@ -10,6 +10,7 @@
   --color-light-blue: #69B9FC;
   --gradient-blue: linear-gradient(90deg, var(--color-light-blue), var(--color-mid-blue), var(--color-electric-blue));
   --color-red: #DE5E5E;
+  --color-yellow: #FBBC05;
 }
 
 * {
@@ -147,6 +148,10 @@ p {
 
 .text-white {
   color: var(--color-white);
+}
+
+.text-black {
+  color: var(--color-black);
 }
 
 .text-dark-gray {
