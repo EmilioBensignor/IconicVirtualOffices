@@ -146,6 +146,10 @@ p {
   background-color: var(--color-white);
 }
 
+.bg-electric-blue {
+  background-color: var(--color-electric-blue);
+}
+
 .text-white {
   color: var(--color-white);
 }

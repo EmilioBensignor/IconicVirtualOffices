@@ -1,5 +1,186 @@
 <template>
-  <footer>
-    FOOTER
+  <footer class="column bg-electric-blue">
+    <div class="w-full upperFooter column">
+      <div class="column">
+        <NuxtLink :to="routes.HOME" class="logo">
+          <NuxtImg
+            class="footerLogo"
+            src="/images/Iconic-Virtual-Offices-Logo-White.svg"
+            alt="Iconic Virtual Offices Logo"
+          />
+        </NuxtLink>
+        <p>Empowering businesses to thrive.</p>
+        <NuxtLink :to="routes.GET_STARTED" class="primaryButton footerLink"
+          >Get Started</NuxtLink
+        >
+      </div>
+      <div class="locationsContact column">
+        <div class="column">
+          <p class="font-bold">Locations</p>
+          <NuxtLink
+            class="location column"
+            :to="item.link"
+            v-for="(item, index) in locations"
+            :key="index"
+          >
+            <div class="rowCenter">
+              <Icon name="mingcute:location-line" class="text-white" />
+              <p class="font-bold">{{ item.name }}</p>
+            </div>
+            <p>{{ item.street }}</p>
+            <p>{{ item.ubication }}</p>
+          </NuxtLink>
+        </div>
+      </div>
+      <div class="column">
+        <p class="font-bold">Contact us</p>
+        <div class="contactInfo column">
+          <a href="mailto:info@iconicworkspaces.com">
+            <Icon name="mingcute:phone-line" />
+            <p>info@iconicworkspaces.com</p>
+          </a>
+          <a href="tel:3056945300">
+            <Icon name="mingcute:mail-line" />
+            <p>305 694 5300</p>
+          </a>
+          <div class="socialMedia rowCenter">
+            <NuxtLink
+              :aria-label="`Go to ${item.name}`"
+              target="_blank"
+              :to="item.link"
+              v-for="(item, index) in socialMedia"
+              :key="index"
+            >
+              <NuxtImg
+                :src="`/images/icons/${item.name}-Icon.svg`"
+                :alt="`${item.name} Icon`"
+              />
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full bellowFooter column">
+      <div class="rowCenter privacyTerms">
+        <NuxtLink :to="'#'">Privacy</NuxtLink>
+        <span>|</span>
+        <NuxtLink :to="'#'">Terms</NuxtLink>
+      </div>
+      <p class="rights">
+        © Iconic Virtual Offices. All Rights Reserved
+        {{ new Date().getFullYear() }}
+      </p>
+    </div>
   </footer>
 </template>
+
+<script>
+import { ROUTE_NAMES } from "~/constants/ROUTE_NAMES";
+
+export default {
+  data() {
+    return {
+      routes: ROUTE_NAMES,
+      locations: [
+        {
+          name: "Aventura",
+          street: "2980 NE 207 Street, 3rd floor.",
+          ubication: "Aventura, FL 33180",
+          link: "https://maps.app.goo.gl/78FaH9yuM8233wpeA",
+        },
+        {
+          name: "Aventura",
+          street: "150 SE 2nd Ave, 3rd floor.",
+          ubication: "Downtown Miami, FL 33131",
+          link: "https://maps.app.goo.gl/s8WjmcX9dngRrMxp7",
+        },
+      ],
+      socialMedia: [
+        {
+          name: "Facebook",
+          link: "#",
+        },
+        {
+          name: "Instagram",
+          link: "#",
+        },
+        {
+          name: "LinkedIn",
+          link: "#",
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style scoped>
+footer {
+  gap: 2rem;
+  color: var(--color-white);
+  padding: 2.5rem 1.25rem;
+}
+
+.upperFooter {
+  gap: 1.25rem;
+}
+
+.upperFooter > div,
+.locationsContact > div,
+.bellowFooter {
+  gap: 0.75rem;
+}
+
+.footerLogo {
+  width: 5.625rem;
+  height: 100%;
+}
+
+.footerLink {
+  max-width: max-content;
+  background-color: var(--color-white);
+  color: var(--color-electric-blue);
+}
+
+.location {
+  gap: 0.25rem;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.location div {
+  gap: 0.5rem;
+}
+
+.location p,
+.contactInfo a p,
+.rights,
+.privacyTerms a {
+  font-size: 0.75rem;
+}
+
+.contactInfo {
+  gap: 0.625rem;
+}
+
+.contactInfo a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--color-white);
+}
+
+.socialMedia {
+  gap: 1.25rem;
+}
+
+.privacyTerms {
+  gap: 1rem;
+}
+
+.privacyTerms a {
+  text-decoration: none;
+  color: var(--color-white);
+}
+</style>
