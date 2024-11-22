@@ -2,7 +2,7 @@
   <section class="bg-gradient">
     <div class="services column bg-white">
       <h2 class="text-center">All-in-one office services, wherever you are</h2>
-      <HomeSwiperServices />
+      <!-- <HomeSwiperServices /> -->
     </div>
   </section>
 </template>

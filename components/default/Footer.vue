@@ -3,26 +3,16 @@
     <div class="w-full upperFooter column">
       <div class="column">
         <NuxtLink :to="routes.HOME" class="logo">
-          <NuxtImg
-            class="footerLogo"
-            src="/images/Iconic-Virtual-Offices-Logo-White.svg"
-            alt="Iconic Virtual Offices Logo"
-          />
+          <NuxtImg class="footerLogo" src="/images/Iconic-Virtual-Offices-Logo-White.svg"
+            alt="Iconic Virtual Offices Logo" />
         </NuxtLink>
         <p>Empowering businesses to thrive.</p>
-        <NuxtLink :to="routes.GET_STARTED" class="primaryButton footerLink"
-          >Get Started</NuxtLink
-        >
+        <NuxtLink :to="routes.GET_STARTED" class="primaryButton footerLink">Get Started</NuxtLink>
       </div>
       <div class="locationsContact column">
         <div class="column">
           <p class="font-bold">Locations</p>
-          <NuxtLink
-            class="location column"
-            :to="item.link"
-            v-for="(item, index) in locations"
-            :key="index"
-          >
+          <NuxtLink class="location column" :to="item.link" v-for="(item, index) in locations" :key="index">
             <div class="rowCenter">
               <Icon name="mingcute:location-line" class="text-white" />
               <p class="font-bold">{{ item.name }}</p>
@@ -31,31 +21,23 @@
             <p>{{ item.ubication }}</p>
           </NuxtLink>
         </div>
-      </div>
-      <div class="column">
-        <p class="font-bold">Contact us</p>
-        <div class="contactInfo column">
-          <a href="mailto:info@iconicworkspaces.com">
-            <Icon name="mingcute:phone-line" />
-            <p>info@iconicworkspaces.com</p>
-          </a>
-          <a href="tel:3056945300">
-            <Icon name="mingcute:mail-line" />
-            <p>305 694 5300</p>
-          </a>
-          <div class="socialMedia rowCenter">
-            <NuxtLink
-              :aria-label="`Go to ${item.name}`"
-              target="_blank"
-              :to="item.link"
-              v-for="(item, index) in socialMedia"
-              :key="index"
-            >
-              <NuxtImg
-                :src="`/images/icons/${item.name}-Icon.svg`"
-                :alt="`${item.name} Icon`"
-              />
-            </NuxtLink>
+        <div class="column">
+          <p class="font-bold">Contact us</p>
+          <div class="contactInfo column">
+            <a href="mailto:info@iconicworkspaces.com">
+              <Icon name="mingcute:phone-line" />
+              <p>info@iconicworkspaces.com</p>
+            </a>
+            <a href="tel:3056945300">
+              <Icon name="mingcute:mail-line" />
+              <p>305 694 5300</p>
+            </a>
+            <div class="socialMedia rowCenter">
+              <NuxtLink :aria-label="`Go to ${item.name}`" target="_blank" :to="item.link"
+                v-for="(item, index) in socialMedia" :key="index">
+                <NuxtImg :src="`/images/icons/${item.name}-Icon.svg`" :alt="`${item.name} Icon`" />
+              </NuxtLink>
+            </div>
           </div>
         </div>
       </div>
@@ -125,8 +107,8 @@ footer {
   gap: 1.25rem;
 }
 
-.upperFooter > div,
-.locationsContact > div,
+.upperFooter>div,
+.locationsContact>div,
 .bellowFooter {
   gap: 0.75rem;
 }
@@ -188,5 +170,31 @@ footer {
 .privacyTerms a {
   text-decoration: none;
   color: var(--color-white);
+}
+
+@media (width >=660px) {
+  footer {
+    padding: 3.75rem 2.5rem;
+  }
+
+  .footerLogo {
+    width: 7.5rem;
+  }
+
+  .location p,
+  .contactInfo a p,
+  .rights,
+  .privacyTerms a {
+    font-size: 0.875rem;
+  }
+
+  footer .locationsContact {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .locationsContact>div {
+    width: 50%;
+  }
 }
 </style>

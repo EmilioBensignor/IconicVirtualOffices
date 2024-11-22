@@ -1,16 +1,9 @@
 <template>
   <div class="navigation-wrapper">
     <div ref="container" class="w-full slider keen-slider">
-      <div
-        class="slide columnAlignCenter"
-        v-for="(slide, index) in services"
-        :class="`keen-slider__slide number-slide${index + 1}`"
-      >
-        <NuxtImg
-          class="imgSlide"
-          :src="`/images/home/${slide.img}.png`"
-          :alt="slide.text"
-        />
+      <div class="slide columnAlignCenter" v-for="(slide, index) in services" :key="index"
+        :class="`keen-slider__slide number-slide${index + 1}`">
+        <NuxtImg class="imgSlide" :src="`/images/home/${slide.img}.png`" :alt="slide.text" />
         <p class="text-center">{{ slide.text }}</p>
       </div>
     </div>
@@ -137,6 +130,13 @@ export default {
           perView: 2,
           spacing: 8,
         },
+        breakpoints: {
+          660: {
+            slides: {
+              perView: 3,
+            },
+          },
+        },
         renderMode: "performance",
         defaultAnimation: {
           duration: 500,
@@ -223,5 +223,32 @@ p {
 
 .next {
   right: -2rem;
+}
+
+@media (width >=660px) {
+  p {
+    font-size: 1rem;
+  }
+
+  .imgSlide {
+    height: 5.125rem;
+  }
+
+  .btnSlider {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .btnSlider span {
+    font-size: 2rem !important;
+  }
+
+  .prev {
+    left: -2.5rem;
+  }
+
+  .next {
+    right: -2.5rem;
+  }
 }
 </style>

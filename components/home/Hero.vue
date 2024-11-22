@@ -11,7 +11,7 @@
           services to establish your business presence in the nation that drives
           the world's economy.
         </p>
-        <div class="heroBtns rowSpaceBetweenCenter">
+        <div class="heroBtns rowCenter">
           <NuxtLink :to="routes.GET_STARTED" class="primaryButton"
             >Get Started</NuxtLink
           >
@@ -28,7 +28,7 @@
       </div>
       <div>ANIMATION // Padding Right</div>
     </div>
-    <HomeSwiperBusinesses />
+    <!-- <HomeSwiperBusinesses /> -->
   </section>
 </template>
 
@@ -67,11 +67,34 @@ h1 {
 }
 
 .heroBtns {
-  justify-content: space-around;
+  justify-content: center;
   gap: 1.5rem;
 }
 
 .starting {
   font-size: 0.75rem;
+}
+
+@media (width >=660px) {
+  .heroSection {
+    padding: 3rem 0 3rem 2.5rem;
+  }
+
+  .heroSection > div:first-of-type {
+    gap: 3rem;
+  }
+
+  .hero {
+    gap: 1.25rem;
+    padding-right: 2.5rem;
+  }
+
+  .heroBtns {
+    gap: 3rem;
+  }
+
+  .starting {
+    font-size: 0.875rem;
+  }
 }
 </style>

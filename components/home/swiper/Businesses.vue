@@ -1,19 +1,11 @@
 <template>
   <div class="w-full column">
-    <p class="text-center text-dark-gray">Trusted by +1000 businesses</p>
+    <p class="text-center text-dark-gray font-bold">Trusted by +1000 businesses</p>
     <div ref="container" class="w-full slider">
       <div class="keen-slider" ref="sliderTrack">
-        <div
-          class="slide"
-          v-for="(slide, index) in businesses"
-          :key="index"
-          :class="`keen-slider__slide number-slide${index + 1}`"
-        >
-          <NuxtImg
-            class="imgSlide"
-            :src="`/images/businesses/${slide}`"
-            :alt="slide"
-          />
+        <div class="slide" v-for="(slide, index) in businesses" :key="index"
+          :class="`keen-slider__slide number-slide${index + 1}`">
+          <NuxtImg class="imgSlide" :src="`/images/businesses/${slide}`" :alt="slide" />
         </div>
       </div>
     </div>
@@ -63,5 +55,11 @@ p {
   width: 100%;
   height: 2.188rem;
   object-fit: contain;
+}
+
+@media (width >=660px) {
+  p {
+    font-size: 1rem;
+  }
 }
 </style>

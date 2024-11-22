@@ -90,4 +90,14 @@ export default {
   align-items: center;
   gap: 0.625rem;
 }
+
+@media (width >=660px) {
+  .storiesContainer {
+    flex-direction: row;
+  }
+
+  h3 {
+    text-align: start !important;
+  }
+}
 </style>

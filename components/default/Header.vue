@@ -96,4 +96,22 @@ import { ROUTE_NAMES } from '~/constants/ROUTE_NAMES';
     width: 6.375rem;
     height: 100%;
   }
+
+  @media (width >=660px) {
+    header {
+      padding: 1.5rem 2.5rem;
+    }
+
+    .hamburger {
+      left: 2.5rem;
+    }
+
+    .hamburger span {
+      font-size: 2rem !important;
+    }
+
+    .logo img {
+      width: 7.25rem;
+    }
+  }
 </style>

@@ -1,13 +1,8 @@
 <template>
   <section class="columnAlignCenter">
     <h2 class="text-center">Frequently asked questions</h2>
-    <div class="faqWrapper column">
-      <Accordion
-        value="0"
-        class="w-full bg-dark-blue border-grey-1"
-        v-for="(faq, index) in faqs"
-        :key="index"
-      >
+    <div class="w-full faqWrapper column">
+      <Accordion value="0" class="w-full bg-dark-blue border-grey-1" v-for="(faq, index) in faqs" :key="index">
         <AccordionPanel value="1">
           <AccordionHeader>
             <p>{{ faq.question }}</p>
@@ -73,12 +68,10 @@ export default {
 }
 
 .faqWrapper .p-accordion {
-  background: linear-gradient(
-    90deg,
-    var(--color-light-blue),
-    var(--color-mid-blue),
-    var(--color-electric-blue)
-  );
+  background: linear-gradient(90deg,
+      var(--color-light-blue),
+      var(--color-mid-blue),
+      var(--color-electric-blue));
   padding-bottom: 3px;
 }
 
@@ -93,20 +86,13 @@ export default {
   padding: 0.75rem 0;
 }
 
-.faqWrapper
-  .p-accordionpanel:not(.p-disabled).p-accordionpanel-active
-  > .p-accordionheader,
-.faqWrapper
-  .p-accordionpanel:not(.p-disabled).p-accordionpanel-active
-  > .p-accordionheader:hover,
-.faqWrapper
-  .p-accordionpanel:not(.p-accordionpanel-active):not(.p-disabled)
-  > .p-accordionheader:hover {
+.faqWrapper .p-accordionpanel:not(.p-disabled).p-accordionpanel-active>.p-accordionheader,
+.faqWrapper .p-accordionpanel:not(.p-disabled).p-accordionpanel-active>.p-accordionheader:hover,
+.faqWrapper .p-accordionpanel:not(.p-accordionpanel-active):not(.p-disabled)>.p-accordionheader:hover {
   background: var(--color-white);
 }
 
-.faqWrapper .p-accordionpanel:not(.p-disabled).p-accordionpanel-active
-> .p-accordionheader:hover {
+.faqWrapper .p-accordionpanel:not(.p-disabled).p-accordionpanel-active>.p-accordionheader:hover {
   color: var(--color-electric-blue);
 }
 
@@ -123,20 +109,25 @@ export default {
   height: 1rem;
 }
 
-.faqWrapper
-  .p-accordionpanel:not(.p-accordionpanel-active):not(.p-disabled)
-  .p-accordionheader:hover
-  .p-accordionheader-toggle-icon {
+.faqWrapper .p-accordionpanel:not(.p-accordionpanel-active):not(.p-disabled) .p-accordionheader:hover .p-accordionheader-toggle-icon {
   color: var(--color-mid-blue);
 }
 
-.faqWrapper .p-accordionpanel:not(.p-disabled).p-accordionpanel-active > .p-accordionheader:hover .p-accordionheader-toggle-icon {
+.faqWrapper .p-accordionpanel:not(.p-disabled).p-accordionpanel-active>.p-accordionheader:hover .p-accordionheader-toggle-icon {
   color: var(--color-mid-blue);
 }
 
 .faqWrapper .p-accordioncontent-content {
   background: var(--color-white);
   padding: 0.75rem 0;
+}
+
+@media (width >=660px) {
+
+  .faqWrapper .p-accordionheader,
+  .faqWrapper .p-accordioncontent-content {
+    padding: 1rem 0.75rem;
+  }
 }
 </style>
 

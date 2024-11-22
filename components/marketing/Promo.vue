@@ -14,4 +14,14 @@
   .promo p {
     font-size: 0.75rem;
   }
+
+  @media (width >=660px) {
+    .promo {
+      padding: 1.25rem 2.5rem;
+    }
+
+    .promo p {
+      font-size: 1rem;
+    }
+  }
 </style>

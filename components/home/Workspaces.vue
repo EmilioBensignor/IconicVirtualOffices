@@ -1,14 +1,9 @@
 <template>
   <section class="columnAlignCenter">
     <div class="videoContainer">
-      <iframe
-        src="https://www.youtube.com/embed/4LX9UKp6tU8"
-        title="YouTube video player"
-        frameborder="0"
+      <iframe src="https://www.youtube.com/embed/4LX9UKp6tU8" title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
     <div class="workspace columnAlignCenter">
       <h2 class="text-center">Your way to a professional presence</h2>
@@ -31,7 +26,7 @@
     <NuxtLink :to="routes.GET_STARTED" class="secondaryButton">
       <div class="arrowBtn">
         <p class="font-bold">Get to know us</p>
-        <Icon name="mingcute:arrow-right-line" class="text-black"/>
+        <Icon name="mingcute:arrow-right-line" class="text-black" />
       </div>
     </NuxtLink>
   </section>
@@ -93,11 +88,11 @@ ul {
 }
 
 ul li {
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 ul li span {
-  width: 7.5%;
+  width: 5%;
 }
 
 ul li p {
@@ -108,5 +103,28 @@ ul li p {
   display: flex;
   align-items: center;
   gap: 0.625rem;
+}
+
+@media (width >=480px) {
+  ul li span {
+    width: 7.5%;
+    font-size: 1.125rem !important;
+  }
+}
+
+@media (width >=660px) {
+  .videoContainer {
+    height: 17.125rem;
+  }
+
+  h2,
+  p {
+    width: 100%;
+    text-align: start !important;
+  }
+
+  ul li span {
+    width: 5%;
+  }
 }
 </style>

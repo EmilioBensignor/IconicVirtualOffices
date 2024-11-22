@@ -173,8 +173,9 @@ export default {
 <style>
 .plans .p-tablist-tab-list {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
   border: none;
 }
 
@@ -213,6 +214,20 @@ export default {
 
 .listItem {
   font-size: 0.75rem;
+}
+
+@media (width >=660px) {
+  .plans .p-tablist-tab-list {
+    gap: 3.5rem;
+  }
+
+  .plans .tabHeader {
+    font-size: 1.25rem;
+  }
+
+  .listItem {
+    font-size: 0.875rem;
+  }
 }
 </style>
 
@@ -287,10 +302,30 @@ article {
 }
 
 .planList span {
-  width: 10%;
+  width: 8%;
 }
 
 .planList p {
   width: 90%;
+}
+
+@media (width >=480px) {
+  .planList span {
+    width: 5%;
+  }
+}
+
+@media (width >=660px) {
+  .planHead p:first-of-type, .planHead .price {
+    font-size: 1.5rem;
+  }
+
+  .planHead p:last-of-type {
+    font-size: 0.875rem;
+  }
+
+  .planList span {
+    width: 3.5%;
+  }
 }
 </style>
