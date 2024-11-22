@@ -1,7 +1,7 @@
 <template>
   <section class="columnAlignCenter">
     <h2 class="text-center">Discover how we make a difference</h2>
-    <div class="w-full columnAlignCenter">
+    <div class="w-full carrouselContainer columnAlignCenter">
       <Carousel
         :value="reviews"
         :num-visible="1"
@@ -90,13 +90,13 @@ export default {
 }
 
 @media (width >= 480px) {
-  .googleReviews .p-carousel {
+  .carrouselContainer .p-carousel {
     max-width: 506px;
   }
 }
 
-@media (width >= 700px) {
-  .googleReviews .p-carousel {
+@media (width >= 660px) {
+  .carrouselContainer .p-carousel {
     display: none !important;
   }
 }
@@ -129,8 +129,8 @@ export default {
   }
 }
 
-@media (width >= 700px) {
-  .googleReviews {
+@media (width >= 660px) {
+  .carrouselReviews {
     gap: 2rem !important;
     padding: 2.5rem !important;
   }
@@ -177,7 +177,7 @@ export default {
 }
 
 @media (width >= 1080px) {
-  .googleReviews {
+  .carrouselReviews {
     padding: 3.75rem 5rem !important;
   }
 
@@ -192,7 +192,7 @@ export default {
 }
 
 @media (width >= 1440px) {
-  .googleReviews {
+  .carrouselReviews {
     gap: 3.5rem !important;
     padding: 3.75rem 8rem !important;
   }

@@ -4,9 +4,9 @@
     <HomeBusinessBenefits />
     <HomeServices />
     <HomePlans />
-    <HomeWorkspaces />
-    <HomeClientSuccess />
-    <HomeGettingStarted />
+    <!-- <HomeWorkspaces /> -->
+    <!-- <HomeClientSuccess /> -->
+    <!-- <HomeGettingStarted /> -->
     <HomeGoogleReviews />
     <HomeFAQ />
   </main>

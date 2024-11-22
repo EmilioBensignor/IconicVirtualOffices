@@ -78,7 +78,7 @@ export default {
   font-size: 0.75rem;
 }
 
-@media (width >= 700px) {
+@media (width >= 660px) {
   .reviewCard {
     width: 100%;
     height: max-content;
