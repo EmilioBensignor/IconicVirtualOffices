@@ -174,6 +174,10 @@ export default {
     column-gap: 1.25rem;
     row-gap: 0.625rem;
   }
+
+  .googleLink {
+    margin-top: 1.25rem;
+  }
 }
 
 @media (width >= 1080px) {
@@ -188,6 +192,10 @@ export default {
   .clipContainer {
     column-count: 3;
     column-gap: 0.75rem;
+  }
+
+  .googleLink {
+    margin-top: 1.5rem;
   }
 }
 

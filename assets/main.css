@@ -205,4 +205,43 @@ p {
   .secondaryButton {
     font-size: 1rem;
   }
+
+  .secondaryButton div {
+    padding-bottom: 6px;
+  }
+}
+
+@media (width >=1080px) {
+  section {
+    padding: 4rem 4.375rem;
+  }
+
+  h1 {
+    font-size: 2.625rem;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    font-size: 1.375rem;
+  }
+
+  .primaryButton {
+    padding: 1.25rem 2rem;
+  }
+
+  .secondaryButton div p {
+    font-weight: 700;
+  }
 }

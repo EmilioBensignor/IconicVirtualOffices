@@ -12,9 +12,7 @@
           the world's economy.
         </p>
         <div class="heroBtns rowCenter">
-          <NuxtLink :to="routes.GET_STARTED" class="primaryButton"
-            >Get Started</NuxtLink
-          >
+          <NuxtLink :to="routes.GET_STARTED" class="primaryButton">Get Started</NuxtLink>
           <NuxtLink :to="routes.GET_STARTED" class="secondaryButton">
             <div>
               <p>Or book a free call</p>
@@ -49,7 +47,7 @@ export default {
   padding: 2rem 0 2rem 1.25rem;
 }
 
-.heroSection > div {
+.heroSection>div {
   gap: 1.5rem;
 }
 
@@ -62,7 +60,7 @@ h1 {
   font-weight: 800;
 }
 
-.hero > p:first-of-type {
+.hero>p:first-of-type {
   font-weight: 500;
 }
 
@@ -80,7 +78,7 @@ h1 {
     padding: 3rem 0 3rem 2.5rem;
   }
 
-  .heroSection > div:first-of-type {
+  .heroSection>div:first-of-type {
     gap: 3rem;
   }
 
@@ -95,6 +93,28 @@ h1 {
 
   .starting {
     font-size: 0.875rem;
+  }
+}
+
+@media (width >=1080px) {
+  .heroSection>div:first-of-type {
+    flex-direction: row;
+  }
+
+  .heroSection>div:first-of-type > div:first-of-type {
+    width: 60%;
+  }
+
+  h1, p {
+    text-align: start !important;
+  }
+
+  .heroBtns {
+    justify-content: start;
+  }
+
+  .starting {
+    font-size: 1rem;
   }
 }
 </style>

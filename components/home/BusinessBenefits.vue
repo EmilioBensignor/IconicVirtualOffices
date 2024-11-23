@@ -109,4 +109,26 @@
       font-size: 0.875rem;
     }
   }
+
+  @media (width >=1080px) {
+    section > div  {
+      justify-content: space-between;
+    }
+
+    article {
+      width: 30% !important;
+    }
+
+    article {
+      gap: 1.5rem;
+    }
+
+    article ul {
+      gap: 1.25rem;
+    }
+
+    article p {
+      font-size: 1rem;
+    }
+  }
 </style>

@@ -11,6 +11,11 @@
         src="/images/Iconic-Virtual-Offices-Logo.svg"
         alt="Iconic Virtual Offices Logo" />
     </NuxtLink>
+    <div class="desktopMenu">
+      <!-- <ul>
+      </ul> -->
+      <NuxtLink :to="routes.GET_STARTED" class="primaryButton">Get Started</NuxtLink>
+    </div>
     <div class="menuSidebar">
       <Drawer
         ref="drawer"
@@ -85,7 +90,12 @@ import { ROUTE_NAMES } from '~/constants/ROUTE_NAMES';
     padding: 1.25rem;
   }
 
+  .desktopMenu {
+    display: none;
+  }
+
   .hamburger {
+    display: none;
     left: 1.25rem;
     background: none;
     border: none;
@@ -112,6 +122,30 @@ import { ROUTE_NAMES } from '~/constants/ROUTE_NAMES';
 
     .logo img {
       width: 7.25rem;
+    }
+  }
+
+  @media (width >=1080px) {
+    .hamburger, .menuSidebar {
+      display: none;
+    }
+
+    header {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 1.75rem 4.375rem;
+    }
+
+    .logo img {
+      width: 10.875rem;
+    }
+
+    .desktopMenu {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      align-items: center;
     }
   }
 </style>

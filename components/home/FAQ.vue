@@ -2,16 +2,30 @@
   <section class="columnAlignCenter">
     <h2 class="text-center">Frequently asked questions</h2>
     <div class="w-full faqWrapper column">
-      <Accordion value="0" class="w-full bg-dark-blue border-grey-1" v-for="(faq, index) in faqs" :key="index">
-        <AccordionPanel value="1">
-          <AccordionHeader>
-            <p>{{ faq.question }}</p>
-          </AccordionHeader>
-          <AccordionContent>
-            <p>{{ faq.answer }}</p>
-          </AccordionContent>
-        </AccordionPanel>
-      </Accordion>
+      <div>
+        <Accordion value="0" class="w-full bg-dark-blue border-grey-1" v-for="(faq, index) in faqsLeft" :key="index">
+          <AccordionPanel value="1">
+            <AccordionHeader>
+              <p>{{ faq.question }}</p>
+            </AccordionHeader>
+            <AccordionContent>
+              <p>{{ faq.answer }}</p>
+            </AccordionContent>
+          </AccordionPanel>
+        </Accordion>
+      </div>
+      <div>
+        <Accordion value="0" class="w-full bg-dark-blue border-grey-1" v-for="(faq, index) in faqsRight" :key="index">
+          <AccordionPanel value="1">
+            <AccordionHeader>
+              <p>{{ faq.question }}</p>
+            </AccordionHeader>
+            <AccordionContent>
+              <p>{{ faq.answer }}</p>
+            </AccordionContent>
+          </AccordionPanel>
+        </Accordion>
+      </div>
     </div>
   </section>
 </template>
@@ -20,7 +34,7 @@
 export default {
   data() {
     return {
-      faqs: [
+      faqsLeft: [
         {
           question: "Where can I find Virtual Office in Aventura?",
           answer: "FAQ Answer",
@@ -37,6 +51,8 @@ export default {
           question: "Do I get a mailing address with a Virtual Office?",
           answer: "FAQ Answer",
         },
+      ],
+      faqsRight: [
         {
           question: "How do I get a virtual address for my business?",
           answer: "FAQ Answer",
@@ -129,10 +145,40 @@ export default {
     padding: 1rem 0.75rem;
   }
 }
+
+@media (width >=1080px) {
+  .faqWrapper .p-accordion {
+    flex-direction: column;
+  }
+
+  .faqWrapper .p-accordionheader,
+  .faqWrapper .p-accordioncontent-content {
+    padding: 1rem 0.75rem;
+  }
+
+  .faqWrapper .p-accordionheader p,
+  .faqWrapper .p-accordioncontent-content p {
+    font-size: 1rem;
+  }
+}
 </style>
 
 <style scoped>
-.faqWrapper {
+.faqWrapper>div {
+  display: flex;
+  flex-direction: column;
   gap: 0.75rem;
+}
+
+@media (width >=1080px) {
+  .faqWrapper {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .faqWrapper>div {
+    width: 50%;
+    gap: 1rem;
+  }
 }
 </style>

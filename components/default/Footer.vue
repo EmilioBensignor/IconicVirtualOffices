@@ -159,6 +159,10 @@ footer {
   color: var(--color-white);
 }
 
+.contactInfo a img {
+  width: 1.25rem;
+}
+
 .socialMedia {
   gap: 1.25rem;
 }
@@ -195,6 +199,57 @@ footer {
 
   .locationsContact>div {
     width: 50%;
+  }
+}
+
+@media (width >=1080px) {
+  footer {
+    gap: 3rem;
+    padding: 3.75rem 5.625rem;
+  }
+
+  .footerLogo {
+    width: 11.25rem;
+  }
+
+  .upperFooter {
+    flex-direction: row;
+    justify-content: space-between
+  }
+
+  .upperFooter>div {
+    gap: 1.5rem;
+  }
+
+  .location p,
+  .contactInfo a p,
+  .rights,
+  .privacyTerms a {
+    font-size: 1rem;
+  }
+
+  footer .locationsContact {
+    gap: 3.25rem;
+  }
+
+  .locationsContact>div {
+    gap: 1rem;
+  }
+
+  .contactInfo {
+    gap: 0.75rem;
+  }
+
+  .socialMedia {
+    gap: 1.375rem;
+  }
+
+  span {
+    font-size: 1.5rem !important;
+  }
+
+  .privacyTerms span {
+    font-size: 1rem !important;
   }
 }
 </style>

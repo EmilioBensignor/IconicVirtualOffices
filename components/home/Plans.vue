@@ -13,22 +13,12 @@
         </Tab>
       </TabList>
       <TabPanels>
-        <TabPanel
-          v-for="(destination, index) in destinations"
-          :key="index"
-          :value="destination.value"
-        >
-          <article
-            class="w-full"
-            :class="`article${index}`"
-            v-for="(plan, index) in destination.plans"
-            :key="index"
-          >
+        <TabPanel v-for="(destination, index) in destinations" :key="index" :value="destination.value">
+          <article class="w-full" :class="`article${index}`" v-for="(plan, index) in destination.plans" :key="index">
             <div class="planHead column">
               <p>{{ plan.name }}</p>
               <p>
-                from <span class="price">${{ plan.price }}</span
-                >/month
+                from <span class="price">${{ plan.price }}</span>/month
               </p>
               <p>{{ plan.intro }}</p>
             </div>
@@ -37,15 +27,8 @@
                 {{ plan.everything }}
               </li>
               <ClientOnly>
-                <li
-                  class="rowCenter"
-                  v-for="(item, index) in plan.list"
-                  :key="index"
-                >
-                  <Icon
-                    name="mingcute:check-circle-line"
-                    class="text-light-blue"
-                  />
+                <li class="rowCenter" v-for="(item, index) in plan.list" :key="index">
+                  <Icon name="mingcute:check-circle-line" class="text-light-blue" />
                   <p v-html="item"></p>
                 </li>
               </ClientOnly>
@@ -229,6 +212,24 @@ export default {
     font-size: 0.875rem;
   }
 }
+
+@media (width >=1080px) {
+  .plans .p-tablist-tab-list {
+    gap: 2.5rem;
+  }
+
+  .plans .tabHeader {
+    font-size: 1.5rem;
+  }
+
+  .plans .p-tabpanel {
+    flex-direction: row;
+  }
+
+  .listItem {
+    font-size: 1rem;
+  }
+}
 </style>
 
 <style scoped>
@@ -236,11 +237,11 @@ section {
   gap: 1.25rem;
 }
 
-section > div:first-child {
+section>div:first-child {
   gap: 0.75rem;
 }
 
-section > div:last-child {
+section>div:last-child {
   gap: 1.25rem;
 }
 
@@ -259,7 +260,9 @@ article {
   background: var(--gradient-blue);
 }
 
-.article1 p, .article1 li, .article1 span {
+.article1 p,
+.article1 li,
+.article1 span {
   color: var(--color-white) !important;
 }
 
@@ -316,7 +319,9 @@ article {
 }
 
 @media (width >=660px) {
-  .planHead p:first-of-type, .planHead .price {
+
+  .planHead p:first-of-type,
+  .planHead .price {
     font-size: 1.5rem;
   }
 
@@ -326,6 +331,55 @@ article {
 
   .planList span {
     width: 3.5%;
+  }
+}
+
+@media (width >=1080px) {
+  article {
+    gap: 1.25rem;
+    padding: 1.5rem;
+  }
+
+  article:first-of-type {
+    padding: 1.5rem 0;
+  }
+
+  article:first-of-type .planHead,
+  article:first-of-type .planList {
+    padding: 0 1.5rem;
+  }
+
+  .planHead,
+  .planList,
+  .planList li {
+    gap: 0.5rem;
+  }
+
+  .planList li {
+    align-items: start;
+  }
+
+  .planHead p:first-of-type,
+  .planHead .price {
+    font-size: 1.875rem;
+  }
+
+  .planList span {
+    width: 7.5%;
+    font-size: 1.25rem !important;
+  }
+
+  .planHead p:last-of-type,
+  .planList li {
+    font-size: 1rem;
+  }
+
+  article div:last-of-type {
+    justify-content: center !important;
+  }
+
+  article a {
+    font-size: 1.125rem;
   }
 }
 </style>

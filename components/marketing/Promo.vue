@@ -24,4 +24,14 @@
       font-size: 1rem;
     }
   }
+
+  @media (width >=1080px) {
+    .promo {
+      padding: 1.5rem 5.625rem;
+    }
+
+    .promo p {
+      font-size: 1.25rem;
+    }
+  }
 </style>
