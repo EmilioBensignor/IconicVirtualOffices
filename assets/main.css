@@ -144,6 +144,11 @@ p {
 .secondaryButton div p {
   font-weight: 500;
   color: var(--color-black);
+  transition: all 0.3s;
+}
+
+.secondaryButton:hover div p {
+  color: var(--color-electric-blue);
 }
 
 /* Typography & Backgrounds */
