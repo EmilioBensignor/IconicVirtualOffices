@@ -205,7 +205,7 @@ footer {
 @media (width >=1080px) {
   footer {
     gap: 3rem;
-    padding: 3.75rem 5.625rem;
+    padding: 3.75rem 4.375rem;
   }
 
   .footerLogo {
@@ -254,6 +254,10 @@ footer {
 }
 
 @media (width >=1440px) {
+  footer  {
+    padding: 3.75rem 5.625rem;
+  }
+
   footer .upperFooter, footer .bellowFooter {
     max-width: 1260px;
   }
