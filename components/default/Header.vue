@@ -148,4 +148,10 @@ import { ROUTE_NAMES } from '~/constants/ROUTE_NAMES';
       align-items: center;
     }
   }
+
+  @media (width >=1440px) {
+    header {
+      padding: 2rem 5.625rem;
+    }
+  }
 </style>

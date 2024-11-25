@@ -252,4 +252,10 @@ footer {
     font-size: 1rem !important;
   }
 }
+
+@media (width >=1440px) {
+  .socialMedia a img {
+    width: 1.5rem;
+  }
+}
 </style>

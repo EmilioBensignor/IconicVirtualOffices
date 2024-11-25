@@ -1,6 +1,6 @@
 <template>
   <section class="heroSection columnAlignCenter">
-    <div class="columnAlignCenter">
+    <div class="w-full columnAlignCenter">
       <div class="hero column">
         <h1 class="text-center">
           Take your bussiness global, with a
@@ -97,16 +97,33 @@ h1 {
 }
 
 @media (width >=1080px) {
+  .heroSection {
+    padding: 4rem 0 4rem 4.375rem;
+  }
+
   .heroSection>div:first-of-type {
     flex-direction: row;
   }
 
-  .heroSection>div:first-of-type > div:first-of-type {
+  .heroSection>div:first-of-type>div:first-of-type {
     width: 60%;
   }
 
-  h1, p {
+  .hero {
+    padding-right: 0;
+  }
+
+  h1,
+  p {
     text-align: start !important;
+  }
+
+  h1 {
+    max-width: 610px;
+  }
+
+  .hero>p:first-of-type {
+    max-width: 595px;
   }
 
   .heroBtns {
@@ -115,6 +132,12 @@ h1 {
 
   .starting {
     font-size: 1rem;
+  }
+}
+
+@media (width >=1440px) {
+  .heroSection {
+    padding: 5rem 0 5rem 5.625rem;
   }
 }
 </style>

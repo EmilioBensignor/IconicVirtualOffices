@@ -105,11 +105,8 @@ export default {
 .faqWrapper .p-accordionpanel:not(.p-disabled).p-accordionpanel-active>.p-accordionheader,
 .faqWrapper .p-accordionpanel:not(.p-disabled).p-accordionpanel-active>.p-accordionheader:hover,
 .faqWrapper .p-accordionpanel:not(.p-accordionpanel-active):not(.p-disabled)>.p-accordionheader:hover {
-  background: var(--color-white);
-}
-
-.faqWrapper .p-accordionpanel:not(.p-disabled).p-accordionpanel-active>.p-accordionheader:hover {
   color: var(--color-electric-blue);
+  background: var(--color-white);
 }
 
 .faqWrapper .p-accordionheader p {
@@ -159,6 +156,12 @@ export default {
   .faqWrapper .p-accordionheader p,
   .faqWrapper .p-accordioncontent-content p {
     font-size: 1rem;
+  }
+}
+
+@media (width >=1440px) {
+  .faqWrapper .p-accordionheader p {
+    font-size: 1.25rem;
   }
 }
 </style>

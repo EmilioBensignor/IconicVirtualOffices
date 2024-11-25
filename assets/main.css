@@ -226,6 +226,7 @@ p {
 
   h3 {
     font-size: 1.5rem;
+    font-weight: 600;
   }
 
   p {
@@ -243,5 +244,29 @@ p {
 
   .secondaryButton div p {
     font-weight: 700;
+  }
+}
+
+@media (width >=1440px) {
+  section {
+    gap: 2rem;
+    padding: 5rem 5.625rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    font-size: 1.5rem;
   }
 }

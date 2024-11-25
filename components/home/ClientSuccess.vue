@@ -75,18 +75,12 @@ export default {
     flex-direction: row;
   }
 
+  .story {
+    align-items: start;
+  }
+
   h3 {
     text-align: start !important;
-  }
-
-  .secondaryButton {
-    align-self: flex-start;
-  }
-}
-
-@media (width >=1080px) {
-  h3 {
-    font-weight: 600;
   }
 }
 </style>

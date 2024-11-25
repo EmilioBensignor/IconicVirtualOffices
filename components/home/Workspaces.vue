@@ -151,4 +151,22 @@ ul li p {
     font-size: 1rem;
   }
 }
+
+@media (width >=1440px) {
+  .workspaceContainer {
+    gap: 2.25rem;
+  }
+
+  .workspace, ul {
+    gap: 1.5rem;
+  }
+
+  ul li span {
+    font-size: 1.375rem !important;
+  }
+
+  ul li p {
+    font-size: 1.25rem;
+  }
+}
 </style>

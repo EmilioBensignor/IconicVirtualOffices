@@ -230,6 +230,12 @@ export default {
     font-size: 1rem;
   }
 }
+
+@media (width >=1440px) {
+  .plans .p-tabpanel {
+    gap: 1.375rem;
+  }
+}
 </style>
 
 <style scoped>
@@ -320,6 +326,10 @@ article {
 
 @media (width >=660px) {
 
+  article {
+    border-radius: 20px;
+  }
+
   .planHead p:first-of-type,
   .planHead .price {
     font-size: 1.5rem;
@@ -380,6 +390,20 @@ article {
 
   article a {
     font-size: 1.125rem;
+  }
+}
+
+@media (width >=1440px) {
+  section, section>div:first-of-type, section>div:last-of-type {
+    gap: 1.5rem;
+  }
+
+  article {
+    gap: 1.5rem;
+  }
+
+  .planHead {
+    gap: 0.75rem;
   }
 }
 </style>
