@@ -325,8 +325,8 @@ article {
 }
 
 @media (width >=660px) {
-
   article {
+    max-width: 670px;
     border-radius: 20px;
   }
 

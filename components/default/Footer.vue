@@ -254,6 +254,10 @@ footer {
 }
 
 @media (width >=1440px) {
+  footer .upperFooter, footer .bellowFooter {
+    max-width: 1260px;
+  }
+
   .socialMedia a img {
     width: 1.5rem;
   }

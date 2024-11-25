@@ -5,31 +5,31 @@
     </div>
     <div class="workspaceContainer columnAlignCenter">
       <div class="workspace columnAlignCenter">
-      <h2 class="text-center">Your way to a professional presence</h2>
-      <p class="text-center">
-        <span class="text-electric-blue font-bold">
-          Iconic Virtual Offices brings the premium experience of Iconic
-          Workspaces into the virtual space.
-        </span>
-        Our services provides you with the benefits of a prestigious business
-        presence in Miami, tailored to meet the needs of a modern, flexible
-        workspace.
-      </p>
-    </div>
-    <ul class="w-full column">
-      <li v-for="(benefit, index) in benefits" class="flex" :key="index">
-        <Icon :name="`mingcute:${benefit.icon}`" class="text-mid-blue" />
-        <p>{{ benefit.text }}</p>
-      </li>
-    </ul>
-    <NuxtLink :to="routes.GET_STARTED" class="secondaryButton">
-      <div class="arrowBtn">
-        <p class="font-bold">Get to know us</p>
-        <Icon name="mingcute:arrow-right-line" class="text-black" />
+        <h2 class="text-center">Your way to a professional presence</h2>
+        <p class="text-center">
+          <span class="text-electric-blue font-bold">
+            Iconic Virtual Offices brings the premium experience of Iconic
+            Workspaces into the virtual space.
+          </span>
+          Our services provides you with the benefits of a prestigious business
+          presence in Miami, tailored to meet the needs of a modern, flexible
+          workspace.
+        </p>
       </div>
-    </NuxtLink>
+      <ul class="w-full column">
+        <li v-for="(benefit, index) in benefits" class="flex" :key="index">
+          <Icon :name="`mingcute:${benefit.icon}`" class="text-mid-blue" />
+          <p>{{ benefit.text }}</p>
+        </li>
+      </ul>
+      <NuxtLink :to="routes.GET_STARTED" class="secondaryButton">
+        <div class="arrowBtn">
+          <p class="font-bold">Get to know us</p>
+          <Icon name="mingcute:arrow-right-line" class="text-black" />
+        </div>
+      </NuxtLink>
     </div>
-    
+
   </section>
 </template>
 
@@ -115,14 +115,16 @@ ul li p {
 }
 
 @media (width >=660px) {
+
   h2,
   p {
     width: 100%;
     text-align: start !important;
   }
 
-  video {
-    max-width: 580px;
+  .videoContainer,
+  .workspaceContainer {
+    max-width: 750px;
   }
 
   ul li span {
@@ -133,9 +135,11 @@ ul li p {
 @media (width >=1080px) {
   section {
     flex-direction: row;
+    align-items: flex-start;
   }
 
-  .videoContainer, .workspaceContainer {
+  .videoContainer,
+  .workspaceContainer {
     width: 50%;
   }
 
@@ -157,7 +161,8 @@ ul li p {
     gap: 2.25rem;
   }
 
-  .workspace, ul {
+  .workspace,
+  ul {
     gap: 1.5rem;
   }
 

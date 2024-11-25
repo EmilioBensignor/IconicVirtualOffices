@@ -8,45 +8,52 @@
 </template>
 
 <style scoped>
+section {
+  max-width: none;
+}
+
+.services {
+  max-width: 1440px;
+  gap: 1.25rem;
+  border-radius: 22px;
+  padding: 1.25rem 0;
+  margin: 0 auto;
+}
+
+.services h2 {
+  padding: 0 1rem;
+}
+
+@media (width >=660px) {
   .services {
-    gap: 1.25rem;
-    border-radius: 22px;
-    padding: 1.25rem 0;
+    gap: 1.5rem;
+    padding: 2rem 0;
   }
 
   .services h2 {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (width >=1080px) {
+  .services {
+    padding: 2.5rem 0;
   }
 
-  @media (width >=660px) {
-    .services {
-      gap: 1.5rem;
-      padding: 2rem 0;
-    }
+  .services h2 {
+    padding: 0 2.5rem;
+  }
+}
 
-    .services h2 {
-      padding: 0 1.5rem;
-    }
+@media (width >=1440px) {
+  .services {
+    gap: 2rem;
+    position: relative;
+    padding: 2.75rem 0;
   }
 
-  @media (width >=1080px) {
-    .services {
-      padding: 2.5rem 0;
-    }
-
-    .services h2 {
-      padding: 0 2.5rem;
-    }
+  .services h2 {
+    padding: 0 2.75rem;
   }
-  
-  @media (width >=1440px) {
-    .services {
-      gap: 2rem;
-      padding: 2.75rem 0;
-    }
-
-    .services h2 {
-      padding: 0 2.75rem;
-    }
-  }
+}
 </style>

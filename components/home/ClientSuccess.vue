@@ -64,6 +64,10 @@ export default {
   border-radius: 9px;
 }
 
+h3 {
+  max-width: 344px;
+}
+
 .arrowBtn {
   display: flex;
   align-items: center;
@@ -75,12 +79,25 @@ export default {
     flex-direction: row;
   }
 
-  .story {
+  .story, .videoContainer {
     align-items: start;
   }
 
   h3 {
+    max-width: 375px;
     text-align: start !important;
+  }
+}
+
+@media (width >=1080px) {
+  h3 {
+    max-width: 450px;
+  }
+}
+
+@media (width >=1440px) {
+  h3 {
+    max-width: 540px;
   }
 }
 </style>

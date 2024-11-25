@@ -1,7 +1,7 @@
 <template>
   <section class="columnAlignCenter">
     <h2 class="text-center">Unlock your business potential</h2>
-    <div class="w-full column">
+    <div class="w-full columnAlignCenter">
       <article class="w-full columnAlignCenter" v-for="(benefit, index) in benefits" :key="index">
         <NuxtImg :src="`/images/home/${benefit.img}.png`" :alt="benefit.alt" />
         <h3 class="text-center">{{ benefit.title }}</h3>
@@ -77,6 +77,10 @@ section>div {
   gap: 1rem;
 }
 
+article {
+  max-width: 310px;
+}
+
 article,
 article ul,
 article ul li {
@@ -104,6 +108,7 @@ article img {
   }
 
   article {
+    max-width: 400px;
     width: 45% !important;
   }
 
@@ -114,10 +119,11 @@ article img {
 
 @media (width >=1080px) {
   section>div {
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   article {
+    max-width: 328px;
     width: 30% !important;
   }
 
@@ -139,6 +145,14 @@ article img {
 }
 
 @media (width >=1440px) {
+  section>div {
+    justify-content: space-between;
+  }
+
+  article {
+    max-width: 350px;
+  }
+
   article ul li span {
     font-size: 1.25rem !important;
   }

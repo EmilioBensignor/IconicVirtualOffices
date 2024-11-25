@@ -205,12 +205,17 @@ export default {
 }
 
 @media (width >=1440px) {
+  .carrouselServices .p-carousel-next-button, .carrouselServices .p-carousel-prev-button {
+    width: 3rem;
+    height: 3rem !important;
+  }
+
   .carrouselServices .p-carousel-prev-button {
-    left: 4.5rem;
+    left: -1.25rem;
   }
 
   .carrouselServices .p-carousel-next-button {
-    right: 4.5rem;
+    right: -1.25rem;
   }
 
   .carrouselServices .p-carousel-viewport {
@@ -221,6 +226,7 @@ export default {
 
 <style scoped>
 p {
+  max-width: 122px;
   font-size: 0.75rem;
 }
 
@@ -257,6 +263,7 @@ p {
 
 @media (width >=660px) {
   p {
+    max-width: 140px;
     font-size: 1rem;
   }
 
@@ -271,6 +278,7 @@ p {
   }
 
   p {
+    max-width: 175px;
     font-size: 1.25rem;
   }
 

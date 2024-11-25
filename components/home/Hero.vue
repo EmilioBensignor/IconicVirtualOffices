@@ -1,7 +1,7 @@
 <template>
   <section class="heroSection columnAlignCenter">
     <div class="w-full columnAlignCenter">
-      <div class="hero column">
+      <div class="hero columnAlignCenter">
         <h1 class="text-center">
           Take your bussiness global, with a
           <span class="text-electric-blue">virtual office.</span>
@@ -57,10 +57,12 @@ export default {
 }
 
 h1 {
+  max-width: 350px;
   font-weight: 800;
 }
 
 .hero>p:first-of-type {
+  max-width: 350px;
   font-weight: 500;
 }
 
@@ -83,8 +85,17 @@ h1 {
   }
 
   .hero {
+    width: 100%;
     gap: 1.25rem;
     padding-right: 2.5rem;
+  }
+
+  h1 {
+    max-width: 460px;
+  }
+
+  .hero>p:first-of-type {
+    max-width: 575px;
   }
 
   .heroBtns {
@@ -110,6 +121,7 @@ h1 {
   }
 
   .hero {
+    align-items: flex-start;
     padding-right: 0;
   }
 
