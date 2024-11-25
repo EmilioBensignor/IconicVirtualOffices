@@ -2,22 +2,9 @@
   <section class="columnAlignCenter">
     <h2 class="text-center">Client success: Virtual offices in action</h2>
     <div class="storiesContainer columnAlignCenter">
-      <div
-        v-for="(story, index) in stories"
-        class="story columnAlignCenter"
-        :key="index"
-      >
-        <div class="videoContainer">
-          <iframe
-            width="100%"
-            height="100%"
-            :src="getYouTubeEmbedUrl(story.link)"
-            :title="story.title"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+      <div v-for="(story, index) in stories" class="story columnAlignCenter" :key="index">
+        <div class="videoContainer columnAlignCenter">
+          <video :src="`/videos/${story.video}.mp4`" controls></video>
         </div>
         <h3 class="text-center">{{ story.title }}</h3>
         <NuxtLink :to="story.link" class="secondaryButton">
@@ -40,22 +27,16 @@ export default {
           title:
             "See how [Client's Company] streamlined operations with our solutions.",
           button: "Watch [Client's Company] Case",
-          link: "https://www.youtube.com/watch?v=L82rhATAT2o",
+          video: "Success-Story-1",
         },
         {
           title:
             "See how [Client's Company] streamlined operations with our solutions.",
           button: "Discover [Client's Company] Story",
-          link: "https://www.youtube.com/watch?v=N1CXHljXZzM",
+          video: "Success-Story-2",
         },
       ],
     };
-  },
-  methods: {
-    getYouTubeEmbedUrl(url) {
-      const videoId = url.split("v=")[1];
-      return `https://www.youtube.com/embed/${videoId}`;
-    },
   },
 };
 </script>
@@ -71,18 +52,16 @@ export default {
 
 .videoContainer {
   width: 100%;
-  height: 10.625rem;
+  height: max-content;
   border-radius: 9px;
   position: relative;
   overflow: hidden;
 }
 
-.videoContainer iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+.videoContainer video {
   width: 100%;
-  height: 100%;
+  max-width: 280px;
+  border-radius: 9px;
 }
 
 .arrowBtn {
@@ -98,6 +77,16 @@ export default {
 
   h3 {
     text-align: start !important;
+  }
+
+  .secondaryButton {
+    align-self: flex-start;
+  }
+}
+
+@media (width >=1080px) {
+  h3 {
+    font-weight: 600;
   }
 }
 </style>

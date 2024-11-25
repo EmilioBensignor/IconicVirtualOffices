@@ -1,11 +1,10 @@
 <template>
   <section class="columnAlignCenter">
-    <div class="videoContainer">
-      <iframe src="https://www.youtube.com/embed/4LX9UKp6tU8" title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="videoContainer columnAlignCenter">
+      <video src="/videos/Iconic-Virtual-Offices-Professional-Presence.mp4" controls></video>
     </div>
-    <div class="workspace columnAlignCenter">
+    <div class="workspaceContainer columnAlignCenter">
+      <div class="workspace columnAlignCenter">
       <h2 class="text-center">Your way to a professional presence</h2>
       <p class="text-center">
         <span class="text-electric-blue font-bold">
@@ -17,7 +16,7 @@
         workspace.
       </p>
     </div>
-    <ul class="column">
+    <ul class="w-full column">
       <li v-for="(benefit, index) in benefits" class="flex" :key="index">
         <Icon :name="`mingcute:${benefit.icon}`" class="text-mid-blue" />
         <p>{{ benefit.text }}</p>
@@ -29,6 +28,8 @@
         <Icon name="mingcute:arrow-right-line" class="text-black" />
       </div>
     </NuxtLink>
+    </div>
+    
   </section>
 </template>
 
@@ -61,18 +62,19 @@ export default {
 <style scoped>
 .videoContainer {
   width: 100%;
-  height: 14.375rem;
+  height: max-content;
   position: relative;
   overflow: hidden;
+}
+
+.videoContainer video {
+  width: 100%;
+  height: 100%;
   border-radius: 20px;
 }
 
-.videoContainer iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.workspaceContainer {
+  gap: 1.25rem;
 }
 
 .workspace {
@@ -113,18 +115,40 @@ ul li p {
 }
 
 @media (width >=660px) {
-  .videoContainer {
-    height: 17.125rem;
-  }
-
   h2,
   p {
     width: 100%;
     text-align: start !important;
   }
 
+  video {
+    max-width: 580px;
+  }
+
   ul li span {
     width: 5%;
+  }
+}
+
+@media (width >=1080px) {
+  section {
+    flex-direction: row;
+  }
+
+  .videoContainer, .workspaceContainer {
+    width: 50%;
+  }
+
+  .workspaceContainer {
+    align-items: flex-start;
+  }
+
+  ul li span {
+    font-size: 1.25rem !important;
+  }
+
+  ul li p {
+    font-size: 1rem;
   }
 }
 </style>
