@@ -1,18 +1,14 @@
 <template>
-  <div class="navigation-wrapper">
-    <div ref="container" class="w-full slider keen-slider">
-      <div class="slide columnAlignCenter" v-for="(slide, index) in services" :key="index"
-        :class="`keen-slider__slide number-slide${index + 1}`">
-        <NuxtImg class="imgSlide" :src="`/images/home/${slide.img}.png`" :alt="slide.text" />
-        <p class="text-center">{{ slide.text }}</p>
-      </div>
-    </div>
-    <button class="btnSlider prev" @click="prevSlide" aria-label="Prev Arrow">
-      <Icon class="text-electric-blue" name="mingcute:left-line" />
-    </button>
-    <button class="btnSlider next" @click="nextSlide" aria-label="Next Arrow">
-      <Icon class="text-electric-blue" name="mingcute:right-line" />
-    </button>
+  <div>
+    <Carousel :value="services" :num-visible="2" :num-scroll="1" circular :autoplayInterval="3000"
+      :responsiveOptions="responsiveOptions" class="w-full carrouselServices">
+      <template #item="slotProps">
+        <div class="slide columnAlignCenter">
+          <NuxtImg class="imgSlide" :src="`/images/home/${slotProps.data.img}.png`" :alt="slotProps.data.text" />
+          <p class="text-center">{{ slotProps.data.text }}</p>
+        </div>
+      </template>
+    </Carousel>
   </div>
 </template>
 
@@ -20,6 +16,23 @@
 export default {
   data() {
     return {
+      responsiveOptions: [
+        {
+          breakpoint: "1920px",
+          numVisible: 4,
+          numScroll: 1,
+        },
+        {
+          breakpoint: "1080px",
+          numVisible: 3,
+          numScroll: 1,
+        },
+        {
+          breakpoint: "660px",
+          numVisible: 2,
+          numScroll: 1,
+        },
+      ],
       services: [
         {
           img: "Service-Image",
@@ -120,59 +133,93 @@ export default {
       ],
     };
   },
-  setup() {
-    let intervalId;
-    const [container, slider] = useKeenSlider(
-      {
-        loop: true,
-        drag: false,
-        slides: {
-          perView: 2,
-          spacing: 8,
-        },
-        breakpoints: {
-          660: {
-            slides: {
-              perView: 3,
-            },
-          },
-        },
-        renderMode: "performance",
-        defaultAnimation: {
-          duration: 500,
-        },
-      },
-      [
-        (slider) => {
-          slider.on("created", () => {
-            intervalId = setInterval(() => {
-              slider.next();
-            }, 2000);
-          });
-
-          slider.on("destroyed", () => {
-            if (intervalId) {
-              clearInterval(intervalId);
-            }
-          });
-        },
-      ]
-    );
-
-    return {
-      container,
-      prevSlide: () => slider.value?.prev(),
-      nextSlide: () => slider.value?.next(),
-    };
-  },
 };
 </script>
 
-<style scoped>
-.navigation-wrapper {
-  position: relative;
+<style>
+.carrouselServices .p-carousel-next-button,
+.carrouselServices .p-carousel-prev-button {
+  width: 2rem;
+  height: 2rem !important;
+  position: absolute;
+  background: white !important;
+  border: none;
+  box-shadow: 0px 0px 10px 0px #00000033;
+  border-radius: 999px !important;
+  color: var(--color-electric-blue) !important;
+  transition: all 0.3s;
+  cursor: pointer;
 }
 
+.carrouselServices .p-carousel-prev-button {
+  left: 0.5rem;
+}
+
+.carrouselServices .p-carousel-next-button {
+  right: 0.5rem;
+}
+
+.carrouselServices .p-carousel-viewport {
+  padding: 0 1rem;
+}
+
+@media (width >=660px) {
+
+  .carrouselServices .p-carousel-next-button,
+  .carrouselServices .p-carousel-prev-button {
+    width: 2.5rem;
+    height: 2.5rem !important;
+  }
+
+  .carrouselServices .p-carousel-prev-button {
+    left: 1rem;
+  }
+
+  .carrouselServices .p-carousel-next-button {
+    right: 1rem;
+  }
+
+  .carrouselServices .p-carousel-next-button svg,
+  .carrouselServices .p-carousel-prev-button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .carrouselServices .p-carousel-viewport {
+    padding: 0 1.25rem;
+  }
+}
+
+@media (width >=1080px) {
+  .carrouselServices .p-carousel-prev-button {
+    left: 3rem;
+  }
+
+  .carrouselServices .p-carousel-next-button {
+    right: 3rem;
+  }
+
+  .carrouselServices .p-carousel-viewport {
+    padding: 0 2.5rem;
+  }
+}
+
+@media (width >=1440px) {
+  .carrouselServices .p-carousel-prev-button {
+    left: 4.5rem;
+  }
+
+  .carrouselServices .p-carousel-next-button {
+    right: 4.5rem;
+  }
+
+  .carrouselServices .p-carousel-viewport {
+    padding: 0 2.75rem;
+  }
+}
+</style>
+
+<style scoped>
 p {
   font-size: 0.75rem;
 }
@@ -185,23 +232,6 @@ p {
   width: 100%;
   height: 3.438rem;
   object-fit: contain;
-}
-
-.btnSlider {
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 30%;
-  background: white;
-  border: none;
-  box-shadow: 0px 0px 10px 0px #00000033;
-  border-radius: 999px;
-  transition: all 0.3s;
-  cursor: pointer;
 }
 
 .btnSlider:hover {
@@ -233,22 +263,19 @@ p {
   .imgSlide {
     height: 5.125rem;
   }
+}
 
-  .btnSlider {
-    width: 2.5rem;
-    height: 2.5rem;
+@media (width >=1080px) {
+  .slide {
+    gap: 1.5rem;
   }
 
-  .btnSlider span {
-    font-size: 2rem !important;
+  p {
+    font-size: 1.25rem;
   }
 
-  .prev {
-    left: -2.5rem;
-  }
-
-  .next {
-    right: -2.5rem;
+  .imgSlide {
+    height: 8.125rem;
   }
 }
 </style>
