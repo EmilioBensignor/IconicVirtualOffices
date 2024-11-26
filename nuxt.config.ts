@@ -13,7 +13,6 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     'nuxt-anchorscroll',
     '@nuxt/scripts',
-    'nuxt-keen-slider'
   ],
   icon: {
     size: '1rem',

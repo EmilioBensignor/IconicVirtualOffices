@@ -26,7 +26,7 @@
       </div>
       <div>ANIMATION // Padding Right</div>
     </div>
-    <!-- <HomeSwiperBusinesses /> -->
+    <HomeSwiperBusinesses />
   </section>
 </template>
 
