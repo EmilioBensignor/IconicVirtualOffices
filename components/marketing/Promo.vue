@@ -8,6 +8,9 @@
 
 <style scoped>
   .promo {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     padding: 0.75rem 1.25rem;
   }
 
