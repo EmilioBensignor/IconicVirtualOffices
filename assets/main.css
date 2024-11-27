@@ -39,7 +39,7 @@ footer {
   margin: 0 auto;
 }
 
-header,
+header > div,
 main section {
   max-width: 1440px;
 }

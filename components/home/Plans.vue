@@ -59,7 +59,7 @@ export default {
           plans: [
             {
               name: "Connect",
-              price: 89,
+              price: 65,
               intro:
                 "Ideal for startups seeking a professional address with occasional workspace access.",
               list: [
@@ -72,7 +72,7 @@ export default {
             },
             {
               name: "Grow",
-              price: 149,
+              price: 119,
               intro:
                 "Perfect for businesses needing a dedicated phone line and regular workspace use.",
               everything: "Everything in Connect Plan +",
@@ -88,7 +88,7 @@ export default {
             },
             {
               name: "Evolve",
-              price: 279,
+              price: 199,
               intro:
                 "Great for established businesses wanting comprehensive support and extra amenities.",
               everything: "Everything in Grow Plan +",
@@ -137,11 +137,13 @@ export default {
             {
               name: "Evolve",
               price: 279,
-              intro: "Everything in Grow Plan +",
+              intro:
+                "Great for established businesses wanting comprehensive support and extra amenities.",
+              everything: "Everything in Grow Plan +",
               list: [
-                "<p><span class='font-bold'>5 Hours of workspace</span> and meeting room bookings.</p>",
-                "<p><span class='font-bold'>3 Days</span> per month access to the <span class='font-bold'>ICLUB Lounge.</span></p>",
-                "<p><span class='font-bold'>15% Discounts</span> on conference rooms, offices, and coworking spaces.</p>",
+                "<p class='listItem'><span class='font-bold'>5 Hours of workspace</span> and meeting room bookings.</p>",
+                "<p class='listItem'><span class='font-bold'>3 Days</span> per month access to the <span class='font-bold'>ICLUB Lounge.</span></p>",
+                "<p class='listItem'><span class='font-bold'>15% Discounts</span> on conference rooms, offices, and coworking spaces.</p>",
               ],
               cta: "Start with Evolve Plan",
             },

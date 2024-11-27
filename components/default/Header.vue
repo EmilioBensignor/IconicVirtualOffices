@@ -1,19 +1,21 @@
 <template>
   <header :class="{ scrolled: scrolled }" class="center sticky">
-    <button class="hamburger absolute" @click="toggleDrawer" aria-label="Open or close menu">
-      <Icon class="text-mid-blue" size="1.5rem" name="mingcute:menu-fill" />
-    </button>
-    <NuxtLink :to="routes.HOME" class="logo">
-      <NuxtImg src="/images/Iconic-Virtual-Offices-Logo.svg" alt="Iconic Virtual Offices Logo" />
-    </NuxtLink>
-    <div class="desktopMenu">
-      <!-- <ul>
+    <div class="center">
+      <button class="hamburger absolute" @click="toggleDrawer" aria-label="Open or close menu">
+        <Icon class="text-mid-blue" size="1.5rem" name="mingcute:menu-fill" />
+      </button>
+      <NuxtLink :to="routes.HOME" class="logo">
+        <NuxtImg src="/images/Iconic-Virtual-Offices-Logo.svg" alt="Iconic Virtual Offices Logo" />
+      </NuxtLink>
+      <div class="desktopMenu">
+        <!-- <ul>
       </ul> -->
-      <NuxtLink :to="routes.GET_STARTED" class="primaryButton">Get Started</NuxtLink>
-    </div>
-    <div class="menuSidebar">
-      <Drawer ref="drawer" :visible="drawerMenu" :show-close-button="false" @click="handleDrawerClick">
-      </Drawer>
+        <NuxtLink :to="routes.GET_STARTED" class="primaryButton">Get Started</NuxtLink>
+      </div>
+      <div class="menuSidebar">
+        <Drawer ref="drawer" :visible="drawerMenu" :show-close-button="false" @click="handleDrawerClick">
+        </Drawer>
+      </div>
     </div>
   </header>
 </template>
@@ -91,8 +93,16 @@ header {
   top: 3.25rem;
   z-index: 10;
   background: var(--color-white);
-  padding: 1.25rem;
   transition: box-shadow 0.3s ease-in-out;
+}
+
+header>div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1.25rem;
 }
 
 header.scrolled {
@@ -125,6 +135,9 @@ header.scrolled {
 @media (width >=660px) {
   header {
     top: 3.688rem;
+  }
+
+  header>div {
     padding: 1.5rem 2.5rem;
   }
 
@@ -149,10 +162,13 @@ header.scrolled {
   }
 
   header {
+    top: 4.5rem;
+  }
+
+  header > div {
     flex-direction: row;
     justify-content: space-between;
     gap: 2rem;
-    top: 4.5rem;
     padding: 1.75rem 4.375rem;
   }
 
@@ -169,7 +185,7 @@ header.scrolled {
 }
 
 @media (width >=1440px) {
-  header {
+  header > div {
     padding: 2rem 5.625rem;
   }
 }
