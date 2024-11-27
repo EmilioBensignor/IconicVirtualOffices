@@ -59,7 +59,7 @@ export default {
           plans: [
             {
               name: "Connect",
-              price: 65,
+              price: 59,
               intro:
                 "Ideal for startups seeking a professional address with occasional workspace access.",
               list: [

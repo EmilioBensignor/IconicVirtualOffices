@@ -21,7 +21,7 @@
         </div>
         <p class="starting text-center text-dark-gray">
           No long-term contracts, starting at
-          <span class="font-bold">only $99/month.</span>
+          <span class="font-bold">only $59/month.</span>
         </p>
       </div>
       <div>ANIMATION // Padding Right</div>
