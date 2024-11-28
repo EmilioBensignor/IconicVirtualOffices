@@ -2,34 +2,22 @@
   <section class="columnAlignCenter">
     <h2 class="text-center">Discover how we make a difference</h2>
     <div class="w-full carrouselContainer columnAlignCenter">
-      <Carousel
-        :value="reviews"
-        :num-visible="1"
-        :num-scroll="1"
-        circular
-        :autoplayInterval="3000"
-        class="w-full carrouselReviews"
-      >
+      <Carousel :value="reviews" :num-visible="1" :num-scroll="1" circular :autoplayInterval="3000"
+        class="w-full carrouselReviews">
         <template #item="slotProps">
           <HomeSwiperGoogleReviewCard :review="slotProps.data" />
         </template>
       </Carousel>
       <div class="reviewsContainer">
         <div class="clipContainer">
-          <HomeSwiperGoogleReviewCard
-            :review="review"
-            v-for="(review, index) in reviews"
-            :key="index"
-          />
+          <HomeSwiperGoogleReviewCard :review="review" v-for="(review, index) in reviews" :key="index" />
         </div>
       </div>
       <NuxtLink
-        to="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0zDGqLMkrKS8yYLRSNagwMzFPSTaztEhMtDA0NDYwtTKoSE21NEhJSbY0MTA2TzE1TvUSzEzOz8tMVkgsLs4sLknMKykGABRIFoU&q=iconic+assistants&rlz=1C1ALOY_esAR1068AR1068&oq=ic&gs_lcrp=EgZjaHJvbWUqEggDEC4YJxivARjHARiABBiKBTIGCAAQRRg8MgYIARBFGDwyBggCEEUYOTISCAMQLhgnGK8BGMcBGIAEGIoFMgYIBBBFGDsyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQgxOTEwajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x647dc698aa811305:0xee90ddc94037d53e,1"
-        target="_blank"
-        class="secondaryButton googleLink"
-      >
+        to="https://www.google.com/search?sca_esv=fc6c41709a2992ea&cs=0&output=search&kgmid=/g/11j37qgvhb&q=ICONIC+WORKSPACES+AVENTURA&shndl=30&shem=uaasie&source=sh/x/loc/uni/m1/1&kgs=124cdde3e1efc396#lrd=0x88d9ad80602e11ab:0xb85e4989d6fe3803,1"
+        target="_blank" class="secondaryButton googleLink">
         <div>
-          <p>Read more succes stories</p>
+          <p>Read more success stories</p>
           <Icon name="mingcute:arrow-right-line" class="text-black" />
         </div>
       </NuxtLink>
@@ -89,13 +77,13 @@ export default {
   visibility: hidden;
 }
 
-@media (width >= 480px) {
+@media (width >=480px) {
   .carrouselContainer .p-carousel {
     max-width: 506px;
   }
 }
 
-@media (width >= 660px) {
+@media (width >=660px) {
   .carrouselContainer .p-carousel {
     display: none !important;
   }
@@ -123,13 +111,13 @@ export default {
   padding: 0.75rem 0;
 }
 
-@media (width >= 480px) {
+@media (width >=480px) {
   .h2Google h2 {
     display: block;
   }
 }
 
-@media (width >= 660px) {
+@media (width >=660px) {
   .carrouselReviews {
     gap: 2rem !important;
     padding: 2.5rem !important;
@@ -180,7 +168,7 @@ export default {
   }
 }
 
-@media (width >= 1080px) {
+@media (width >=1080px) {
   .carrouselReviews {
     padding: 3.75rem 5rem !important;
   }
@@ -199,7 +187,7 @@ export default {
   }
 }
 
-@media (width >= 1440px) {
+@media (width >=1440px) {
   .carrouselReviews {
     gap: 3.5rem !important;
     padding: 3.75rem 8rem !important;
@@ -210,7 +198,7 @@ export default {
   }
 }
 
-@media (width >= 1600px) {
+@media (width >=1600px) {
   .clipContainer {
     column-count: 4;
   }

@@ -9,7 +9,9 @@
               <p>{{ faq.question }}</p>
             </AccordionHeader>
             <AccordionContent>
-              <p>{{ faq.answer }}</p>
+              <ClientOnly>
+                <p v-html="faq.answer"></p>
+              </ClientOnly>
             </AccordionContent>
           </AccordionPanel>
         </Accordion>
@@ -21,7 +23,9 @@
               <p>{{ faq.question }}</p>
             </AccordionHeader>
             <AccordionContent>
-              <p>{{ faq.answer }}</p>
+              <ClientOnly>
+                <p v-html="faq.answer"></p>
+              </ClientOnly>
             </AccordionContent>
           </AccordionPanel>
         </Accordion>
@@ -37,38 +41,38 @@ export default {
       faqsLeft: [
         {
           question: "Where can I find Virtual Office in Aventura?",
-          answer: "FAQ Answer",
+          answer: "<p>Iconic Workspaces, located in Aventura ParkSquare, offers flexible Virtual Office Plans with a prestigious business address, mail reception, phone call answering service, secretarial services, discounted rates for meeting rooms; and workspace hours included for select packages.</p>",
         },
         {
           question: "Where can I get a virtual address in Miami?",
-          answer: "FAQ Answer",
+          answer: "<p>You can get a virtual address in Miami at office serviced centers that provide this type of service. At Iconic Workspaces we offer a prestigious business address, mail reception, personalized receptionist service, dedicated telephone line and access to business services.</p>",
         },
         {
           question: "How much is a virtual business address in Miami? ",
-          answer: "FAQ Answer",
+          answer: "<p>A virtual office ranges between $65.00 and $319.00. At ICONIC Workspaces we have virtual office plans starting at $65.00 a month in our Downtown Miami location.</p>",
         },
         {
           question: "Do I get a mailing address with a Virtual Office?",
-          answer: "FAQ Answer",
+          answer: "<p>Yes, the Virtual Office includes a mailing address with mail reception service. At Iconic Workspace we have Virtual Office Plans from only $65/month.</p>",
         },
       ],
       faqsRight: [
         {
+          question: "Can I have a Virtual Office whilst living in a different country?",
+          answer: "<p>Yes, at ICONIC Workspaces we offer virtual packages that include the use of a professional business address with mail reception service.</p>",
+        },
+        {
           question: "How do I get a virtual address for my business?",
-          answer: "FAQ Answer",
+          answer: "<p>To get a virtual address for your business you should find a virtual office solution suitable to your business needs. At Iconic Workspaces we offer a selection of flexible virtual plans for you to choose and customize the services you need in a quick and simple sign-up process.</p>",
         },
         {
           question: "What benefits do a virtual office have?",
-          answer: "FAQ Answer",
-        },
-        {
-          question: "How quickly can I be up and running?",
-          answer: "FAQ Answer",
+          answer: "<div class='faqSpacing'><p>Provide a professional image to your business at affordable cost.</p><p>Use a prestigious business address and phone number on your business marketing material: website and business cards.</p><p>Access to customized admin services such as mail scanning, mail forwarding, phone calls answering service, secretarial tasks and more.</p><p>Enjoy the benefits of an executive office service without the expense of a physical office rent, which makes this solution perfect to expand your office network.</p></div>",
         },
         {
           question:
-            "Can I have a Virtual Office whilst living in a different Country?",
-          answer: "FAQ Answer",
+            "What is the redeemable value of the EVOLVE credits to use the space?",
+          answer: "<div class='faqSpacing'><p>The <span class='font-bold'>Evolve Plan</span> includes <span class='font-bold'>250 monthly credits</span>, giving you flexibility to use workspace or meeting rooms at discounted rates. Credits can be applied for private offices, coworking spaces, or meeting rooms at either our Downtown Miami or Aventura locations.</p><div><p class='font-bold'>Downtown Miami Options</p><ul><li><span class='font-bold'>Office:</span> 8.3 hours/month</li><li><span class='font-bold'>Medium Meeting Room:</span> 5 hours/month</li><li><span class='font-bold'>Large Meeting Room:</span> 4.16 hours/month</li></ul></div><div><p class='font-bold'>Aventura Options</p><ul><li><span class='font-bold'>Coworking Desk:</span> 6 days/month</li><li><span class='font-bold'>Office:</span> 8 hours/month</li><li><span class='font-bold'>Medium Meeting Room:</span> 4 hours/month</li><li><span class='font-bold'>Large Meeting Room:</span> 2 hours/month</li></ul></div><div><p class='font-bold'>Examples:</p><ul><li>Combine office and meeting room hours as needed.</li><li>Use 250 credits for weekly meetings or a full-day booking for larger presentations.</li></ul></div><p class='credits'>Credits do not roll over and must be used within the month.</p></div>",
         },
       ],
     };
@@ -135,6 +139,27 @@ export default {
   padding: 0.75rem 0;
 }
 
+.faqSpacing, .faqSpacing > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqSpacing ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 1rem;
+}
+
+.faqSpacing ul li {
+  list-style-type: disc;
+}
+
+.faqSpacing .credits {
+  font-style: italic;
+}
+
 @media (width >=660px) {
 
   .faqWrapper .p-accordionheader,
@@ -156,6 +181,10 @@ export default {
   .faqWrapper .p-accordionheader p,
   .faqWrapper .p-accordioncontent-content p {
     font-size: 1rem;
+  }
+
+  .faqSpacing ul {
+    padding-left: 1.75rem;
   }
 }
 
