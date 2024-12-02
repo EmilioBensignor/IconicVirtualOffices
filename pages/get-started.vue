@@ -1,3 +1,5 @@
 <template>
-  <h2>GET STARTED</h2>
+  <main>
+    <GetStartedCheckout />
+  </main>
 </template>

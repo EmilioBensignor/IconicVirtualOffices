@@ -71,7 +71,7 @@ export default {
           link: "https://maps.app.goo.gl/78FaH9yuM8233wpeA",
         },
         {
-          name: "Aventura",
+          name: "Downtown",
           street: "150 SE 2nd Ave, 3rd floor.",
           ubication: "Downtown Miami, FL 33131",
           link: "https://maps.app.goo.gl/s8WjmcX9dngRrMxp7",
@@ -80,16 +80,20 @@ export default {
       socialMedia: [
         {
           name: "Facebook",
-          link: "#",
+          link: "https://www.facebook.com/iconicworkspaces",
         },
         {
           name: "Instagram",
-          link: "#",
+          link: "https://www.instagram.com/iconic.workspaces/",
         },
         {
           name: "LinkedIn",
-          link: "#",
+          link: "https://www.linkedin.com/company/iconic-workspaces/",
         },
+        // {
+        //   name: "Twitter",
+        //   link: "https://x.com/WorkspaceIconic",
+        // },
       ],
     };
   },
