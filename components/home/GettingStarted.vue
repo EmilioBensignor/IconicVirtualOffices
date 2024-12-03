@@ -27,9 +27,9 @@
         </div>
       </div>
     </div>
-    <NuxtLink :to="routes.GET_STARTED" class="primaryButton">
+    <a @click.prevent="scrollToSection('#plans')" class="primaryButton">
       Launch my virtual office
-    </NuxtLink>
+    </a>
   </section>
 </template>
 

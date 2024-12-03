@@ -10,7 +10,7 @@
       <div class="desktopMenu">
         <!-- <ul>
       </ul> -->
-        <NuxtLink :to="routes.GET_STARTED" class="primaryButton">Get Started</NuxtLink>
+        <a href="#plans" @click.prevent="scrollToSection('#plans')" class="primaryButton">Get Started</a>
       </div>
       <div class="menuSidebar">
         <Drawer ref="drawer" :visible="drawerMenu" :show-close-button="false" @click="handleDrawerClick">

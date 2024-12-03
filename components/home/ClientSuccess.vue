@@ -79,13 +79,8 @@ h3 {
     flex-direction: row;
   }
 
-  .story, .videoContainer {
-    align-items: start;
-  }
-
   h3 {
     max-width: 375px;
-    text-align: start !important;
   }
 }
 

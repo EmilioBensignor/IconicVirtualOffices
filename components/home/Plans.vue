@@ -1,5 +1,5 @@
 <template>
-  <section class="column">
+  <section id="plans" class="column">
     <div class="column">
       <h2 class="text-center">Find the right fit</h2>
       <p class="text-center">Where will you base your business?</p>
