@@ -34,9 +34,15 @@
               </ClientOnly>
             </ul>
             <div class="flex justify-content-end">
-              <NuxtLink :to="routes.GET_STARTED" class="primaryButton">{{
-                plan.cta
-              }}</NuxtLink>
+              <NuxtLink :to="{
+                path: routes.GET_STARTED,
+                query: {
+                  destination: destination.title,
+                  plan: plan.name
+                }
+              }" class="primaryButton">
+                {{ plan.cta }}
+              </NuxtLink>
             </div>
           </article>
         </TabPanel>
@@ -396,7 +402,10 @@ article {
 }
 
 @media (width >=1440px) {
-  section, section>div:first-of-type, section>div:last-of-type {
+
+  section,
+  section>div:first-of-type,
+  section>div:last-of-type {
     gap: 1.5rem;
   }
 

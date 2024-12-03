@@ -12,7 +12,7 @@
           the world's economy.
         </p>
         <div class="heroBtns rowCenter">
-          <a href="#plans" class="primaryButton" @click.prevent="scrollToSection('#plans')">Get Started</a>
+          <button class="primaryButton" @click.prevent="scrollToSection('#plans')">Get Started</button>
           <NuxtLink :to="routes.GET_STARTED" class="secondaryButton">
             <div>
               <p>Or book a free call</p>

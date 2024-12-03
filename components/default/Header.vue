@@ -10,7 +10,7 @@
       <div class="desktopMenu">
         <!-- <ul>
       </ul> -->
-        <a href="#plans" @click.prevent="scrollToSection('#plans')" class="primaryButton">Get Started</a>
+        <button v-if="showGetStartedButton" @click.prevent="scrollToSection('#plans')" class="primaryButton">Get Started</button>
       </div>
       <div class="menuSidebar">
         <Drawer ref="drawer" :visible="drawerMenu" :show-close-button="false" @click="handleDrawerClick">
@@ -49,6 +49,11 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
+  },
+  computed: {
+    showGetStartedButton() {
+      return this.$route.name !== 'get-started';
+    }
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);

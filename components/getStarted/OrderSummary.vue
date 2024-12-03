@@ -6,19 +6,19 @@
     <div class="w-full orderBody">
       <div class="orderLine">
         <p class="font-bold">Plan:</p>
-        <p>{{ order.plan }}</p>
+        <p>{{ selectedPlan }}</p>
       </div>
       <div class="orderLine">
         <p class="font-bold">Location:</p>
         <div>
-          <p>Downtown</p>
-          <p>150 SE 2nd Ave, 3rd floor.</p>
-          <p>Downtown Miami, FL 33131</p>
+          <p>{{ selectedDestination }}</p>
+          <p>{{ locationAddress }}</p>
+          <p>{{ locationCity }}</p>
         </div>
       </div>
       <div class="orderLine">
         <p class="font-bold">Duration:</p>
-        <p>Month-to-month</p>
+        <p>{{ order.duration }}</p>
       </div>
       <div class="orderLine">
         <p class="font-bold">Next biling date:</p>
@@ -26,7 +26,7 @@
       </div>
       <div class="orderLine">
         <p class="font-bold">Today’s payment:</p>
-        <p>$149.00</p>
+        <p>${{ order.payment }}.00</p>
       </div>
       <div class="oneTime">
         <div class="orderLine">
@@ -37,7 +37,7 @@
       </div>
       <div class="total orderLine">
         <p class="font-bold">Total:</p>
-        <p>$248.00</p>
+        <p>${{ (order.payment + 99).toFixed(2) }}</p>
       </div>
     </div>
   </div>
@@ -45,13 +45,53 @@
 
 <script>
 export default {
+  props: {
+    durationData: {
+      type: Object,
+      required: false,
+      default: () => ({
+        name: 'Month-to-month',
+        price: 149.00
+      })
+    }
+  },
   data() {
     return {
       order: {
-        plan: "Grow",
+        duration: this.durationData?.name || 'Month-to-month',
+        payment: this.durationData?.price || 149.00
       }
     }
-  }
+  },
+  watch: {
+    durationData: {
+      handler(newData) {
+        if (newData) {
+          this.order.duration = newData.name;
+          this.order.payment = newData.price;
+        }
+      },
+      deep: true
+    }
+  },
+  computed: {
+    selectedDestination() {
+      return this.$route.query.destination
+    },
+    selectedPlan() {
+      return this.$route.query.plan
+    },
+    locationAddress() {
+      return this.selectedDestination === 'Downtown'
+        ? '150 SE 2nd Ave, 3rd floor.'
+        : '19495 Biscayne Blvd. Suite 600'
+    },
+    locationCity() {
+      return this.selectedDestination === 'Downtown'
+        ? 'Downtown Miami, FL 33131'
+        : 'Aventura, FL 33180'
+    }
+  },
 }
 </script>
 

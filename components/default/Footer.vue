@@ -7,7 +7,8 @@
             alt="Iconic Virtual Offices Logo" />
         </NuxtLink>
         <p>Empowering businesses to thrive.</p>
-        <NuxtLink :to="routes.GET_STARTED" class="primaryButton footerLink">Get Started</NuxtLink>
+        <button v-if="showGetStartedButton" @click.prevent="scrollToSection('#plans')"
+          class="primaryButton footerLink">Get Started</button>
       </div>
       <div class="locationsContact column">
         <div class="column">
@@ -97,6 +98,11 @@ export default {
       ],
     };
   },
+  computed: {
+    showGetStartedButton() {
+      return this.$route.name !== 'get-started';
+    }
+  }
 };
 </script>
 
@@ -258,11 +264,12 @@ footer {
 }
 
 @media (width >=1440px) {
-  footer  {
+  footer {
     padding: 3.75rem 5.625rem;
   }
 
-  footer .upperFooter, footer .bellowFooter {
+  footer .upperFooter,
+  footer .bellowFooter {
     max-width: 1260px;
   }
 

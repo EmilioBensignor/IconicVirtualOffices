@@ -1,7 +1,7 @@
 <template>
   <section class="checkout columnAlignCenter">
     <h1 class="text-center">Let’s launch your virtual office</h1>
-    <Stepper class="w-full columnAlignCenter" value="3">
+    <Stepper class="w-full columnAlignCenter" value="1">
       <StepList class="w-full">
         <Step value="1"></Step>
         <Step value="2"></Step>
@@ -15,7 +15,7 @@
               <h2>Choose your plan duration</h2>
               <p>Choose from monthly, semi-annual, or annual plans</p>
             </div>
-            <GetStartedStepsPlanDuration />
+            <GetStartedStepsPlanDuration @plan-changed="handlePlanChange" />
           </StepPanel>
           <StepPanel value="2">
             <div>
@@ -37,11 +37,29 @@
             <GetStartedStepsBillingAddress />
           </StepPanel>
         </StepPanels>
-        <GetStartedOrderSummary />
+        <GetStartedOrderSummary :duration-data="durationData" />
       </div>
     </Stepper>
   </section>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      durationData: {
+        name: 'Month-to-month',
+        price: 149.00
+      }
+    }
+  },
+  methods: {
+    handlePlanChange(data) {
+      this.durationData = data;
+    }
+  }
+}
+</script>
 
 <style>
 .checkout .p-stepper {
@@ -87,7 +105,7 @@
   gap: 1.25rem;
 }
 
-.checkout .p-steppanel > div {
+.checkout .p-steppanel>div {
   width: 100%;
 }
 
