@@ -48,10 +48,12 @@ export default {
   methods: {
     increment(index) {
       this.addOns[index].quantity++;
+      this.$emit('update-add-ons', [...this.addOns]);
     },
     decrement(index) {
       if (this.addOns[index].quantity > 0) {
         this.addOns[index].quantity--;
+        this.$emit('update-add-ons', [...this.addOns]);
       }
     }
   }
@@ -69,7 +71,7 @@ export default {
   border-bottom: 2px solid #E2E0E0;
 }
 
-.addOn > div:first-of-type {
+.addOn>div:first-of-type {
   gap: 0.625rem;
 }
 
@@ -103,5 +105,12 @@ export default {
 .priceAdd div span {
   font-size: 1.25rem;
   font-weight: 600;
+}
+
+@media (width >=660px) {
+  .priceAdd {
+    justify-content: flex-end;
+    gap: 2.5rem;
+  }
 }
 </style>

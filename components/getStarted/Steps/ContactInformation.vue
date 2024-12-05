@@ -1,42 +1,53 @@
 <template>
-  <Form v-slot="$form" :resolver="resolver" :validateOnValueUpdate="false" :validateOnBlur="true"
-    class="w-full column">
-    <div class="field">
-      <label for="firstName">First name</label>
-      <InputText id="firstName" name="firstName" type="text" placeholder="John" />
-      <Message v-if="$form.firstName?.invalid" severity="error" size="small" variant="simple">{{
-        $form.firstName.error.message }}</Message>
+  <Form v-slot="$form" :resolver="resolver" :validateOnValueUpdate="false" :validateOnBlur="true" class="w-full column"
+    @submit="onFormSubmit">
+    <div class="formRow field">
+      <div class="field">
+        <label for="firstName">First name</label>
+        <InputText id="firstName" name="firstName" type="text" placeholder="John" />
+        <Message v-if="showErrors && $form.firstName?.invalid" severity="error" size="small" variant="simple">{{
+          $form.firstName.error.message }}</Message>
+      </div>
+      <div class="field">
+        <label for="lastName">Last name</label>
+        <InputText id="lastName" name="lastName" type="text" placeholder="Doe" />
+        <Message v-if="showErrors && $form.lastName?.invalid" severity="error" size="small" variant="simple">{{
+          $form.lastName.error.message }}</Message>
+      </div>
     </div>
-    <div class="field">
-      <label for="lastName">Last name</label>
-      <InputText id="lastName" name="lastName" type="text" placeholder="Doe" />
-      <Message v-if="$form.lastName?.invalid" severity="error" size="small" variant="simple">{{
-        $form.lastName.error.message }}</Message>
+    <div class="formRow field">
+      <div class="field">
+        <label for="emailAddress">Email address</label>
+        <InputText id="emailAddress" name="emailAddress" type="text" placeholder="yourname@example.com" />
+        <Message v-if="showErrors && $form.emailAddress?.invalid" severity="error" size="small" variant="simple">{{
+          $form.emailAddress.error.message }}</Message>
+      </div>
+      <div class="field">
+        <label for="phoneNumber">Phone number</label>
+        <InputText id="phoneNumber" name="phoneNumber" type="text" placeholder="+1 123 456 7890" />
+        <Message v-if="showErrors && $form.phoneNumber?.invalid" severity="error" size="small" variant="simple">{{
+          $form.phoneNumber.error.message }}</Message>
+      </div>
     </div>
-    <div class="field">
-      <label for="emailAddress">Email address</label>
-      <InputText id="emailAddress" name="emailAddress" type="text" placeholder="yourname@example.com" />
-      <Message v-if="$form.emailAddress?.invalid" severity="error" size="small" variant="simple">{{
-        $form.emailAddress.error.message }}</Message>
-    </div>
-    <div class="field">
-      <label for="phoneNumber">Phone number</label>
-      <InputText id="phoneNumber" name="phoneNumber" type="text" placeholder="+1 123 456 7890" />
-      <Message v-if="$form.phoneNumber?.invalid" severity="error" size="small" variant="simple">{{
-        $form.phoneNumber.error.message }}</Message>
-    </div>
-    <div class="field">
-      <label for="companyName">Company name</label>
-      <InputText id="companyName" name="companyName" type="text" placeholder="ABC Tech Solutions" />
-      <Message v-if="$form.companyName?.invalid" severity="error" size="small" variant="simple">{{
-        $form.companyName.error.message }}</Message>
-    </div>
-
+    <di class="formRow field">
+      <div class="field">
+        <label for="companyName">Company name</label>
+        <InputText id="companyName" name="companyName" type="text" placeholder="ABC Tech Solutions" />
+        <Message v-if="showErrors && $form.companyName?.invalid" severity="error" size="small" variant="simple">{{
+          $form.companyName.error.message }}</Message>
+      </div>
+    </di>
   </Form>
 </template>
 
 <script>
 export default {
+  props: {
+    showErrors: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       initialValues: {
@@ -114,6 +125,12 @@ export default {
         errors
       };
     },
+    onFormSubmit(event) {
+      if (event && event.preventDefault) {
+        event.preventDefault();
+      }
+      this.$emit('form-submit', { name: 'contactForm', valid: !Object.keys(this.$form.errors).length });
+    }
   }
 };
 </script>

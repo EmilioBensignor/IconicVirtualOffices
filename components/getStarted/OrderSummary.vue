@@ -22,11 +22,20 @@
       </div>
       <div class="orderLine">
         <p class="font-bold">Next biling date:</p>
-        <p>2024-11-16</p>
+        <p>{{ nextBillingDate }}</p>
       </div>
       <div class="orderLine">
         <p class="font-bold">Today’s payment:</p>
         <p>${{ order.payment }}.00</p>
+      </div>
+      <div class="orderAddOns orderLine" v-if="selectedAddOns.length">
+        <p class="font-bold">Add-ons:</p>
+        <div>
+          <div v-for="(addOn, index) in selectedAddOns" :key="index">
+            <p class="font-bold">{{ addOn.title }}</p>
+            <p>${{ (addOn.price * addOn.quantity).toFixed(2) }}  /month</p>
+          </div>
+        </div>
       </div>
       <div class="oneTime">
         <div class="orderLine">
@@ -53,6 +62,11 @@ export default {
         name: 'Month-to-month',
         price: 149.00
       })
+    },
+    addOns: {
+      type: Array,
+      required: false,
+      default: () => []
     }
   },
   data() {
@@ -90,8 +104,19 @@ export default {
       return this.selectedDestination === 'Downtown'
         ? 'Downtown Miami, FL 33131'
         : 'Aventura, FL 33180'
+    },
+    nextBillingDate() {
+      const today = new Date();
+      let nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+      if ([29, 30, 31].includes(today.getDate())) {
+        nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 28);
+      }
+      return nextMonth.toLocaleDateString();
+    },
+    selectedAddOns() {
+      return this.addOns.filter(addOn => addOn.quantity > 0);
     }
-  },
+  }
 }
 </script>
 
@@ -137,11 +162,41 @@ export default {
   padding-bottom: 0.5rem;
 }
 
+.orderAddOns, .orderAddOns > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.orderAddOns > div > div {
+  display: flex;
+  justify-content: space-between;
+}
+
 .orderLine:last-of-type {
   border: none;
 }
 
 .total {
   padding: 1rem 0;
+}
+
+@media (width >=660px) {
+  .order {
+    gap: 0.75rem;
+  }
+
+  .orderHeader {
+    border-radius: 12px;
+    padding: 0.75rem;
+  }
+
+  .order .orderHeader p {
+    font-size: 1.125rem;
+  }
+
+  .order p {
+    font-size: 0.875rem;
+  }
 }
 </style>

@@ -1,48 +1,59 @@
 <template>
-  <Form v-slot="$form" :resolver="resolver" :validateOnValueUpdate="false" :validateOnBlur="true" class="w-full column">
-    <div class="field">
-      <label for="streerAddress">Street address</label>
-      <InputText id="streerAddress" name="streerAddress" type="text" placeholder="John" />
-      <Message v-if="$form.streerAddress?.invalid" severity="error" size="small" variant="simple">{{
-        $form.streerAddress.error.message }}</Message>
-    </div>
-    <div class="field">
-      <label for="city">City</label>
-      <InputText id="city" name="city" type="text" placeholder="Doe" />
-      <Message v-if="$form.city?.invalid" severity="error" size="small" variant="simple">{{
-        $form.city.error.message }}</Message>
+  <Form v-slot="$form" :resolver="resolver" :validateOnValueUpdate="false" :validateOnBlur="true" class="w-full column"
+    @submit="onFormSubmit">
+    <div class="formRow field">
+      <div class="field">
+        <label for="streetAddress">Street address</label>
+        <InputText id="streetAddress" name="streetAddress" type="text" placeholder="123 Main St" />
+        <Message v-if="showErrors && $form.streetAddress?.invalid" severity="error" size="small" variant="simple">{{
+          $form.streetAddress.error.message }}</Message>
+      </div>
+      <div class="field">
+        <label for="city">City</label>
+        <InputText id="city" name="city" type="text" placeholder="New York" />
+        <Message v-if="showErrors && $form.city?.invalid" severity="error" size="small" variant="simple">{{
+          $form.city.error.message }}</Message>
+      </div>
     </div>
     <div class="stateZip">
       <div>
         <div class="field">
           <label for="stateProvince">State/Province</label>
-          <InputText id="stateProvince" name="stateProvince" type="text" placeholder="yourname@example.com" />
+          <InputText id="stateProvince" name="stateProvince" type="text" placeholder="NY" />
         </div>
         <div class="field">
           <label for="zipCode">Zip Code</label>
           <InputText id="zipCode" name="zipCode" type="text" placeholder="90210" />
         </div>
       </div>
-      <Message v-if="$form.stateProvince?.invalid" severity="error" size="small" variant="simple">{{
+      <Message v-if="showErrors && $form.stateProvince?.invalid" severity="error" size="small" variant="simple">{{
         $form.stateProvince.error.message }}</Message>
-      <Message v-if="$form.zipCode?.invalid" severity="error" size="small" variant="simple">{{
+      <Message v-if="showErrors && $form.zipCode?.invalid" severity="error" size="small" variant="simple">{{
         $form.zipCode.error.message }}</Message>
     </div>
-    <div class="field">
-      <label for="country">Country</label>
-      <InputText id="country" name="country" type="text" placeholder="ABC Tech Solutions" />
-      <Message v-if="$form.country?.invalid" severity="error" size="small" variant="simple">{{
-        $form.country.error.message }}</Message>
+    <div class="formRow field">
+      <div class="field">
+        <label for="country">Country</label>
+        <InputText id="country" name="country" type="text" placeholder="United States" autocomplete="country" />
+        <Message v-if="showErrors && $form.country?.invalid" severity="error" size="small" variant="simple">{{
+          $form.country.error.message }}</Message>
+      </div>
     </div>
   </Form>
 </template>
 
 <script>
 export default {
+  props: {
+    showErrors: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       initialValues: {
-        streerAddress: '',
+        streetAddress: '',
         city: '',
         stateProvince: '',
         zipCode: '',
@@ -54,12 +65,12 @@ export default {
     resolver({ values }) {
       const errors = {};
 
-      if (!values.streerAddress) {
-        errors.streerAddress = [{ message: 'Street address is required.' }];
-      } else if (values.streerAddress.length < 2) {
-        errors.streerAddress = [{ message: 'Street address must be at least 2 characters.' }];
-      } else if (values.streerAddress.length > 50) {
-        errors.streerAddress = [{ message: 'Street address must be at most 50 characters.' }];
+      if (!values.streetAddress) {
+        errors.streetAddress = [{ message: 'Street address is required.' }];
+      } else if (values.streetAddress.length < 2) {
+        errors.streetAddress = [{ message: 'Street address must be at least 2 characters.' }];
+      } else if (values.streetAddress.length > 50) {
+        errors.streetAddress = [{ message: 'Street address must be at most 50 characters.' }];
       }
 
       if (!values.city) {
@@ -110,6 +121,12 @@ export default {
         errors
       };
     },
+    onFormSubmit(event) {
+      if (event && event.preventDefault) {
+        event.preventDefault();
+      }
+      this.$emit('form-submit', { name: 'billingForm', valid: !Object.keys(this.$form.errors).length });
+    }
   }
 };
 </script>
@@ -140,5 +157,16 @@ form {
 
 .stateZip div div:last-of-type {
   width: 22.5%;
+}
+
+@media (width >=660px) {
+  .stateZip > div {
+    gap: 1rem;
+  }
+
+  .stateZip div div:first-of-type,
+  .stateZip div div:last-of-type {
+    width: 50%;
+  }
 }
 </style>

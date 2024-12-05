@@ -63,4 +63,31 @@ export default {
   font-size: 1.125rem;
   font-weight: 600;
 }
+
+@media (width >=660px) {
+  .cardsContainer {
+    flex-direction: row;
+  }
+
+  .durationCard {
+    height: 11.25rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .durationCard h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  .durationCard p {
+    font-size: 0.9rem
+  }
+
+  .durationCard p span {
+    font-size: 1.25rem;
+  }
+}
 </style>

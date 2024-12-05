@@ -126,9 +126,27 @@ p {
   padding: 1rem 1.5rem;
 }
 
+.primaryButtonImportant {
+  background-color: var(--color-mid-blue) !important;
+  border: none !important;
+  border-radius: 999px !important;
+  color: var(--color-white) !important;
+  font-weight: 700 !important;
+  font-size: 0.875rem !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s !important;
+  padding: 1rem 1.5rem !important;
+}
+
 .primaryButton:hover {
   background-color: var(--color-electric-blue);
   box-shadow: 0px 0px 10px 0px #00000080;
+}
+
+.primaryButtonImportant:hover {
+  background-color: var(--color-electric-blue) !important;
+  box-shadow: 0px 0px 10px 0px #00000080 !important;
 }
 
 .secondaryButton {
@@ -216,6 +234,10 @@ form .p-inputtext {
   padding: 0.95rem 1rem;
 }
 
+form .p-inputtext::placeholder {
+  color: var(--color-dark-gray) !important;
+}
+
 form .p-message-error.p-message-simple {
   color: var(--color-red);
   font-size: 0.75rem;
@@ -249,6 +271,19 @@ form .p-message-error.p-message-simple {
 
   .secondaryButton div {
     padding-bottom: 6px;
+  }
+
+  form .formRow {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  form .formRow .field {
+    width: 50%;
+  }
+
+  .primaryButtonImportant {
+    font-size: 1.125rem !important;
   }
 }
 
