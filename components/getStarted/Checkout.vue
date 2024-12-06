@@ -299,6 +299,17 @@ export default {
     gap: 2rem;
   }
 }
+
+@media (width >=1440px) {
+  .checkout .p-step-header {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .checkout .p-step-number {
+    font-size: 2.25rem;
+  }
+}
 </style>
 
 <style scoped>
@@ -344,6 +355,21 @@ export default {
   .primaryButtonImportant span,
   .back span {
     font-size: 1.75rem !important;
+  }
+}
+
+@media (width >=1440px) {
+  .userCheckout {
+    gap: 2rem;
+  }
+
+  .userCheckout > div:first-of-type {
+    width: 75%;
+  }
+
+  .primaryButtonImportant span,
+  .back span {
+    font-size: 2rem !important;
   }
 }
 </style>

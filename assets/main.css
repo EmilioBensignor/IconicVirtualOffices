@@ -358,4 +358,8 @@ form .p-message-error.p-message-simple {
   .secondaryButton {
     font-size: 1.5rem;
   }
+
+  .primaryButtonImportant {
+    font-size: 1.5rem !important;
+  }
 }

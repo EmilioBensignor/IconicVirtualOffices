@@ -132,4 +132,14 @@ export default {
     font-size: 1.5rem;
   }
 }
+
+@media (width >=1440px) {
+  .addOn {
+    padding: 1.25rem 0;
+  }
+
+  .addOn h3 {
+    font-size: 1.5rem;
+  }
+}
 </style>

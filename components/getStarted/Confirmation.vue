@@ -105,4 +105,15 @@ export default {
     height: 3.75rem;
   }
 }
+
+@media (width >=1440px) {
+  .confirmationIcon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .ready div p:first-of-type {
+    font-size: 2.25rem;
+  }
+}
 </style>

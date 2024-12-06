@@ -115,4 +115,14 @@ export default {
     font-size: 1.5rem;
   }
 }
+
+@media (width >=1440px) {
+  .durationCard h3 {
+    font-size: 1.5rem;
+  }
+
+  .durationCard p span {
+    font-size: 1.75rem;
+  }
+}
 </style>
