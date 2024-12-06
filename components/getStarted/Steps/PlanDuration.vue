@@ -1,10 +1,18 @@
 <template>
   <div class="w-full cardsContainer columnAlignCenter">
-    <button v-for="(item, index) in planDurations" :key="index"
-      :class="['w-full durationCard columnAlignCenter bg-white', { active: durationPlanSelected === index }]"
-      @click="selectPlanDuration(index)">
+    <button
+      v-for="(item, index) in planDurations"
+      :key="index"
+      :class="[
+        'w-full durationCard columnAlignCenter bg-white',
+        { active: durationPlanSelected === index },
+      ]"
+      @click="selectPlanDuration(index)"
+    >
       <h3>{{ item.name }}</h3>
-      <p>Starting <span>{{ item.price }}</span> /month</p>
+      <p>
+        Starting <span>${{ item.price }}</span> /month
+      </p>
     </button>
   </div>
 </template>
@@ -28,15 +36,18 @@ export default {
         },
       ],
       durationPlanSelected: 0,
-    }
+    };
   },
   methods: {
     selectPlanDuration(index) {
       this.durationPlanSelected = index;
       const selectedPlan = this.planDurations[index];
-      this.$emit('plan-changed', { name: selectedPlan.name, price: selectedPlan.price });
-    }
-  }
+      this.$emit("plan-changed", {
+        name: selectedPlan.name,
+        price: selectedPlan.price,
+      });
+    },
+  },
 };
 </script>
 
@@ -56,7 +67,7 @@ export default {
 }
 
 .durationCard.active {
-  box-shadow: 0px 0px 20px 0px #69B9FC;
+  box-shadow: 0px 0px 20px 0px #69b9fc;
 }
 
 .durationCard p span {
@@ -83,11 +94,25 @@ export default {
   }
 
   .durationCard p {
-    font-size: 0.9rem
+    font-size: 0.9rem;
   }
 
   .durationCard p span {
     font-size: 1.25rem;
+  }
+}
+
+@media (width >=1080px) {
+  .durationCard h3 {
+    font-size: 1.25rem;
+  }
+
+  .durationCard p {
+    font-size: 1rem;
+  }
+
+  .durationCard p span {
+    font-size: 1.5rem;
   }
 }
 </style>

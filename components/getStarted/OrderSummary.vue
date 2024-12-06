@@ -199,4 +199,23 @@ export default {
     font-size: 0.875rem;
   }
 }
+
+@media (width >=1080px) {
+  .orderHeader {
+    border-radius: 18px;
+    padding: 1rem 0.75rem;
+  }
+
+  .order .orderHeader p {
+    font-size: 1.25rem;
+  }
+
+  .order p {
+    font-size: 1rem;
+  }
+
+  .orderLine {
+    padding: 0.75rem 0 ;
+  }
+}
 </style>

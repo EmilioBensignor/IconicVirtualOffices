@@ -1,8 +1,12 @@
 <template>
   <section class="checkout columnAlignCenter">
-    <h1 class="w-full text-center">Let’s launch your virtual office</h1>
-    <Stepper v-model="currentStep" :value="currentStep" aria-labelledby="Checkout Stepper"
-      class="w-full columnAlignCenter">
+    <h1 class="w-full text-center">Let's launch your virtual office</h1>
+    <Stepper
+      v-model="currentStep"
+      :value="currentStep"
+      aria-labelledby="Checkout Stepper"
+      class="w-full columnAlignCenter"
+    >
       <StepList class="w-full">
         <Step v-for="step in 4" :key="step" :value="step"></Step>
       </StepList>
@@ -15,7 +19,12 @@
             </div>
             <GetStartedStepsPlanDuration @plan-changed="handlePlanChange" />
             <div class="rowCenter justify-content-end">
-              <Button type="button" label="Next step" class="primaryButtonImportant" @click="currentStep++">
+              <Button
+                type="button"
+                label="Next step"
+                class="primaryButtonImportant"
+                @click="currentStep++"
+              >
                 <template #icon>
                   <Icon name="mingcute:arrow-right-line" />
                 </template>
@@ -34,7 +43,11 @@
                   <Icon name="mingcute:arrow-left-line" />
                 </template>
               </Button>
-              <Button label="Next step" class="primaryButtonImportant" @click="currentStep++">
+              <Button
+                label="Next step"
+                class="primaryButtonImportant"
+                @click="currentStep++"
+              >
                 <template #icon>
                   <Icon name="mingcute:arrow-right-line" />
                 </template>
@@ -44,23 +57,38 @@
           <StepPanel :value="3">
             <div>
               <h2>Contact information</h2>
-              <p>Provide the information of the person responsible for this order below</p>
+              <p>
+                Provide the information of the person responsible for this order
+                below
+              </p>
             </div>
-            <GetStartedStepsContactInformation @form-submit="handleFormSubmit" ref="contactForm"
-              :showErrors="showErrors" :validateOnMount="true" />
+            <GetStartedStepsContactInformation
+              @form-submit="handleFormSubmit"
+              ref="contactForm"
+              :showErrors="showErrors"
+              :validateOnMount="true"
+            />
             <div>
               <h2>Billing address</h2>
               <p>Fill out the address associated with your card</p>
             </div>
-            <GetStartedStepsBillingAddress @form-submit="handleFormSubmit" ref="billingForm" :showErrors="showErrors"
-              :validateOnMount="true" />
+            <GetStartedStepsBillingAddress
+              @form-submit="handleFormSubmit"
+              ref="billingForm"
+              :showErrors="showErrors"
+              :validateOnMount="true"
+            />
             <div class="rowSpaceBetween">
               <Button class="back" @click="currentStep--">
                 <template #icon>
                   <Icon name="mingcute:arrow-left-line" />
                 </template>
               </Button>
-              <Button label="Next step" class="primaryButtonImportant" @click="submitForms">
+              <Button
+                label="Next step"
+                class="primaryButtonImportant"
+                @click="submitForms"
+              >
                 <template #icon>
                   <Icon name="mingcute:arrow-right-line" />
                 </template>
@@ -75,11 +103,18 @@
                   <Icon name="mingcute:arrow-left-line" />
                 </template>
               </Button>
-              <Button label="Confirm order" class="primaryButtonImportant" @click="confirmOrder" />
+              <Button
+                label="Confirm order"
+                class="primaryButtonImportant"
+                @click="confirmOrder"
+              />
             </div>
           </StepPanel>
         </StepPanels>
-        <GetStartedOrderSummary :duration-data="durationData" :addOns="addOns" />
+        <GetStartedOrderSummary
+          :duration-data="durationData"
+          :addOns="addOns"
+        />
       </div>
     </Stepper>
   </section>
@@ -91,75 +126,66 @@ export default {
     return {
       currentStep: 1,
       durationData: {
-        name: 'Month-to-month',
-        price: 149.00
+        name: "Month-to-month",
+        price: 149.0,
       },
       addOns: [],
       formsValid: {
         contactForm: false,
-        billingForm: false
+        billingForm: false,
       },
       isSubmitting: false,
       showErrors: false,
-    }
-  },
-  watch: {
-    currentStep(newStep) {
-      if (newStep === 3) {
-        this.showErrors = false;
-      }
-    }
+    };
   },
   methods: {
     handlePlanChange(data) {
       this.durationData = data;
     },
-    updateAddOns(updatedAddOns) {
-      this.addOns = updatedAddOns;
+    updateAddOns(addOns) {
+      this.addOns = addOns;
     },
     handleFormSubmit({ name, valid }) {
       this.formsValid[name] = valid;
     },
     async submitForms() {
       if (this.isSubmitting) return;
-
       this.isSubmitting = true;
+
+      // Activamos showErrors antes de la validación
       this.showErrors = true;
 
       try {
-        await Promise.all([
-          this.validateForm('contactForm'),
-          this.validateForm('billingForm')
+        const contactFormComponent = this.$refs.contactForm;
+        const billingFormComponent = this.$refs.billingForm;
+
+        if (!contactFormComponent || !billingFormComponent) return;
+
+        // Validamos y obtenemos los resultados
+        const [contactResult, billingResult] = await Promise.all([
+          contactFormComponent.validateForm(),
+          billingFormComponent.validateForm(),
         ]);
+
+        // Esperamos a que se actualice el DOM
+        await this.$nextTick();
 
         if (this.formsValid.contactForm && this.formsValid.billingForm) {
           this.currentStep++;
           this.showErrors = false;
+        } else {
+          // Mantenemos showErrors en true si hay errores
+          this.showErrors = true;
         }
-      } catch (error) {
-        console.error('Error validating forms:', error);
       } finally {
         this.isSubmitting = false;
       }
     },
-    validateForm(formRef) {
-      return new Promise((resolve) => {
-        const form = this.$refs[formRef].$el;
-        const event = new Event('submit', { cancelable: true });
-
-        event.preventDefault();
-        form.dispatchEvent(event);
-
-        this.$nextTick(() => {
-          resolve();
-        });
-      });
-    },
     confirmOrder() {
-      this.$emit('confirm-order');
-    }
-  }
-}
+      this.$emit("confirm-order");
+    },
+  },
+};
 </script>
 
 <style>
@@ -180,7 +206,7 @@ export default {
   justify-content: center;
   background: var(--color-light-gray);
   border-radius: 999px;
-  padding: 0.25rem
+  padding: 0.25rem;
 }
 
 .checkout .p-step-active .p-step-header,
@@ -220,7 +246,7 @@ export default {
   gap: 1.25rem;
 }
 
-.checkout .p-steppanel>div {
+.checkout .p-steppanel > div {
   width: 100%;
 }
 
@@ -250,8 +276,27 @@ export default {
     gap: 1.5rem;
   }
 
-  .checkout .p-steppanel>div:last-of-type {
+  .checkout .p-steppanel > div:last-of-type {
     margin-top: 0.5rem;
+  }
+}
+
+@media (width >=1080px) {
+  .checkout .p-step-header {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .checkout .p-step-number {
+    font-size: 2rem;
+  }
+
+  .checkout .p-steppanel h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .checkout .p-steppanel {
+    gap: 2rem;
   }
 }
 </style>
@@ -266,7 +311,8 @@ export default {
   gap: 0.625rem;
 }
 
-.primaryButtonImportant span, .back span {
+.primaryButtonImportant span,
+.back span {
   font-size: 1.5rem !important;
 }
 
@@ -277,6 +323,27 @@ export default {
 
   h1 {
     text-align: start !important;
+  }
+}
+
+@media (width >=1080px) {
+  .userCheckout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .userCheckout > div:first-of-type {
+    width: 60%;
+  }
+
+  .userCheckout > div:last-of-type {
+    width: 40% !important;
+  }
+
+  .primaryButtonImportant span,
+  .back span {
+    font-size: 1.75rem !important;
   }
 }
 </style>

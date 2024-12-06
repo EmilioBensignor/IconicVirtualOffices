@@ -1,18 +1,24 @@
 <template>
   <div class="w-full">
-    <div v-for="(item, index) in addOns" :key="index" class="w-full addOn column">
+    <div
+      v-for="(item, index) in addOns"
+      :key="index"
+      class="w-full addOn column"
+    >
       <div class="column">
         <h3>{{ item.title }}</h3>
-        <p>{{ item.description }}</p>
+        <p class="text-dark-gray">{{ item.description }}</p>
       </div>
       <div class="priceAdd rowSpaceBetween">
-        <p class="text-electric-blue"><span>$</span><span>{{ item.price }}</span> /month</p>
+        <p class="text-electric-blue font-semibold">
+          <span>$</span><span>{{ item.price }}</span> /month
+        </p>
         <div class="quantity rowSpaceBetweenCenter">
-          <button @click="decrement(index)">-</button>
+          <button @click="decrement(index)" class="font-semibold">-</button>
           <div>
             <span>{{ item.quantity }}</span>
           </div>
-          <button @click="increment(index)">+</button>
+          <button @click="increment(index)" class="font-semibold">+</button>
         </div>
       </div>
     </div>
@@ -26,37 +32,40 @@ export default {
       addOns: [
         {
           title: "Additional mail recipient",
-          description: "Allow multiple users to receive and manage mail from the same mailbox. Add a quantity for each additional person and/or company you need to receive mail for.",
+          description:
+            "Allow multiple users to receive and manage mail from the same mailbox. Add a quantity for each additional person and/or company you need to receive mail for.",
           price: 149,
           quantity: 0,
         },
         {
           title: "Auto-attendant voice menu",
-          description: "Record personalized greetings for your callers and automatically direct calls to the appropriate person or department.",
+          description:
+            "Record personalized greetings for your callers and automatically direct calls to the appropriate person or department.",
           price: 129,
           quantity: 0,
         },
         {
           title: "Registered agent",
-          description: "Stay in compliance with state and federal regulations and have legal documents and correspondence handled securely",
+          description:
+            "Stay in compliance with state and federal regulations and have legal documents and correspondence handled securely",
           price: 119,
           quantity: 0,
         },
       ],
-    }
+    };
   },
   methods: {
     increment(index) {
       this.addOns[index].quantity++;
-      this.$emit('update-add-ons', [...this.addOns]);
+      this.$emit("update-add-ons", [...this.addOns]);
     },
     decrement(index) {
       if (this.addOns[index].quantity > 0) {
         this.addOns[index].quantity--;
-        this.$emit('update-add-ons', [...this.addOns]);
+        this.$emit("update-add-ons", [...this.addOns]);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -67,11 +76,11 @@ export default {
 }
 
 .addOn:nth-child(2) {
-  border-top: 2px solid #E2E0E0;
-  border-bottom: 2px solid #E2E0E0;
+  border-top: 2px solid #e2e0e0;
+  border-bottom: 2px solid #e2e0e0;
 }
 
-.addOn>div:first-of-type {
+.addOn > div:first-of-type {
   gap: 0.625rem;
 }
 
@@ -111,6 +120,16 @@ export default {
   .priceAdd {
     justify-content: flex-end;
     gap: 2.5rem;
+  }
+}
+
+@media (width >=1080px) {
+  .addOn h3 {
+    font-size: 1.375rem;
+  }
+
+  .priceAdd div span {
+    font-size: 1.5rem;
   }
 }
 </style>
