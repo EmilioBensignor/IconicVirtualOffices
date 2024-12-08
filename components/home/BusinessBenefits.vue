@@ -3,7 +3,7 @@
     <h2 class="text-center">Unlock your business potential</h2>
     <div class="w-full columnAlignCenter">
       <article class="w-full columnAlignCenter" v-for="(benefit, index) in benefits" :key="index">
-        <NuxtImg :src="`/images/home/${benefit.img}.png`" :alt="benefit.alt" />
+        <NuxtImg :src="`/images/Home/${benefit.img}-Iconic-Virtual-Offices.png`" :alt="`${benefit.alt} Iconic Virtual Offices`" />
         <h3 class="text-center">{{ benefit.title }}</h3>
         <ul class="column">
           <li class="flex" v-for="(item, index) in benefit.list" :key="index">
@@ -22,8 +22,8 @@ export default {
     return {
       benefits: [
         {
-          img: "Benefit-Image",
-          alt: "",
+          img: "Focus-growth",
+          alt: "Focus on growth",
           title: "Focus on growth",
           list: [
             {
@@ -37,8 +37,8 @@ export default {
           ],
         },
         {
-          img: "Benefit-Image",
-          alt: "",
+          img: "Stay-productive",
+          alt: "Stay productive",
           title: "Stay productive",
           list: [
             {
@@ -52,8 +52,8 @@ export default {
           ],
         },
         {
-          img: "Benefit-Image",
-          alt: "",
+          img: "Expand-flexibility",
+          alt: "Expand flexibility",
           title: "Expand with flexibility",
           list: [
             {

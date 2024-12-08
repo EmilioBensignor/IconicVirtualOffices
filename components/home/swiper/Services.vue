@@ -4,7 +4,8 @@
       :responsiveOptions="responsiveOptions" class="w-full carrouselServices">
       <template #item="slotProps">
         <div class="slide columnAlignCenter">
-          <NuxtImg class="imgSlide" :src="`/images/home/${slotProps.data.img}.png`" :alt="slotProps.data.text" />
+          <NuxtImg class="imgSlide" :src="`/images/services/${slotProps.data.img}-service.png`"
+            :alt="`${slotProps.data.text} Service`" />
           <p class="text-center">{{ slotProps.data.text }}</p>
         </div>
       </template>
@@ -35,99 +36,123 @@ export default {
       ],
       services: [
         {
-          img: "Service-Image",
+          img: "Receptionist-secretarial-support",
+          alt: "Reception secretarial support",
           text: "Receptionist & secretarial support",
         },
         {
-          img: "Service-Image",
+          img: "Mail-scanning-forwarding",
+          alt: "Mail scanning forwarding",
           text: "Mail scanning & forwarding",
         },
         {
-          img: "Service-Image",
+          img: "Package-handling-courier",
+          alt: "Package handling courier services",
           text: "Package handling & courier services",
         },
         {
-          img: "Service-Image",
+          img: "Telephone-answering",
+          alt: "Telephone answering service",
           text: "Telephone answering service",
         },
         {
-          img: "Service-Image",
+          img: "Receptionist-secretarial-support",
+          alt: "Reception secretarial support",
           text: "Receptionist & secretarial support",
         },
         {
-          img: "Service-Image",
+          img: "Mail-scanning-forwarding",
+          alt: "Mail scanning forwarding",
           text: "Mail scanning & forwarding",
         },
         {
-          img: "Service-Image",
+          img: "Package-handling-courier",
+          alt: "Package handling courier services",
           text: "Package handling & courier services",
         },
         {
-          img: "Service-Image",
+          img: "Telephone-answering",
+          alt: "Telephone answering service",
           text: "Telephone answering service",
         },
         {
-          img: "Service-Image",
+          img: "Receptionist-secretarial-support",
+          alt: "Reception secretarial support",
           text: "Receptionist & secretarial support",
         },
         {
-          img: "Service-Image",
+          img: "Mail-scanning-forwarding",
+          alt: "Mail scanning forwarding",
           text: "Mail scanning & forwarding",
         },
         {
-          img: "Service-Image",
+          img: "Package-handling-courier",
+          alt: "Package handling courier services",
           text: "Package handling & courier services",
         },
         {
-          img: "Service-Image",
+          img: "Telephone-answering",
+          alt: "Telephone answering service",
           text: "Telephone answering service",
         },
         {
-          img: "Service-Image",
+          img: "Receptionist-secretarial-support",
+          alt: "Reception secretarial support",
           text: "Receptionist & secretarial support",
         },
         {
-          img: "Service-Image",
+          img: "Mail-scanning-forwarding",
+          alt: "Mail scanning forwarding",
           text: "Mail scanning & forwarding",
         },
         {
-          img: "Service-Image",
+          img: "Package-handling-courier",
+          alt: "Package handling courier services",
           text: "Package handling & courier services",
         },
         {
-          img: "Service-Image",
+          img: "Telephone-answering",
+          alt: "Telephone answering service",
           text: "Telephone answering service",
         },
         {
-          img: "Service-Image",
+          img: "Receptionist-secretarial-support",
+          alt: "Reception secretarial support",
           text: "Receptionist & secretarial support",
         },
         {
-          img: "Service-Image",
+          img: "Mail-scanning-forwarding",
+          alt: "Mail scanning forwarding",
           text: "Mail scanning & forwarding",
         },
         {
-          img: "Service-Image",
+          img: "Package-handling-courier",
+          alt: "Package handling courier services",
           text: "Package handling & courier services",
         },
         {
-          img: "Service-Image",
+          img: "Telephone-answering",
+          alt: "Telephone answering service",
           text: "Telephone answering service",
         },
         {
-          img: "Service-Image",
+          img: "Receptionist-secretarial-support",
+          alt: "Reception secretarial support",
           text: "Receptionist & secretarial support",
         },
         {
-          img: "Service-Image",
+          img: "Mail-scanning-forwarding",
+          alt: "Mail scanning forwarding",
           text: "Mail scanning & forwarding",
         },
         {
-          img: "Service-Image",
+          img: "Package-handling-courier",
+          alt: "Package handling courier services",
           text: "Package handling & courier services",
         },
         {
-          img: "Service-Image",
+          img: "Telephone-answering",
+          alt: "Telephone answering service",
           text: "Telephone answering service",
         },
       ],
@@ -205,7 +230,9 @@ export default {
 }
 
 @media (width >=1440px) {
-  .carrouselServices .p-carousel-next-button, .carrouselServices .p-carousel-prev-button {
+
+  .carrouselServices .p-carousel-next-button,
+  .carrouselServices .p-carousel-prev-button {
     width: 3rem;
     height: 3rem !important;
   }

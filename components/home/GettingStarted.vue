@@ -9,7 +9,8 @@
           'completed': index < currentStep
         }">
           <div class="stepCard">
-            <NuxtImg :src="`/images/home/${step.img}.png`" :alt="`${step.title}`" class="w-full object-contain" />
+            <video :src="`/videos/Get-started-${step.video}.webm`" :alt="`Get started ${step.title}`"
+              class="w-full object-contain" :autoplay="currentStep === index" muted playsinline></video>
             <h3>{{ step.title }}</h3>
             <p class="text-dark-gray">{{ step.description }}</p>
 
@@ -44,24 +45,24 @@ export default {
       translateX: 0,
       steps: [
         {
-          img: "Step-Image",
+          video: "check-out",
           title: "Select a Plan",
           description: "Choose the virtual office plan that best suits your business needs and budget to start benefiting from our services.",
         },
         {
-          img: "Step-Image",
-          title: "Complete Registration",
-          description: "Fill in your business details and verify your account to set up your virtual office presence.",
+          video: "onboarding",
+          title: "Onboarding",
+          description: "Provide us with the necessary information during the onboarding process, so we can set up your virtual office smoothly.",
         },
         {
-          img: "Step-Image",
-          title: "Customize Settings",
-          description: "Configure your virtual office preferences, communication channels, and team access levels.",
+          video: "check-out",
+          title: "Checkout",
+          description: "Complete your payment securely to finalize your plan selection and activate your services.",
         },
         {
-          img: "Step-Image",
-          title: "Launch Office",
-          description: "Start using your virtual office space with all features enabled for your business operations.",
+          video: "ready",
+          title: "Ready to Go",
+          description: "Start using your virtual office and enjoy the professional support and services your business needs to grow.",
         },
       ],
     };
@@ -79,17 +80,31 @@ export default {
       if (this.currentStep < this.steps.length - 1) {
         this.currentStep++;
         this.translateX = this.calculateTranslate();
+        this.playCurrentVideo();
       }
     },
     prevStep() {
       if (this.currentStep > 0) {
         this.currentStep--;
         this.translateX = this.calculateTranslate();
+        this.playCurrentVideo();
       }
     },
+    playCurrentVideo() {
+      const videos = this.$el.querySelectorAll('video');
+      videos.forEach((video, index) => {
+        if (index === this.currentStep) {
+          video.play();
+        } else {
+          video.pause();
+          video.currentTime = 0;
+        }
+      });
+    }
   },
   mounted() {
     this.translateX = this.calculateTranslate();
+    this.playCurrentVideo();
     window.addEventListener('resize', () => {
       this.translateX = this.calculateTranslate();
     });
@@ -116,7 +131,7 @@ export default {
 }
 
 .stepCard {
-  height: 20rem;
+  height: 25.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -184,7 +199,7 @@ h3 {
   }
 
   .stepCard {
-    height: 22rem;
+    height: 29rem;
   }
 
   .nextButton {
@@ -203,8 +218,9 @@ h3 {
     flex: 0 0 23%;
   }
 
-  .stepCard {
-    height: 24rem;
+  .stepCard video {
+    max-width: 200px;
+    margin: 0 auto;
   }
 
   p {
@@ -222,7 +238,7 @@ h3 {
   }
 
   .stepCard {
-    height: 28rem;
+    height: 30rem;
   }
 
   p {

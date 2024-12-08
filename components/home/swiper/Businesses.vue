@@ -4,8 +4,8 @@
     <div class="w-full slider">
       <ClientOnly>
         <div class="logos">
-          <NuxtImg v-for="(logo, index) in businesses" :key="index" :src="`/images/businesses/${logo}`" :alt="logo" />
-          <NuxtImg v-for="(logo, index) in businesses" :key="index" :src="`/images/businesses/${logo}`" :alt="logo" />
+          <NuxtImg v-for="(logo, index) in businesses" :key="index" :src="`/images/businesses/${logo}-Iconic.png`" :alt="`${logo} Iconic`" />
+          <NuxtImg v-for="(logo, index) in businesses" :key="index" :src="`/images/businesses/${logo}-Iconic.png`" :alt="`${logo} Iconic`" />
         </div>
       </ClientOnly>
     </div>
@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      businesses: ["1.png", "2.png", "3.png", "1.png", "2.png", "3.png"],
+      businesses: ['Admazing', 'Aks-law', 'Apex', 'Argaman-construction-group', 'Kaplan-residential', 'Kubikware', 'OpsWorks', 'Skill4cause'],
     };
   },
 };
@@ -46,6 +46,8 @@ p {
 
 .logos img {
   width: 5rem;
+  height: 2.188rem;
+  object-fit: contain;
   margin: 0 1.5rem;
 }
 
@@ -70,6 +72,7 @@ p {
 
   .logos img {
     width: 6.75rem;
+    height: 3.125rem;
   }
 }
 
@@ -81,6 +84,7 @@ p {
 
   .logos img {
     width: 8rem;
+    height: 5.313rem;
     margin: 0 2rem;
   }
 }
