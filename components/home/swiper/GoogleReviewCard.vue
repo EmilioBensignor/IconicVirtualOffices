@@ -8,7 +8,7 @@
       <div
         class="avatar bgCover"
         :style="{
-          backgroundImage: `url('/public/images/reviews/${review.img}-Google-Review.svg')`,
+          backgroundImage: `url('/images/reviews/${review.img}-Google-Review.svg')`,
         }"
       ></div>
       <div class="reviewHeader column gap-1">
@@ -27,7 +27,7 @@
     <p>{{ review.text }}</p>
     <NuxtImg
       class="googleIcon absolute"
-      src="/images/home/Google-Icon.svg"
+      src="/images/Home/Google-Icon.svg"
       alt="Google Icon"
     />
   </NuxtLink>
