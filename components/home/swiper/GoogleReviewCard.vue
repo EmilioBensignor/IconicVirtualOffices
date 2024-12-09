@@ -5,14 +5,13 @@
     class="reviewCard column relative no-underline"
   >
     <div class="rowCenter gap-2">
-      <div
-        class="avatar bgCover"
-        :style="{
-          backgroundImage: `url('/images/reviews/${review.img}-Google-Review.svg')`,
-        }"
-      ></div>
+      <ClientOnly>
+        <div class="avatar rowCenter" :style="{ backgroundColor: randomColor }">
+          {{ review.name.charAt(0).toUpperCase() }}
+        </div>
+      </ClientOnly>
       <div class="reviewHeader column gap-1">
-        <p class=" font-bold">{{ review.name }}</p>
+        <p class="font-bold">{{ review.name }}</p>
         <p>{{ review.numReviews }} reviews</p>
       </div>
     </div>
@@ -41,12 +40,28 @@ export default {
       required: true,
     },
   },
+  computed: {
+    randomColor() {
+      const colors = [
+        "#EF6C00",
+        "#0C7A81",
+        "#455A64",
+        "#C2185B",
+        "#309727",
+        "#33691E",
+        "#3B1B7F",
+        "#D32F2F",
+        "#1976D2",
+      ];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+  },
 };
 </script>
 
 <style scoped>
 .reviewCard {
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   gap: 0.625rem;
   border-radius: 12px;
   border: 1px solid var(--color-dark-gray);
@@ -64,6 +79,11 @@ export default {
 .avatar {
   width: 2.5rem;
   height: 2.5rem;
+  border-radius: 50%;
+  color: white;
+  font-weight: 500;
+  justify-content: center;
+  font-size: 1rem;
 }
 
 .reviewHeader p:first-of-type {
