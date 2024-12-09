@@ -1,7 +1,7 @@
 <template>
   <section class="columnAlignCenter">
     <div class="videoContainer columnAlignCenter">
-      <video src="/videos/Iconic-Virtual-Offices-Professional-Presence.mp4" controls></video>
+      <video ref="videoPlayer" src="/videos/Iconic-Virtual-Offices-Professional-Presence.mp4" controls></video>
     </div>
     <div class="workspaceContainer columnAlignCenter">
       <div class="workspace columnAlignCenter">
@@ -55,6 +55,9 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
+    this.$refs.videoPlayer.currentTime = 0.1;
   },
 };
 </script>
