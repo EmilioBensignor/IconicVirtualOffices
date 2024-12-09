@@ -192,8 +192,8 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: auto 0 0 0;
   padding-top: 1rem;
-  margin-top: auto;
 }
 
 .backButton {
@@ -249,6 +249,10 @@ h3 {
     flex: 0 0 23%;
   }
 
+  .stepCard {
+    height: 27rem;
+  }
+
   .stepCard video {
     max-width: 200px;
     margin: 0 auto;
@@ -256,6 +260,10 @@ h3 {
 
   p {
     font-size: 1rem;
+  }
+
+  .stepActions {
+    padding-top: 0;
   }
 
   .nextButton {
@@ -269,7 +277,7 @@ h3 {
   }
 
   .stepCard {
-    height: 30rem;
+    height: 29rem;
   }
 
   p {
