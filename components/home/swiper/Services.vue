@@ -1,15 +1,35 @@
 <template>
   <div>
-    <Carousel :value="services" :num-visible="2" :num-scroll="1" circular :autoplayInterval="3000"
-      :responsiveOptions="responsiveOptions" class="w-full carrouselServices">
+    <Carousel
+      :value="services"
+      :num-visible="2"
+      :num-scroll="1"
+      circular
+      :autoplayInterval="3000"
+      :responsiveOptions="responsiveOptions"
+      class="w-full carrouselServices"
+    >
       <template #item="slotProps">
         <div class="slide columnAlignCenter">
-          <NuxtImg class="imgSlide" :src="`/images/services/${slotProps.data.img}-service.png`"
-            :alt="`${slotProps.data.text} Service`" />
+          <NuxtImg
+            class="imgSlide"
+            :src="`/images/services/${slotProps.data.img}-service.png`"
+            :alt="`${slotProps.data.text} Service`"
+          />
           <p class="text-center">{{ slotProps.data.text }}</p>
         </div>
       </template>
     </Carousel>
+    <div class="w-full servicesContainer">
+      <div class="columnAlignCenter" v-for="(service, index) in services.slice(0, 4)" :key="index">
+        <NuxtImg
+          class="imgSlide"
+          :src="`/images/services/${service.img}-service.png`"
+          :alt="`${service.text} Service`"
+        />
+        <p class="text-center">{{ service.text }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -22,6 +42,8 @@ export default {
           breakpoint: "1920px",
           numVisible: 4,
           numScroll: 1,
+          autoplayInterval: 0,
+          showArrows: false,
         },
         {
           breakpoint: "1080px",
@@ -189,7 +211,6 @@ export default {
 }
 
 @media (width >=660px) {
-
   .carrouselServices .p-carousel-next-button,
   .carrouselServices .p-carousel-prev-button {
     width: 2.5rem;
@@ -216,37 +237,8 @@ export default {
 }
 
 @media (width >=1080px) {
-  .carrouselServices .p-carousel-prev-button {
-    left: 3rem;
-  }
-
-  .carrouselServices .p-carousel-next-button {
-    right: 3rem;
-  }
-
-  .carrouselServices .p-carousel-viewport {
-    padding: 0 2.5rem;
-  }
-}
-
-@media (width >=1440px) {
-
-  .carrouselServices .p-carousel-next-button,
-  .carrouselServices .p-carousel-prev-button {
-    width: 3rem;
-    height: 3rem !important;
-  }
-
-  .carrouselServices .p-carousel-prev-button {
-    left: -1.25rem;
-  }
-
-  .carrouselServices .p-carousel-next-button {
-    right: -1.25rem;
-  }
-
-  .carrouselServices .p-carousel-viewport {
-    padding: 0 2.75rem;
+  .carrouselServices {
+    display: none !important;
   }
 }
 </style>
@@ -288,6 +280,10 @@ p {
   right: -2rem;
 }
 
+.servicesContainer {
+  display: none;
+}
+
 @media (width >=660px) {
   p {
     max-width: 140px;
@@ -300,7 +296,18 @@ p {
 }
 
 @media (width >=1080px) {
-  .slide {
+  .serviceContainer {
+    display: flex;
+  }
+
+  .servicesContainer {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 2rem;
+    padding: 0 3rem;
+  }
+
+  .servicesContainer div {
     gap: 1.5rem;
   }
 
