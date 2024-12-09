@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   icon: {
     size: '1rem',
     serverBundle: {
-      collections: ['mingcute']
+      collections: ['mingcute', 'mdi']
     }
   },
   app: {

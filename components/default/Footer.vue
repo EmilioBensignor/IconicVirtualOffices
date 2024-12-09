@@ -36,7 +36,7 @@
             <div class="socialMedia rowCenter">
               <NuxtLink :aria-label="`Go to ${item.name}`" target="_blank" :to="item.link"
                 v-for="(item, index) in socialMedia" :key="index">
-                <img :src="`/images/icons/${item.name}-Icon.svg`" :alt="`${item.name} Icon`" />
+                <Icon :name="item.icon" />
               </NuxtLink>
             </div>
           </div>
@@ -82,18 +82,22 @@ export default {
         {
           name: "Facebook",
           link: "https://www.facebook.com/iconicworkspaces",
+          icon: "mingcute:facebook-fill",
         },
         {
           name: "Instagram",
           link: "https://www.instagram.com/iconic.workspaces/",
+          icon: "mdi:instagram",
         },
         {
           name: "X",
           link: "https://x.com/WorkspaceIconic",
+          icon: "mingcute:social-x-line",
         },
         {
           name: "LinkedIn",
           link: "https://www.linkedin.com/company/iconic-workspaces/",
+          icon: "mingcute:linkedin-line",
         },
       ],
     };
