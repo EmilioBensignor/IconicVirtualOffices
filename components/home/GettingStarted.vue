@@ -7,10 +7,10 @@
           'active': currentStep === index,
           'upcoming': index > currentStep,
           'completed': index < currentStep
-        }">
+        }" :ref="index === 0 ? 'firstStep' : null">
           <div class="stepCard">
             <video :src="`/videos/Get-started-${step.video}.webm`" :alt="`Get started ${step.title}`"
-              class="w-full object-contain" :autoplay="currentStep === index" muted playsinline></video>
+              class="w-full object-contain" :autoplay="false" muted playsinline @loadeddata="setLastFrame($event, index)"></video>
             <h3>{{ step.title }}</h3>
             <p class="text-dark-gray">{{ step.description }}</p>
 
@@ -45,7 +45,7 @@ export default {
       translateX: 0,
       steps: [
         {
-          video: "check-out",
+          video: "select-plan",
           title: "Select a Plan",
           description: "Choose the virtual office plan that best suits your business needs and budget to start benefiting from our services.",
         },
@@ -65,6 +65,7 @@ export default {
           description: "Start using your virtual office and enjoy the professional support and services your business needs to grow.",
         },
       ],
+      observer: null,
     };
   },
   methods: {
@@ -94,12 +95,38 @@ export default {
       const videos = this.$el.querySelectorAll('video');
       videos.forEach((video, index) => {
         if (index === this.currentStep) {
-          video.play();
+          // Solo reproducir si no es el primer paso o si es el primer paso y ya está visible
+          if (index !== 0 || (index === 0 && this.isFirstStepVisible)) {
+            video.play();
+          }
         } else {
           video.pause();
-          video.currentTime = 0;
+          video.currentTime = video.duration; // Set to last frame
         }
       });
+    },
+    setLastFrame(event, index) {
+      if (index !== this.currentStep) {
+        event.target.currentTime = event.target.duration; // Set to last frame
+      }
+    },
+    setupIntersectionObserver() {
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && this.currentStep === 0) {
+            const firstVideo = entry.target.querySelector('video');
+            if (firstVideo) {
+              firstVideo.play();
+            }
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+
+      if (this.$refs.firstStep && this.$refs.firstStep[0]) {
+        this.observer.observe(this.$refs.firstStep[0]);
+      }
     }
   },
   mounted() {
@@ -108,11 +135,15 @@ export default {
     window.addEventListener('resize', () => {
       this.translateX = this.calculateTranslate();
     });
+    this.setupIntersectionObserver();
   },
   beforeDestroy() {
     window.removeEventListener('resize', () => {
       this.translateX = this.calculateTranslate();
     });
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
 };
 </script>
