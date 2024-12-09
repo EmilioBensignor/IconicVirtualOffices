@@ -11,7 +11,7 @@
         <div class="column">
           <p class="font-bold">Your virtual office is ready!</p>
           <p>
-            Confirmation number <span>{{ confirmationNumber }}</span>
+            Confirmation number <span class="font-bold">{{ confirmationNumber }}</span>
           </p>
         </div>
       </div>
@@ -61,6 +61,10 @@ export default {
   .ready,
   .readyOrder {
     gap: 1rem;
+  }
+
+  .ready {
+    align-self: flex-start;
   }
 
   .confirmationIcon {

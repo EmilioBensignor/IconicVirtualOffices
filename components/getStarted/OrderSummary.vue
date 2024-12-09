@@ -11,9 +11,9 @@
       <div class="orderLine">
         <p class="font-bold">Location:</p>
         <div>
-          <p>{{ selectedDestination }}</p>
-          <p>{{ locationAddress }}</p>
-          <p>{{ locationCity }}</p>
+          <p class="text-right">{{ selectedDestination }}</p>
+          <p class="text-right">{{ locationAddress }}</p>
+          <p class="text-right">{{ locationCity }}</p>
         </div>
       </div>
       <div class="orderLine">
