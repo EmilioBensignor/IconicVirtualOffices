@@ -36,7 +36,7 @@
             <div class="socialMedia rowCenter">
               <NuxtLink :aria-label="`Go to ${item.name}`" target="_blank" :to="item.link"
                 v-for="(item, index) in socialMedia" :key="index">
-                <NuxtImg :src="`/images/icons/${item.name}-Icon.svg`" :alt="`${item.name} Icon`" />
+                <img :src="`/images/icons/${item.name}-Icon.svg`" :alt="`${item.name} Icon`" />
               </NuxtLink>
             </div>
           </div>
