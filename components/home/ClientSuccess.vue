@@ -41,10 +41,10 @@ export default {
   mounted() {
     this.$nextTick(() => {
       if (this.$refs.story0?.[0]) {
-        this.$refs.story0[0].currentTime = 3;
+        this.$refs.story0[0].currentTime = 5;
       }
       if (this.$refs.story1?.[0]) {
-        this.$refs.story1[0].currentTime = 4;
+        this.$refs.story1[0].currentTime = 6;
       }
     });
   },
