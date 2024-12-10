@@ -3,14 +3,27 @@
     <h2>Getting started is simple</h2>
     <div class="w-full relative overflow-hidden">
       <div class="steps" :style="{ transform: `translateX(${translateX}px)` }">
-        <div v-for="(step, index) in steps" :key="index" class="step" :class="{
-          'active': currentStep === index,
-          'upcoming': index > currentStep,
-          'completed': index < currentStep
-        }" :ref="index === 0 ? 'firstStep' : null">
+        <div
+          v-for="(step, index) in steps"
+          :key="index"
+          class="step"
+          :class="{
+            active: currentStep === index,
+            upcoming: index > currentStep,
+            completed: index < currentStep,
+          }"
+          :ref="index === 0 ? 'firstStep' : null"
+        >
           <div class="stepCard">
-            <video :src="`/videos/Get-started-${step.video}.webm`" :alt="`Get started ${step.title}`"
-              class="w-full object-contain" :autoplay="false" muted playsinline @loadeddata="setLastFrame($event, index)"></video>
+            <video
+              :src="`/videos/Get-started-${step.video}.webm`"
+              :alt="`Get started ${step.title}`"
+              class="w-full object-contain"
+              :autoplay="false"
+              muted
+              playsinline
+              @loadeddata="setLastFrame($event, index)"
+            ></video>
             <h3>{{ step.title }}</h3>
             <p class="text-dark-gray">{{ step.description }}</p>
 
@@ -18,8 +31,12 @@
               <button v-if="index > 0" @click="prevStep" class="backButton">
                 <Icon name="mingcute:arrow-left-line" class="text-dark-gray" />
               </button>
-              <button v-if="index < steps.length - 1" @click="nextStep" class="nextButton"
-                :class="{ 'ml-auto': index === 0 }">
+              <button
+                v-if="index < steps.length - 1"
+                @click="nextStep"
+                class="nextButton"
+                :class="{ 'ml-auto': index === 0 }"
+              >
                 <span>Next</span>
                 <Icon name="mingcute:arrow-right-line" class="text-white" />
               </button>
@@ -43,26 +60,32 @@ export default {
       routes: ROUTE_NAMES,
       currentStep: 0,
       translateX: 0,
+      handleResize: null,
+      isFirstStepVisible: false,
       steps: [
         {
           video: "select-plan",
           title: "Select a Plan",
-          description: "Choose the virtual office plan that best suits your business needs and budget to start benefiting from our services.",
+          description:
+            "Choose the virtual office plan that best suits your business needs and budget to start benefiting from our services.",
         },
         {
           video: "onboarding",
           title: "Onboarding",
-          description: "Provide us with the necessary information during the onboarding process, so we can set up your virtual office smoothly.",
+          description:
+            "Provide us with the necessary information during the onboarding process, so we can set up your virtual office smoothly.",
         },
         {
           video: "check-out",
           title: "Checkout",
-          description: "Complete your payment securely to finalize your plan selection and activate your services.",
+          description:
+            "Complete your payment securely to finalize your plan selection and activate your services.",
         },
         {
           video: "ready",
           title: "Ready to Go",
-          description: "Start using your virtual office and enjoy the professional support and services your business needs to grow.",
+          description:
+            "Start using your virtual office and enjoy the professional support and services your business needs to grow.",
         },
       ],
       observer: null,
@@ -70,7 +93,7 @@ export default {
   },
   methods: {
     calculateTranslate() {
-      const step = document.querySelector('.step');
+      const step = document.querySelector(".step");
       if (!step) return 0;
 
       const stepWidth = step.offsetWidth;
@@ -81,70 +104,117 @@ export default {
       if (this.currentStep < this.steps.length - 1) {
         this.currentStep++;
         this.translateX = this.calculateTranslate();
-        this.playCurrentVideo();
+        this.$nextTick(() => {
+          this.playCurrentVideo();
+        });
       }
     },
     prevStep() {
       if (this.currentStep > 0) {
         this.currentStep--;
         this.translateX = this.calculateTranslate();
-        this.playCurrentVideo();
+        this.$nextTick(() => {
+          this.playCurrentVideo();
+        });
       }
     },
     playCurrentVideo() {
-      const videos = this.$el.querySelectorAll('video');
-      videos.forEach((video, index) => {
-        if (index === this.currentStep) {
-          // Solo reproducir si no es el primer paso o si es el primer paso y ya está visible
-          if (index !== 0 || (index === 0 && this.isFirstStepVisible)) {
-            video.play();
-          }
-        } else {
-          video.pause();
-          video.currentTime = video.duration; // Set to last frame
-        }
-      });
-    },
-    setLastFrame(event, index) {
-      if (index !== this.currentStep) {
-        event.target.currentTime = event.target.duration; // Set to last frame
-      }
-    },
-    setupIntersectionObserver() {
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && this.currentStep === 0) {
-            const firstVideo = entry.target.querySelector('video');
-            if (firstVideo) {
-              firstVideo.play();
+      try {
+        const videos = this.$el.querySelectorAll("video");
+        videos.forEach((video, index) => {
+          if (index === this.currentStep) {
+            if (index !== 0 || (index === 0 && this.isFirstStepVisible)) {
+              if (video.readyState >= 2) {
+                // Verificamos que el video esté listo para reproducirse
+                video.play().catch(() => {}); // Capturamos cualquier error de reproducción
+              }
+            }
+          } else {
+            video.pause();
+            if (video.duration && isFinite(video.duration)) {
+              try {
+                video.currentTime = video.duration;
+              } catch (e) {
+                console.warn("Could not set video currentTime:", e);
+              }
             }
           }
         });
-      }, {
-        threshold: 0.5
-      });
+      } catch (e) {
+        console.warn("Error playing video:", e);
+      }
+    },
+    setLastFrame(event, index) {
+      if (index !== this.currentStep && event.target.duration) {
+        if (isFinite(event.target.duration)) {
+          try {
+            event.target.currentTime = event.target.duration;
+          } catch (e) {
+            console.warn("Could not set last frame:", e);
+          }
+        }
+      }
+    },
+    setupIntersectionObserver() {
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            this.isFirstStepVisible = entry.isIntersecting;
+            if (entry.isIntersecting && this.currentStep === 0) {
+              const firstVideo = entry.target.querySelector("video");
+              if (firstVideo && firstVideo.readyState >= 2) {
+                firstVideo.play().catch(() => {});
+              }
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+        }
+      );
 
       if (this.$refs.firstStep && this.$refs.firstStep[0]) {
         this.observer.observe(this.$refs.firstStep[0]);
       }
-    }
+    },
+    cleanupVideos() {
+      try {
+        const videos = this.$el.querySelectorAll("video");
+        videos.forEach((video) => {
+          video.pause();
+          if (video.readyState >= 2) {
+            try {
+              video.currentTime = 0;
+            } catch (e) {
+              console.warn("Could not reset video:", e);
+            }
+          }
+        });
+      } catch (e) {
+        console.warn("Error cleaning up videos:", e);
+      }
+    },
   },
   mounted() {
     this.translateX = this.calculateTranslate();
-    this.playCurrentVideo();
-    window.addEventListener('resize', () => {
+    this.handleResize = () => {
       this.translateX = this.calculateTranslate();
-    });
+    };
+    window.addEventListener("resize", this.handleResize);
     this.setupIntersectionObserver();
+    this.$nextTick(() => {
+      this.playCurrentVideo();
+    });
   },
   beforeDestroy() {
-    window.removeEventListener('resize', () => {
-      this.translateX = this.calculateTranslate();
-    });
+    this.cleanupVideos();
+    if (this.handleResize) {
+      window.removeEventListener("resize", this.handleResize);
+    }
     if (this.observer) {
       this.observer.disconnect();
     }
-  }
+  },
 };
 </script>
 
@@ -234,7 +304,7 @@ h3 {
   }
 
   .nextButton {
-    font-size: 0.875rem
+    font-size: 0.875rem;
   }
 }
 
