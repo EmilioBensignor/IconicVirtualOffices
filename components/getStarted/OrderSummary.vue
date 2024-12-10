@@ -33,26 +33,28 @@
         <div>
           <div v-for="(addOn, index) in selectedAddOns" :key="index">
             <p class="font-bold">{{ addOn.title }}</p>
-            <p>${{ (addOn.price * addOn.quantity).toFixed(2) }}  /month</p>
+            <p>${{ (addOn.price * addOn.quantity).toFixed(2) }} /month</p>
           </div>
         </div>
       </div>
       <div class="oneTime">
         <div class="orderLine">
           <p class="font-bold">One-Time Setup Fee:</p>
-          <p>$99.00</p>
+          <p>${{ setupFee }}.00</p>
         </div>
         <p>Security Deposit 1 Month Required for ALL memberships</p>
       </div>
       <div class="total orderLine">
         <p class="font-bold">Total:</p>
-        <p>${{ (order.payment + 99).toFixed(2) }}</p>
+        <p>${{ (order.payment + setupFee).toFixed(2) }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { destinations } from "~/shared/destinations";
+
 export default {
   props: {
     durationData: {
@@ -115,6 +117,16 @@ export default {
     },
     selectedAddOns() {
       return this.addOns.filter(addOn => addOn.quantity > 0);
+    },
+    setupFee() {
+      const destination = destinations.find(d => d.title === this.selectedDestination);
+      if (destination) {
+        const plan = destination.plans.find(p => p.name === this.selectedPlan);
+        if (plan) {
+          return plan.setupFee;
+        }
+      }
+      return 0;
     }
   }
 }
@@ -162,13 +174,14 @@ export default {
   padding-bottom: 0.5rem;
 }
 
-.orderAddOns, .orderAddOns > div {
+.orderAddOns,
+.orderAddOns>div {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
 }
 
-.orderAddOns > div > div {
+.orderAddOns>div>div {
   display: flex;
   justify-content: space-between;
 }
@@ -215,7 +228,7 @@ export default {
   }
 
   .orderLine {
-    padding: 0.75rem 0 ;
+    padding: 0.75rem 0;
   }
 }
 </style>

@@ -17,7 +17,10 @@
               <h2>Choose your plan duration</h2>
               <p>Choose from monthly, semi-annual, or annual plans</p>
             </div>
-            <GetStartedStepsPlanDuration @plan-changed="handlePlanChange" />
+            <GetStartedStepsPlanDuration 
+              :selected-plan="selectedPlan"
+              @plan-changed="handlePlanChange" 
+            />
             <div class="rowCenter justify-content-end">
               <Button
                 type="button"
@@ -122,12 +125,18 @@
 
 <script>
 export default {
+  props: {
+    selectedPlan: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       currentStep: 1,
       durationData: {
         name: "Month-to-month",
-        price: 149.0,
+        price: 0,
       },
       addOns: [],
       formsValid: {
@@ -152,7 +161,6 @@ export default {
       if (this.isSubmitting) return;
       this.isSubmitting = true;
 
-      // Activamos showErrors antes de la validación
       this.showErrors = true;
 
       try {
@@ -161,20 +169,17 @@ export default {
 
         if (!contactFormComponent || !billingFormComponent) return;
 
-        // Validamos y obtenemos los resultados
         const [contactResult, billingResult] = await Promise.all([
           contactFormComponent.validateForm(),
           billingFormComponent.validateForm(),
         ]);
 
-        // Esperamos a que se actualice el DOM
         await this.$nextTick();
 
         if (this.formsValid.contactForm && this.formsValid.billingForm) {
           this.currentStep++;
           this.showErrors = false;
         } else {
-          // Mantenemos showErrors en true si hay errores
           this.showErrors = true;
         }
       } finally {

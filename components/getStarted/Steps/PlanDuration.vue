@@ -11,7 +11,7 @@
     >
       <h3>{{ item.name }}</h3>
       <p>
-        Starting <span>${{ item.price }}</span> /month
+        Starting <span>${{ selectedPlan.durations[item.priceKey] }}</span> /month
       </p>
     </button>
   </div>
@@ -19,20 +19,26 @@
 
 <script>
 export default {
+  props: {
+    selectedPlan: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       planDurations: [
         {
           name: "Month-to-month",
-          price: 149,
+          priceKey: 'monthly'
         },
         {
           name: "6 months contract",
-          price: 129,
+          priceKey: 'semiannual'
         },
         {
           name: "12 months contract",
-          price: 119,
+          priceKey: 'annual'
         },
       ],
       durationPlanSelected: 0,
@@ -41,13 +47,17 @@ export default {
   methods: {
     selectPlanDuration(index) {
       this.durationPlanSelected = index;
-      const selectedPlan = this.planDurations[index];
+      const selectedDuration = this.planDurations[index];
       this.$emit("plan-changed", {
-        name: selectedPlan.name,
-        price: selectedPlan.price,
+        name: selectedDuration.name,
+        price: this.selectedPlan.durations[selectedDuration.priceKey]
       });
     },
   },
+  created() {
+    // Inicializar con el primer plan duration
+    this.selectPlanDuration(0);
+  }
 };
 </script>
 
