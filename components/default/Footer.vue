@@ -26,12 +26,12 @@
           <p class="font-bold">Contact us</p>
           <div class="contactInfo column">
             <a href="mailto:info@iconicworkspaces.com">
-              <Icon name="mingcute:phone-line" />
+              <Icon name="mingcute:mail-line" />
               <p>info@iconicworkspaces.com</p>
             </a>
-            <a href="tel:3056945300">
-              <Icon name="mingcute:mail-line" />
-              <p>305 694 5300</p>
+            <a href="tel:+13056945300">
+              <Icon name="mingcute:phone-line" />
+              <p>+1 305 694 5300</p>
             </a>
             <div class="socialMedia rowCenter">
               <NuxtLink :aria-label="`Go to ${item.name}`" target="_blank" :to="item.link"

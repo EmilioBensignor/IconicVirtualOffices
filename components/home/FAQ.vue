@@ -49,7 +49,7 @@ export default {
         },
         {
           question: "How much is a virtual business address in Miami? ",
-          answer: "<p>A virtual office ranges between $65.00 and $319.00. At ICONIC Workspaces we have virtual office plans starting at $65.00 a month in our Downtown Miami location.</p>",
+          answer: "<p>A virtual office ranges between $59.00 and $319.00. At ICONIC Workspaces we have virtual office plans starting at $59.00 a month in our Downtown Miami location.</p>",
         },
         {
           question: "Do I get a mailing address with a Virtual Office?",

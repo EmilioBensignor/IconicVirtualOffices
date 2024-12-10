@@ -4,7 +4,7 @@
     <div class="storiesContainer columnAlignCenter">
       <div v-for="(story, index) in stories" class="story columnAlignCenter" :key="index">
         <div class="videoContainer columnAlignCenter">
-          <video :src="`/videos/${story.video}.mp4`" controls></video>
+          <video :ref="`story${index}`" :src="`/videos/${story.video}.mp4`" controls></video>
         </div>
         <h3 class="text-center">{{ story.title }}</h3>
         <NuxtLink :to="story.link" class="secondaryButton">
@@ -37,6 +37,16 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      if (this.$refs.story0?.[0]) {
+        this.$refs.story0[0].currentTime = 3;
+      }
+      if (this.$refs.story1?.[0]) {
+        this.$refs.story1[0].currentTime = 4;
+      }
+    });
   },
 };
 </script>
