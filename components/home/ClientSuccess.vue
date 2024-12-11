@@ -4,7 +4,14 @@
     <div class="storiesContainer columnAlignCenter">
       <div v-for="(story, index) in stories" class="story columnAlignCenter" :key="index">
         <div class="videoContainer columnAlignCenter">
-          <video :ref="`story${index}`" :src="`/videos/${story.video}.mp4`" controls></video>
+          <video 
+            :ref="`story${index}`" 
+            :src="`/videos/${story.video}.mp4`" 
+            controls
+            playsinline
+            webkit-playsinline
+            playsInline
+          ></video>
         </div>
         <h3 class="text-center">{{ story.title }}</h3>
         <NuxtLink :to="story.link" class="secondaryButton">
@@ -72,6 +79,8 @@ export default {
   width: 100%;
   max-width: 280px;
   border-radius: 9px;
+  object-fit: contain;
+  background: #000;
 }
 
 h3 {
@@ -103,6 +112,14 @@ h3 {
 @media (width >=1440px) {
   h3 {
     max-width: 540px;
+  }
+}
+
+@media (max-width: 768px) {
+  .videoContainer video {
+    max-height: 100vh;
+    width: 100%;
+    object-fit: contain;
   }
 }
 </style>

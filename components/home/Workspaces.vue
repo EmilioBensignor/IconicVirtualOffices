@@ -1,7 +1,14 @@
 <template>
   <section class="columnAlignCenter">
     <div class="videoContainer columnAlignCenter">
-      <video ref="videoPlayer" src="/videos/Iconic-Virtual-Offices-Professional-Presence.mp4" controls></video>
+      <video 
+        ref="videoPlayer" 
+        src="/videos/Iconic-Virtual-Offices-Professional-Presence.mp4" 
+        controls
+        playsinline
+        webkit-playsinline
+        playsInline
+      ></video>
     </div>
     <div class="workspaceContainer columnAlignCenter">
       <div class="workspace columnAlignCenter">
@@ -74,6 +81,8 @@ export default {
   width: 100%;
   height: 100%;
   border-radius: 20px;
+  object-fit: contain;
+  background: #000;
 }
 
 .workspaceContainer {
@@ -175,6 +184,14 @@ ul li p {
 
   ul li p {
     font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .videoContainer video {
+    max-height: 100vh;
+    width: 100%;
+    object-fit: contain;
   }
 }
 </style>
