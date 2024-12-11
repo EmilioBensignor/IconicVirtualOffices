@@ -12,7 +12,12 @@
           the world's economy.
         </p>
         <div class="heroBtns rowCenter">
-          <button class="primaryButton" @click.prevent="scrollToSection('#plans')">Get Started</button>
+          <button
+            class="primaryButton"
+            @click.prevent="scrollToSection('#plans')"
+          >
+            Get Started
+          </button>
           <NuxtLink :to="routes.GET_STARTED" class="secondaryButton">
             <div>
               <p>Or book a free call</p>
@@ -24,7 +29,18 @@
           <span class="font-bold">only $59/month.</span>
         </p>
       </div>
-      <div>ANIMATION // Padding Right</div>
+      <div class="videoContainer">
+        <video
+          class="w-full"
+          src="/videos/Iconic-Virtual-Offices-Workspaces.mp4"
+          muted
+          loop
+          autoplay
+          playsinline
+          webkit-playsinline
+          playsInline
+        ></video>
+      </div>
     </div>
     <HomeSwiperBusinesses />
   </section>
@@ -43,11 +59,15 @@ export default {
 </script>
 
 <style scoped>
+section {
+  gap: 2.5rem;
+}
+
 .heroSection {
   padding: 2rem 0 2rem 1.25rem;
 }
 
-.heroSection>div {
+.heroSection > div {
   gap: 1.5rem;
 }
 
@@ -61,7 +81,7 @@ h1 {
   font-weight: 800;
 }
 
-.hero>p:first-of-type {
+.hero > p:first-of-type {
   max-width: 350px;
   font-weight: 500;
 }
@@ -75,12 +95,25 @@ h1 {
   font-size: 0.75rem;
 }
 
+.videoContainer {
+  padding-right: 1.25rem;
+}
+
+.videoContainer video {
+  max-width: 575px;
+  border-radius: 18px;
+}
+
 @media (width >=660px) {
+  section {
+    gap: 3rem;
+  }
+
   .heroSection {
     padding: 3rem 0 3rem 2.5rem;
   }
 
-  .heroSection>div:first-of-type {
+  .heroSection > div:first-of-type {
     gap: 3rem;
   }
 
@@ -94,7 +127,7 @@ h1 {
     max-width: 460px;
   }
 
-  .hero>p:first-of-type {
+  .hero > p:first-of-type {
     max-width: 575px;
   }
 
@@ -108,15 +141,19 @@ h1 {
 }
 
 @media (width >=1080px) {
+  section {
+    gap: 5rem;
+  }
+
   .heroSection {
     padding: 4rem 0 4rem 4.375rem;
   }
 
-  .heroSection>div:first-of-type {
+  .heroSection > div:first-of-type {
     flex-direction: row;
   }
 
-  .heroSection>div:first-of-type>div:first-of-type {
+  .heroSection > div:first-of-type > div:first-of-type {
     width: 60%;
   }
 
@@ -134,7 +171,7 @@ h1 {
     max-width: 610px;
   }
 
-  .hero>p:first-of-type {
+  .hero > p:first-of-type {
     max-width: 595px;
   }
 
@@ -144,6 +181,15 @@ h1 {
 
   .starting {
     font-size: 1rem;
+  }
+
+  .videoContainer {
+    width: 70%;
+    padding-right: 4.375rem;
+  }
+
+  .videoContainer video {
+    max-width: 100%;
   }
 }
 
