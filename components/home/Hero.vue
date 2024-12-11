@@ -18,11 +18,11 @@
           >
             Get Started
           </button>
-          <NuxtLink :to="routes.GET_STARTED" class="secondaryButton">
+          <button class="secondaryButton" @click="openModal">
             <div>
               <p>Or book a free call</p>
             </div>
-          </NuxtLink>
+          </button>
         </div>
         <p class="starting text-center text-dark-gray">
           No long-term contracts, starting at
@@ -43,6 +43,20 @@
       </div>
     </div>
     <HomeSwiperBusinesses />
+    <Dialog 
+      class="dialogFreeCall" 
+      v-model:visible="freeCallModal"
+      modal
+      :dismissableMask="true"
+    >
+      <div class="iframe-container">
+        <iframe
+          src="https://crm.iconicworkspaces.com/widget/booking/MqdwQUAhBgdoGYRWYde3"
+          style="width: 100%; border: none; height: 100%;"
+          id="zN16rkmdbW6OwImL7GlP_1733762458422"
+        ></iframe>
+      </div>
+    </Dialog>
   </section>
 </template>
 
@@ -53,10 +67,62 @@ export default {
   data() {
     return {
       routes: ROUTE_NAMES,
+      freeCallModal: false,
     };
+  },
+  methods: {
+    openModal() {
+      this.freeCallModal = true;
+      this.$nextTick(() => {
+        this.loadFormScript();
+      });
+    },
+    loadFormScript() {
+      const script = document.createElement("script");
+      script.src = "https://crm.iconicworkspaces.com/js/form_embed.js";
+      script.type = "text/javascript";
+      document.body.appendChild(script);
+    },
   },
 };
 </script>
+
+<style>
+.p-dialog-mask {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dialogFreeCall {
+  width: 100%;
+  max-width: 700px !important;
+  padding: 1rem;
+  border-radius: 18px;
+  background-color: white;
+}
+
+.dialogFreeCall .p-dialog-header {
+  justify-content: flex-end;
+}
+
+.dialogFreeCall .p-dialog-content {
+  padding: 0;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.iframe-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dialogFreeCall iframe {
+  display: block;
+  -webkit-overflow-scrolling: touch;
+}
+
+</style>
 
 <style scoped>
 section {

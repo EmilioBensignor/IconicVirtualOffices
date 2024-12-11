@@ -20,14 +20,34 @@
         </div>
       </template>
     </Carousel>
-    <div class="w-full servicesContainer">
-      <div class="columnAlignCenter" v-for="(service, index) in services.slice(0, 4)" :key="index">
-        <NuxtImg
-          class="imgSlide"
-          :src="`/images/services/${service.img}-service.png`"
-          :alt="`${service.text} Service`"
-        />
-        <p class="text-center">{{ service.text }}</p>
+    <div class="w-full servicesDesktop column">
+      <div class="servicesContainer">
+        <div
+          class="columnAlignCenter"
+          v-for="(service, index) in services.slice(0, 4)"
+          :key="index"
+        >
+          <NuxtImg
+            class="imgSlide"
+            :src="`/images/services/${service.img}-service.png`"
+            :alt="`${service.text} Service`"
+          />
+          <p class="text-center">{{ service.text }}</p>
+        </div>
+      </div>
+      <div class="servicesContainer">
+        <div
+          class="columnAlignCenter"
+            v-for="(service, index) in services.slice(4, 8)"
+          :key="index"
+        >
+          <NuxtImg
+            class="imgSlide"
+            :src="`/images/services/${service.img}-service.png`"
+            :alt="`${service.text} Service`"
+          />
+          <p class="text-center">{{ service.text }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -79,23 +99,23 @@ export default {
         },
         {
           img: "Receptionist-secretarial-support",
-          alt: "Reception secretarial support",
-          text: "Receptionist & secretarial support",
+          alt: "Business Address for Company Registration",
+          text: "Business Address for Company Registration",
         },
         {
           img: "Mail-scanning-forwarding",
-          alt: "Mail scanning forwarding",
-          text: "Mail scanning & forwarding",
+          alt: "Access to Co-Working Spaces",
+          text: "Access to Co-Working Spaces",
         },
         {
           img: "Package-handling-courier",
-          alt: "Package handling courier services",
-          text: "Package handling & courier services",
+          alt: "Access to Executive Offices",
+          text: "Access to Executive Offices",
         },
         {
           img: "Telephone-answering",
-          alt: "Telephone answering service",
-          text: "Telephone answering service",
+          alt: "Access to Premium Meeting Rooms",
+          text: "Access to Premium Meeting Rooms",
         },
         {
           img: "Receptionist-secretarial-support",
@@ -119,23 +139,23 @@ export default {
         },
         {
           img: "Receptionist-secretarial-support",
-          alt: "Reception secretarial support",
-          text: "Receptionist & secretarial support",
+          alt: "Business Address for Company Registration",
+          text: "Business Address for Company Registration",
         },
         {
           img: "Mail-scanning-forwarding",
-          alt: "Mail scanning forwarding",
-          text: "Mail scanning & forwarding",
+          alt: "Access to Co-Working Spaces",
+          text: "Access to Co-Working Spaces",
         },
         {
           img: "Package-handling-courier",
-          alt: "Package handling courier services",
-          text: "Package handling & courier services",
+          alt: "Access to Executive Offices",
+          text: "Access to Executive Offices",
         },
         {
           img: "Telephone-answering",
-          alt: "Telephone answering service",
-          text: "Telephone answering service",
+          alt: "Access to Premium Meeting Rooms",
+          text: "Access to Premium Meeting Rooms",
         },
         {
           img: "Receptionist-secretarial-support",
@@ -159,23 +179,23 @@ export default {
         },
         {
           img: "Receptionist-secretarial-support",
-          alt: "Reception secretarial support",
-          text: "Receptionist & secretarial support",
+          alt: "Business Address for Company Registration",
+          text: "Business Address for Company Registration",
         },
         {
           img: "Mail-scanning-forwarding",
-          alt: "Mail scanning forwarding",
-          text: "Mail scanning & forwarding",
+          alt: "Access to Co-Working Spaces",
+          text: "Access to Co-Working Spaces",
         },
         {
           img: "Package-handling-courier",
-          alt: "Package handling courier services",
-          text: "Package handling & courier services",
+          alt: "Access to Executive Offices",
+          text: "Access to Executive Offices",
         },
         {
           img: "Telephone-answering",
-          alt: "Telephone answering service",
-          text: "Telephone answering service",
+          alt: "Access to Premium Meeting Rooms",
+          text: "Access to Premium Meeting Rooms",
         },
       ],
     };
@@ -296,6 +316,10 @@ p {
 }
 
 @media (width >=1080px) {
+  .servicesDesktop {
+    gap: 2rem;
+  }
+
   .serviceContainer {
     display: flex;
   }
