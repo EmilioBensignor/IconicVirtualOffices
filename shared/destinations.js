@@ -8,9 +8,9 @@ export const destinations = [
         name: "Connect",
         price: 59,
         durations: {
-          monthly: 75,
+          annual: 59,
           semiannual: 69,
-          annual: 59
+          monthly: 75,
         },
         setupFee: 50,
         intro:
@@ -27,9 +27,9 @@ export const destinations = [
         name: "Grow",
         price: 119,
         durations: {
-          monthly: 149,
+          annual: 119,
           semiannual: 129,
-          annual: 119
+          monthly: 149,
         },
         setupFee: 99,
         intro:
@@ -49,9 +49,9 @@ export const destinations = [
         name: "Evolve",
         price: 199,
         durations: {
-          monthly: 269,
+          annual: 199,
           semiannual: 249,
-          annual: 199
+          monthly: 269,
         },
         setupFee: 99,
         intro:
@@ -74,9 +74,9 @@ export const destinations = [
         name: "Connect",
         price: 89,
         durations: {
-          monthly: 109,
+          annual: 89,
           semiannual: 99,
-          annual: 89
+          monthly: 109,
         },
         setupFee: 50,
         intro:
@@ -93,9 +93,9 @@ export const destinations = [
         name: "Grow",
         price: 149,
         durations: {
-          monthly: 169,
+          annual: 149,
           semiannual: 159,
-          annual: 149
+          monthly: 169,
         },
         setupFee: 99,
         intro:
@@ -115,9 +115,9 @@ export const destinations = [
         name: "Evolve",
         price: 279,
         durations: {
-          monthly: 319,
+          annual: 279,
           semiannual: 299,
-          annual: 279
+          monthly: 319,
         },
         setupFee: 99,
         intro:

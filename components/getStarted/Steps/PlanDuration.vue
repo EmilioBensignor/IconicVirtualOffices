@@ -28,17 +28,17 @@ export default {
   data() {
     return {
       planDurations: [
-        {
-          name: "Month-to-month",
-          priceKey: 'monthly'
+      {
+          name: "12 months contract",
+          priceKey: 'annual'
         },
         {
           name: "6 months contract",
           priceKey: 'semiannual'
         },
         {
-          name: "12 months contract",
-          priceKey: 'annual'
+          name: "Month-to-month",
+          priceKey: 'monthly'
         },
       ],
       durationPlanSelected: 0,
@@ -55,7 +55,6 @@ export default {
     },
   },
   created() {
-    // Inicializar con el primer plan duration
     this.selectPlanDuration(0);
   }
 };
