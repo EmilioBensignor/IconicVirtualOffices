@@ -45,45 +45,49 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 export default defineEventHandler(async (event) => {
 	try {
 		const { checkoutData } = await readBody(event); // Read the request body
-		const line_items = [];
-
-		const main_product_id: string = `${checkoutData.location} ${
-			checkoutData.plan
-		} / ${checkoutData.duration.split("-").join(" ").split(" ")[0]}`;
-
-		line_items.push({
-			price: product_price_map[main_product_id],
-			quantity: 1,
-		});
-		const fee_id =
-			checkoutData.plan == "Connect"
-				? "Virtual Office Set Up Fee / Connect"
-				: "Virtual Office Set Up Fee / Grow & Evolve";
-		line_items.push({
-			price: product_price_map[fee_id],
-			quantity: 1,
-		});
-
-		checkoutData.addons.forEach((addon: any) => {
-			const addon_id = `${addon.title} / ${
-				checkoutData.duration.split("-").join(" ").split(" ")[0]
-			}`;
-			line_items.push({
-				price: product_price_map[addon_id],
-				quantity: addon.quantity,
-			});
-		});
-
-		const session = await stripe.checkout.sessions.create({
-			payment_method_types: ["card"],
-			line_items,
-			mode: "subscription",
-			success_url: "http://localhost:3000/",
-			cancel_url: "http://localhost:3000/get-started",
-		});
-
-		return { url: session.url }; // Return the Stripe checkout URL
+		return await getCheckoutURL(checkoutData); // Return the Stripe checkout URL
 	} catch (error: any) {
 		return { error: error.message };
 	}
 });
+
+async function getCheckoutURL(checkoutData: any) {
+	const line_items = [];
+
+	const main_product_id: string = `${checkoutData.location} ${
+		checkoutData.plan
+	} / ${checkoutData.duration.split("-").join(" ").split(" ")[0]}`;
+
+	line_items.push({
+		price: product_price_map[main_product_id],
+		quantity: 1,
+	});
+	const fee_id =
+		checkoutData.plan == "Connect"
+			? "Virtual Office Set Up Fee / Connect"
+			: "Virtual Office Set Up Fee / Grow & Evolve";
+	line_items.push({
+		price: product_price_map[fee_id],
+		quantity: 1,
+	});
+
+	checkoutData.addons.forEach((addon: any) => {
+		const addon_id = `${addon.title} / ${
+			checkoutData.duration.split("-").join(" ").split(" ")[0]
+		}`;
+		line_items.push({
+			price: product_price_map[addon_id],
+			quantity: addon.quantity,
+		});
+	});
+
+	const session = await stripe.checkout.sessions.create({
+		payment_method_types: ["card"],
+		line_items,
+		mode: "subscription",
+		success_url: "http://localhost:3000/",
+		cancel_url: "http://localhost:3000/get-started",
+	});
+
+	return { url: session.url };
+}
