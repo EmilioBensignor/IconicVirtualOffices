@@ -1,4 +1,6 @@
-# Nuxt Minimal Starter
+# Iconic Virtual Offices
+
+https://iconic-virtual-offices.vercel.app/
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
