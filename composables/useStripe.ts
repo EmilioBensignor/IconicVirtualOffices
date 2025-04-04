@@ -3,7 +3,7 @@ export const useStripeCheckout = async (checkoutData: any) => {
 		method: "POST",
 		body: { checkoutData },
 	});
-
+	
 	if (data.url) {
 		window.location.href = data.url; // Redirect to Stripe checkout
 	} else {

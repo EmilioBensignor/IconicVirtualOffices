@@ -190,14 +190,13 @@ export default {
 					contactFormComponent.validateForm(),
 					billingFormComponent.validateForm(),
 				]);
-
 				await this.$nextTick();
-
+				
 				if (
 					this.formsValid.contactForm &&
 					this.formsValid.billingForm
 				) {
-					this.currentStep++;
+					// this.currentStep++;
 					this.showErrors = false;
 				} else {
 					this.showErrors = true;
@@ -207,6 +206,11 @@ export default {
 			}
 		},
 		confirmOrder() {
+			this.submitForms();
+			
+			if (!this.formsValid.contactForm || !this.formsValid.billingForm) {
+				return
+			}
 			this.$emit(
 				"confirm-order",
 				this.durationData,
