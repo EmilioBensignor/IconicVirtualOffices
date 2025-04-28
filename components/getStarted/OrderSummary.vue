@@ -25,8 +25,8 @@
         <p>{{ nextBillingDate }}</p>
       </div>
       <div class="orderLine">
-        <p class="font-bold">Today’s payment:</p>
-        <p>${{ order.payment }}.00</p>
+        <p class="font-bold">Plan value:</p>
+        <p>${{ order.payment }}.00 /month</p>
       </div>
       <div class="orderAddOns orderLine" v-if="selectedAddOns.length">
         <p class="font-bold">Add-ons:</p>
@@ -46,7 +46,7 @@
       </div>
       <div class="total orderLine">
         <p class="font-bold">Total:</p>
-        <p>${{ (order.payment + setupFee).toFixed(2) }}</p>
+        <p>${{ (orderTotal).toFixed(2) }}</p>
       </div>
     </div>
   </div>
@@ -76,7 +76,12 @@ export default {
       order: {
         duration: this.durationData?.name || 'Month-to-month',
         payment: this.durationData?.price || 149.00
-      }
+      },
+      nextPaymentMap: {
+        'Month-to-month': new Date(new Date().setMonth(new Date().getMonth() + 1)),
+        '6 months contract': new Date(new Date().setMonth(new Date().getMonth() + 6)),
+        '12 months contract': new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+      },
     }
   },
   watch: {
@@ -108,12 +113,8 @@ export default {
         : 'Aventura, FL 33180'
     },
     nextBillingDate() {
-      const today = new Date();
-      let nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
-      if ([29, 30, 31].includes(today.getDate())) {
-        nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 28);
-      }
-      return nextMonth.toLocaleDateString();
+      let nextPayment = this.nextPaymentMap[this.order.duration];
+      return nextPayment.toLocaleDateString();
     },
     selectedAddOns() {
       return this.addOns.filter(addOn => addOn.quantity > 0);
@@ -127,6 +128,13 @@ export default {
         }
       }
       return 0;
+    },
+    orderTotal() {
+      let total = this.order.payment + this.setupFee;
+      this.selectedAddOns.forEach(addOn => {
+        total += addOn.price * addOn.quantity;
+      });
+      return total;
     }
   }
 }

@@ -1,10 +1,6 @@
 <template>
   <div class="w-full">
-    <div
-      v-for="(item, index) in addOns"
-      :key="index"
-      class="w-full addOn column"
-    >
+    <div v-for="(item, index) in addOns" :key="index" class="w-full addOn column">
       <div class="column">
         <h3>{{ item.title }}</h3>
         <p class="text-dark-gray">{{ item.description }}</p>
@@ -18,7 +14,8 @@
           <div>
             <span>{{ item.quantity }}</span>
           </div>
-          <button @click="increment(index)" class="font-semibold">+</button>
+          <button @click="increment(index)" class="font-semibold"
+            :class="{ 'disabled-button': isMaxQuantity(index) }">+</button>
         </div>
       </div>
     </div>
@@ -55,7 +52,17 @@ export default {
     };
   },
   methods: {
+    isMaxQuantity(index) {
+      return (this.addOns[index].title === "Auto-attendant voice menu" ||
+        this.addOns[index].title === "Registered agent") &&
+        this.addOns[index].quantity >= 1;
+    },
     increment(index) {
+      // Limitar "Auto-attendant" y "Registered agent" a máximo 1
+      if (this.isMaxQuantity(index)) {
+        return;
+      }
+
       this.addOns[index].quantity++;
       this.$emit("update-add-ons", [...this.addOns]);
     },
@@ -80,7 +87,7 @@ export default {
   border-bottom: 2px solid #e2e0e0;
 }
 
-.addOn > div:first-of-type {
+.addOn>div:first-of-type {
   gap: 0.625rem;
 }
 
@@ -105,6 +112,11 @@ export default {
   font-size: 1.25rem;
   cursor: pointer;
   padding: 0.5rem 0.75rem;
+}
+
+.disabled-button {
+  background-color: #cccccc !important;
+  cursor: not-allowed !important;
 }
 
 .priceAdd div div {

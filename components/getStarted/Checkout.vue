@@ -1,12 +1,8 @@
 <template>
 	<section class="checkout columnAlignCenter">
 		<h1 class="w-full text-center">Let's launch your virtual office</h1>
-		<Stepper
-			v-model="currentStep"
-			:value="currentStep"
-			aria-labelledby="Checkout Stepper"
-			class="w-full columnAlignCenter"
-		>
+		<Stepper v-model="currentStep" :value="currentStep" aria-labelledby="Checkout Stepper"
+			class="w-full columnAlignCenter">
 			<StepList class="w-full">
 				<Step v-for="step in 4" :key="step" :value="step"></Step>
 			</StepList>
@@ -20,17 +16,10 @@
 								plans
 							</p>
 						</div>
-						<GetStartedStepsPlanDuration
-							:selected-plan="selectedPlan"
-							@plan-changed="handlePlanChange"
-						/>
+						<GetStartedStepsPlanDuration :selected-plan="selectedPlan" @plan-changed="handlePlanChange" />
 						<div class="rowCenter justify-content-end">
-							<Button
-								type="button"
-								label="Next step"
-								class="primaryButtonImportant"
-								@click="currentStep++"
-							>
+							<Button type="button" label="Next step" class="primaryButtonImportant"
+								@click="currentStep++">
 								<template #icon>
 									<Icon name="mingcute:arrow-right-line" />
 								</template>
@@ -39,26 +28,21 @@
 					</StepPanel>
 					<StepPanel :value="2">
 						<div>
-							<h2>Customize your plan</h2>
+							<h2>Contact information</h2>
 							<p>
-								Upgrade your experience with our monthly add-on
-								services.
+								Provide the information of the person
+								responsible for this order below
 							</p>
 						</div>
-						<GetStartedStepsCustomize
-							@update-add-ons="updateAddOns"
-						/>
+						<GetStartedStepsContactInformation @form-submit="handleFormSubmit" ref="contactForm"
+							:showErrors="showErrors" :validateOnMount="true" />
 						<div class="rowSpaceBetween">
 							<Button class="back" @click="currentStep--">
 								<template #icon>
 									<Icon name="mingcute:arrow-left-line" />
 								</template>
 							</Button>
-							<Button
-								label="Next step"
-								class="primaryButtonImportant"
-								@click="currentStep++"
-							>
+							<Button label="Next step" class="primaryButtonImportant" @click="currentStep++">
 								<template #icon>
 									<Icon name="mingcute:arrow-right-line" />
 								</template>
@@ -67,67 +51,50 @@
 					</StepPanel>
 					<StepPanel :value="3">
 						<div>
-							<h2>Contact information</h2>
+							<h2>Customize your plan</h2>
 							<p>
-								Provide the information of the person
-								responsible for this order below
+								Upgrade your experience with our monthly add-on
+								services.
 							</p>
 						</div>
-						<GetStartedStepsContactInformation
-							@form-submit="handleFormSubmit"
-							ref="contactForm"
-							:showErrors="showErrors"
-							:validateOnMount="true"
-						/>
-						<div>
-							<h2>Billing address</h2>
-							<p>
-								Fill out the address associated with your card
-							</p>
-						</div>
-						<GetStartedStepsBillingAddress
-							@form-submit="handleFormSubmit"
-							ref="billingForm"
-							:showErrors="showErrors"
-							:validateOnMount="true"
-						/>
+						<GetStartedStepsCustomize @update-add-ons="updateAddOns" />
 						<div class="rowSpaceBetween">
 							<Button class="back" @click="currentStep--">
 								<template #icon>
 									<Icon name="mingcute:arrow-left-line" />
 								</template>
 							</Button>
-							<Button
-								label="Confirm order"
-								class="primaryButtonImportant"
-								@click="confirmOrder"
-							>
+							<Button label="Next step" class="primaryButtonImportant" @click="currentStep++">
 								<template #icon>
 									<Icon name="mingcute:arrow-right-line" />
 								</template>
 							</Button>
 						</div>
 					</StepPanel>
-					<!-- <StepPanel :value="4">
-						STRIPE
+					<StepPanel :value="4">
+						<div>
+							<h2>Billing address</h2>
+							<p>
+								Fill out the address associated with your card
+							</p>
+						</div>
+						<GetStartedStepsBillingAddress @form-submit="handleFormSubmit" ref="billingForm"
+							:showErrors="showErrors" :validateOnMount="true" />
 						<div class="rowSpaceBetween">
 							<Button class="back" @click="currentStep--">
 								<template #icon>
 									<Icon name="mingcute:arrow-left-line" />
 								</template>
 							</Button>
-							<Button
-								label="Confirm order"
-								class="primaryButtonImportant"
-								@click="confirmOrder"
-							/>
+							<Button label="Confirm order" class="primaryButtonImportant" @click="confirmOrder">
+								<template #icon>
+									<Icon name="mingcute:arrow-right-line" />
+								</template>
+							</Button>
 						</div>
-					</StepPanel> -->
+					</StepPanel>
 				</StepPanels>
-				<GetStartedOrderSummary
-					:duration-data="durationData"
-					:addOns="addOns"
-				/>
+				<GetStartedOrderSummary :duration-data="durationData" :addOns="addOns" />
 			</div>
 		</Stepper>
 	</section>
@@ -191,7 +158,7 @@ export default {
 					billingFormComponent.validateForm(),
 				]);
 				await this.$nextTick();
-				
+
 				if (
 					this.formsValid.contactForm &&
 					this.formsValid.billingForm
@@ -207,7 +174,7 @@ export default {
 		},
 		confirmOrder() {
 			this.submitForms();
-			
+
 			if (!this.formsValid.contactForm || !this.formsValid.billingForm) {
 				return
 			}
@@ -281,7 +248,7 @@ export default {
 	gap: 1.25rem;
 }
 
-.checkout .p-steppanel > div {
+.checkout .p-steppanel>div {
 	width: 100%;
 }
 
@@ -311,7 +278,7 @@ export default {
 		gap: 1.5rem;
 	}
 
-	.checkout .p-steppanel > div:last-of-type {
+	.checkout .p-steppanel>div:last-of-type {
 		margin-top: 0.5rem;
 	}
 }
@@ -379,11 +346,11 @@ export default {
 		gap: 1.5rem;
 	}
 
-	.userCheckout > div:first-of-type {
+	.userCheckout>div:first-of-type {
 		width: 60%;
 	}
 
-	.userCheckout > div:last-of-type {
+	.userCheckout>div:last-of-type {
 		width: 40% !important;
 	}
 
@@ -398,7 +365,7 @@ export default {
 		gap: 2rem;
 	}
 
-	.userCheckout > div:first-of-type {
+	.userCheckout>div:first-of-type {
 		width: 75%;
 	}
 

@@ -114,8 +114,8 @@ async function getCheckoutURL(checkoutData: any) {
 		payment_method_types: ["card"],
 		line_items,
 		mode: "subscription",
-		success_url: "http://localhost:3000/",
-		cancel_url: "http://localhost:3000/get-started",
+		success_url: "https://iconic-virtual-offices.vercel.app/",
+		cancel_url: "https://iconic-virtual-offices.vercel.app/get-started",
 	});
 
 	return { url: session.url };

@@ -55,7 +55,7 @@ export default {
 				contact: contactData,
 				location: this.$route.query.destination,
 			};
-			await useStripeCheckout(output);
+			// await useStripeCheckout(output);
 			console.log(output);
 			// this.showCheckout = false;
 			// this.showConfirmation = true;
