@@ -4,6 +4,7 @@
 		:initial-values="initialValues"
 		:resolver="resolver"
 		class="w-full column"
+		ref="form"
 	>
 		<div class="formRow field">
 			<div class="field">
@@ -147,6 +148,13 @@ export default {
 			formErrors: null,
 		};
 	},
+	mounted() {
+		if (this.validateOnMount) {
+			this.$nextTick(() => {
+				this.validateForm();
+			});
+		}
+	},
 	methods: {
 		validateField(fieldName, value) {
 			if (this.showErrors) {
@@ -158,7 +166,7 @@ export default {
 			}
 		},
 		async validateForm() {
-			const formData = new FormData(this.$el);
+			const formData = new FormData(this.$refs.form.$el);
 			const values = Object.fromEntries(formData);
 			const { errors } = this.resolver(values);
 

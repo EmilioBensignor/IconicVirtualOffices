@@ -42,7 +42,7 @@
 									<Icon name="mingcute:arrow-left-line" />
 								</template>
 							</Button>
-							<Button label="Next step" class="primaryButtonImportant" @click="currentStep++">
+							<Button label="Next step" class="primaryButtonImportant" @click="validateContactForm">
 								<template #icon>
 									<Icon name="mingcute:arrow-right-line" />
 								</template>
@@ -79,7 +79,7 @@
 							</p>
 						</div>
 						<GetStartedStepsBillingAddress @form-submit="handleFormSubmit" ref="billingForm"
-							:showErrors="showErrors" :validateOnMount="true" />
+							:showErrors="showErrors" :validateOnMount="false" />
 						<div class="rowSpaceBetween">
 							<Button class="back" @click="currentStep--">
 								<template #icon>
@@ -141,6 +141,26 @@ export default {
 				this.billingData = formData;
 			}
 		},
+		async validateContactForm() {
+			if (this.isSubmitting) return;
+			this.isSubmitting = true;
+			
+			this.showErrors = true;
+			
+			try {
+				const contactFormComponent = this.$refs.contactForm;
+				if (!contactFormComponent) return;
+				
+				const contactResult = await contactFormComponent.validateForm();
+				
+				if (this.formsValid.contactForm) {
+					this.currentStep++;
+					this.showErrors = false;
+				}
+			} finally {
+				this.isSubmitting = false;
+			}
+		},
 		async submitForms() {
 			if (this.isSubmitting) return;
 			this.isSubmitting = true;
@@ -148,36 +168,23 @@ export default {
 			this.showErrors = true;
 
 			try {
-				const contactFormComponent = this.$refs.contactForm;
 				const billingFormComponent = this.$refs.billingForm;
+				if (!billingFormComponent) return false;
 
-				if (!contactFormComponent || !billingFormComponent) return;
-
-				const [contactResult, billingResult] = await Promise.all([
-					contactFormComponent.validateForm(),
-					billingFormComponent.validateForm(),
-				]);
-				await this.$nextTick();
-
-				if (
-					this.formsValid.contactForm &&
-					this.formsValid.billingForm
-				) {
-					// this.currentStep++;
-					this.showErrors = false;
-				} else {
-					this.showErrors = true;
-				}
+				const billingResult = await billingFormComponent.validateForm();
+				
+				return this.formsValid.billingForm;
 			} finally {
 				this.isSubmitting = false;
 			}
 		},
-		confirmOrder() {
-			this.submitForms();
+		async confirmOrder() {
+			const isValid = await this.submitForms();
 
 			if (!this.formsValid.contactForm || !this.formsValid.billingForm) {
-				return
+				return;
 			}
+			
 			this.$emit(
 				"confirm-order",
 				this.durationData,
