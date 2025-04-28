@@ -7,7 +7,6 @@
         controls
         playsinline
         webkit-playsinline
-        playsInline
       ></video>
     </div>
     <div class="workspaceContainer columnAlignCenter">
@@ -29,14 +28,7 @@
           <p>{{ benefit.text }}</p>
         </li>
       </ul>
-      <NuxtLink :to="routes.GET_STARTED" class="secondaryButton">
-        <div class="arrowBtn">
-          <p class="font-bold">Get to know us</p>
-          <Icon name="mingcute:arrow-right-line" class="text-black" />
-        </div>
-      </NuxtLink>
     </div>
-
   </section>
 </template>
 
