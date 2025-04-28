@@ -1,6 +1,6 @@
 <template>
   <section class="columnAlignCenter">
-    <h2 class="text-center">Client success: Virtual offices in action</h2>
+    <h2 class="text-center">See how our customers streamlined operations with our solutions.</h2>
     <div class="storiesContainer columnAlignCenter">
       <div v-for="(story, index) in stories" class="story columnAlignCenter" :key="index">
         <div class="videoContainer columnAlignCenter">
@@ -10,16 +10,8 @@
             controls
             playsinline
             webkit-playsinline
-            playsInline
           ></video>
         </div>
-        <h3 class="text-center">{{ story.title }}</h3>
-        <NuxtLink :to="story.link" class="secondaryButton">
-          <div class="arrowBtn">
-            <p>{{ story.button }}</p>
-            <Icon name="mingcute:arrow-right-line" class="text-black" />
-          </div>
-        </NuxtLink>
       </div>
     </div>
   </section>
@@ -31,15 +23,9 @@ export default {
     return {
       stories: [
         {
-          title:
-            "See how [Client's Company] streamlined operations with our solutions.",
-          button: "Watch [Client's Company] Case",
           video: "Success-Story-1",
         },
         {
-          title:
-            "See how [Client's Company] streamlined operations with our solutions.",
-          button: "Discover [Client's Company] Story",
           video: "Success-Story-2",
         },
       ],
