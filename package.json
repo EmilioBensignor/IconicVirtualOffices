@@ -23,6 +23,7 @@
     "nuxt-booster": "^3.1.6",
     "nuxt-swiper": "^1.2.2",
     "nuxt-vitalizer": "^0.10.0",
+    "stripe": "^17.6.0",
     "vue": "latest",
     "vue-router": "latest"
   },
